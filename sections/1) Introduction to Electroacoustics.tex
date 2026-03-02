@@ -1,0 +1,2355 @@
+\section{Introduction to Electroacoustics}
+
+\subsection{Electrodynamic Loudspeaker: Structure}
+
+When a voltage is applied to the terminals of a loudspeaker, an electrical current flows through its coil. This current interacts with the magnetic field of the loudspeaker, generating a mechanical force that moves the membrane (diaphragm). The membrane’s motion is sinusoidal and propagates sound waves in air.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{loudspeaker_cutaway.png}
+    \hfill
+    \includegraphics[width=0.45\textwidth]{Loudspeaker_Structure.png}
+    \caption{Simplified illustration of the electrodynamic loudspeaker. The coil is immersed in a magnetic field created by the permanent magnet. The suspension and cone convert the electrical input into acoustic motion.}
+\end{figure}
+
+In a typical configuration:
+\begin{itemize}
+    \item The \textbf{north pole} of the magnet is located at the top and the \textbf{south pole} at the bottom.
+    \item The \textbf{voice coil} is positioned in the magnetic gap.
+    \item The \textbf{suspension} (or spider) stabilizes and regulates the diaphragm’s movement.
+\end{itemize}
+
+We refer to such systems as \textbf{electromagnetic loudspeakers} because they rely on the interaction between an electric current and a magnetic field.
+\[
+\text{Electricity} \Rightarrow \text{Sound: Loudspeaker}
+\qquad \qquad \qquad 
+\text{Sound} \Rightarrow \text{Electricity: Microphone}
+\]
+An \textbf{electrodynamic microphone} has a structure similar to that of the loudspeaker, but operates inversely: acoustic pressure moves the diaphragm, which induces an electrical current in the coil.
+
+\subsubsection{Magnetic Interaction and Lorentz Force}
+
+A moving electric charge \( q \) in a magnetic field \( \underline{B} \) (expressed in Teslas, \( [T] = \frac{N \cdot s}{C \cdot m} \)) experiences a force \( \underline{F} \) given by the \textbf{Lorentz law}:
+\[
+\underline{F} = q \cdot \underline{u} \times \underline{B}
+\]
+where \( \underline{u} \) is the velocity of the particle. The force is always orthogonal to both \( \underline{u} \) and \( \underline{B} \).  
+Its magnitude is expressed as:
+\[
+|\underline{F}| = q\,|\underline{u}|\,|\underline{B}| \sin(\alpha)
+\]
+where \( \alpha \) is the angle between \( \underline{u} \) and \( \underline{B} \).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{lorentz_force.png}
+    \caption{Representation of the Lorentz force acting on a charge moving within a magnetic field.}
+\end{figure}
+
+\subsubsection{Force on a Conductor}
+
+In a conductor, many electrons move simultaneously. Each infinitesimal charge \( dq \) is subjected to a small force \( d\underline{F} \). Summing over all these contributions gives the total force acting on the wire.
+
+For an infinitesimal volume element \( dV \), we can write:
+\[
+d\underline{F} = (-q\,\underline{u} \times \underline{B})\,n\,dV
+\]
+where: \( n \) is the electron concentration \( [\text{cm}^{-3}] \), \( -q \) represents the charge of a single electron.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{wire_force.png}
+    \caption{Infinitesimal element of wire subject to Lorentz force.}
+\end{figure}
+
+
+
+If \( dV = S \, dl \) is the infinitesimal volume of the conductor (with \( S \) its cross-section and \( dl \) an infinitesimal length), the elementary force can also be written as:
+\[
+d\underline{F} = (-q\,\underline{u} \times \underline{B})\,n\,S\,dl
+\]
+Integrating along the wire, we obtain:
+\[
+|\underline{F}| = \int_0^L |d\underline{F}| = nq|\underline{u}||\underline{B}|\sin(\alpha)\,S \int_0^L dl = nq|\underline{u}||\underline{B}|\sin(\alpha)\,S\,L
+\]
+By definition, the electric current is the rate of charge flow:
+\[
+I = \frac{\Delta Q}{\Delta t}
+\]
+Setting $\Delta t = 1\,\mathrm{s}$, we have $\Delta Q = q \, n \, dV$, thus:
+\[
+I = \Delta Q = q \, n \, S \, l
+\]
+Since $l = |\underline{u}| \, \Delta t$ and $\Delta t = 1$, we can write $l = |\underline{u}|$.
+
+Therefore, the total force becomes:
+\[
+|\underline{F}| = q\,n\,|\underline{u}|\,S\,L\,|\underline{B}|\,\sin(\alpha)
+\Rightarrow |\underline{F}| = I\,|\underline{B}|\,l\,\sin(\alpha)
+\]
+
+\textbf{Remark:} In loudspeakers, the coil is placed such that $\alpha = \frac{\pi}{2}$, ensuring that $\sin(\alpha)=1$ and the magnetic force is maximized.
+
+\subsubsection{Electrical–Mechanical–Acoustical Conversion}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.6\linewidth}
+        In a loudspeaker, the current flowing in the coil generates a magnetic field, which interacts with the permanent magnet and exerts a force on the diaphragm. This motion converts electrical energy into mechanical energy, and then into acoustic energy.
+        
+        \medskip
+        The conversion chain is as follows:
+            \[
+            \text{Electrical Power } P_E \longrightarrow \text{Mechanical Power } P_M \longrightarrow \text{Acoustic Power } P_A
+            \]
+            The electrical power is defined as:
+            \[
+            P_E = V \, I
+            \]
+            In acoustics, we introduce the \textbf{volume velocity}:
+\[
+V = \underline{u} \cdot S
+\]
+where $S$ is the diaphragm surface area and $\underline{u}$ its particle velocity.
+
+The acoustic power is then:
+\[
+P_A = P_M \, V = \frac{F}{S} \, \underline{u} \, S = F \, \underline{u}
+\]
+
+In an ideal system, all mechanical power is converted into acoustic power, i.e.
+\[
+P_M = P_A
+\]
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.35\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{loudspeaker_force_convertion.png}
+    \caption{Force generation in the loudspeaker coil: the interaction of current and magnetic field produces diaphragm motion.}
+    \end{minipage}
+\end{figure}
+
+
+
+\subsection{How to Approach the Loudspeaker Description}
+
+Before modeling a loudspeaker, it is essential to clearly understand the various components and their physical interactions. The analysis proceeds according to the following steps:
+
+\begin{enumerate}
+    \item Identify all the components involved in the system.
+    \item Understand the physical limitations and possible damages.
+    \item Determine where and how the Lorentz force acts.
+    \item Refine parameters for good loudspeaker design (useful for tools such as Loudspeaker Design Software, LDS).
+    \item Establish the relationships between sound and current.
+    \item Define the fundamental sound generation equation.
+    \item Combine all these aspects into a unified model.
+\end{enumerate}
+
+For \textbf{woofers} (low-frequency drivers), a larger diaphragm is preferred, as it allows efficient reproduction of low frequencies. Conversely, for \textbf{tweeters} (high-frequency drivers), smaller diaphragms perform better due to their lower mass and faster response.
+
+\subsection{Electrodynamic Loudspeaker: Model}
+
+The loudspeaker receives as input a pair \((V, I)\) corresponding to voltage and current applied to the \textbf{voice coil}. This electrical signal is converted into mechanical motion through electromagnetic interaction.
+
+The energy conversion can be viewed as a succession of domains:
+\[
+\text{Electrical Domain: } (V, I) \quad \xrightarrow{\text{conversion}} \quad \text{Mechanical Domain: } (\underline{F}, \underline{u})
+\]
+\clearpage
+Here:
+\begin{itemize}
+    \item The \textbf{electrical domain} variables are voltage \(V\) and current \(I\).
+    \item The \textbf{mechanical domain} variables are force \(\underline{F}\) and velocity \(\underline{u}\).
+\end{itemize}
+
+\noindent The diaphragm suspension can be modeled mechanically using mass–spring–damper analogies, which capture the elastic and dissipative behavior of the suspension system.
+
+From the mechanical domain, we then move to the \textbf{acoustical domain}, where motion of the diaphragm interacts with air:
+\[
+\text{Acoustical Domain: } (P, \underline{U})
+\]
+where \(P\) is the acoustic pressure and \(\underline{U}\) is the volume velocity (product of particle velocity and surface area).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{conversion_chain.png}
+    \caption{Block diagram showing the energy conversion from electrical to mechanical to acoustical domains.}
+\end{figure}
+
+
+Ultimately, air and the surrounding environment form the coupling medium that transmits acoustic power away from the loudspeaker.
+
+\subsection{Electrical Domain Components}
+
+The loudspeaker’s electrical behavior is described by its impedance, which links voltage and current through Ohm’s law in the frequency domain:
+\[
+Z_e = \frac{V_e}{i} \Rightarrow i(t) = \frac{1}{Z_e} V_e(t)
+\]
+\noindent\textbf{Resistor:} For a resistor of value $R$,
+\[
+V_R = R \, i
+\]
+\noindent\textbf{Capacitor:} For a capacitance $C$, the voltage–charge relationship is $V_C = \frac{1}{C} Q$, where $Q$ is the charge such that $\frac{dQ}{dt} = i$. Therefore:
+\[
+V_C = \frac{1}{C} \int_0^t i(\tau) \, d\tau \quad \Leftrightarrow \quad i_C(t) = C \frac{dV_C}{dt}
+\]
+
+\noindent\textbf{Inductor:} For an inductance $L$,
+\[
+V_L = L \frac{di}{dt} \Rightarrow i(t) = \frac{1}{L} \int_0^t V_L(\tau) \, d\tau
+\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{electrical_elements.png}
+    \caption{Electrical domain components: resistor, capacitor, and inductor in a loudspeaker circuit.}
+\end{figure}
+
+
+Each of these elements will later find its mechanical or acoustical analog in the modeling chain.
+
+
+\subsection{Mechanical Domain Components}
+
+The mechanical domain describes how the diaphragm and suspension react to forces. The three main components are mass, spring, and damper, which correspond respectively to mechanical inertia, elasticity, and losses.
+
+\subsubsection{Mass in the Mechanical Domain}
+
+We denote the diaphragm’s mass by $M_M$. When a force $\underline{F}$ is applied, the diaphragm acquires a velocity $\underline{u}$.
+
+From Newton’s second law:
+\[
+\underline{a} = \frac{1}{M_M}\underline{F} \quad \Rightarrow \quad \underline{F} = M_M \underline{a} = M_M \frac{d\underline{u}}{dt}
+\]
+By integration:
+\[
+\underline{u}(t) = \frac{1}{M_M} \int_0^t \underline{F}(\tau)\, d\tau
+\]
+
+\noindent The element $M_M$ is modeled as a \textbf{mechanical inductance}, since the force depends on the derivative of velocity (analogous to voltage depending on the derivative of current in an inductor).
+
+\subsubsection{Spring in the Mechanical Domain}
+
+For a spring, the displacement $x$ is proportional to the applied force:
+\[
+x = C_M \, F
+\]
+where $C_M$ is the \textbf{mechanical compliance}, the inverse of stiffness ($K = 1/C_M$). We have:
+\[
+F = \frac{1}{C_M} x = K \, x 
+\quad \Rightarrow \quad 
+x = \int_0^t \underline{u}(\tau) d\tau = \frac{F}{K}
+\]
+Differentiating with respect to time:
+\[
+\underline{u}(t) = \frac{1}{K} \frac{d\underline{F}}{dt}
+\]
+Thus, a spring behaves like a \textbf{mechanical capacitance}, where displacement stores potential energy.
+
+
+\subsubsection*{Damper in the Mechanical Domain}
+
+The damper represents friction or air resistance. Its constitutive relation is linear:
+\[
+\underline{u} = \frac{1}{R_M} \underline{F}
+\]
+where $R_M$ is the \textbf{mechanical resistance}. The damper dissipates energy, analogous to an electrical resistor.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{mechanical_blocks.png}
+    \caption{Mechanical damper model: $\underline{u} = \frac{1}{R_M} \underline{F}$.}
+\end{figure}
+
+\clearpage 
+
+\subsection{Analogy Theory}
+
+When modeling electromechanical systems, it is often convenient to establish analogies between electrical and mechanical quantities. Two main types of analogies exist: the \textbf{impedance analogy} and the \textbf{admittance analogy}. These mappings allow us to represent mechanical systems using equivalent electrical circuits.
+
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.45\linewidth}
+        \textbf{Type 1: Impedance Analogy}
+
+In this analogy, we map:
+\[
+\begin{cases}
+{F} \leftrightarrow v, \\
+{u} \leftrightarrow i,
+\end{cases}
+\]
+which is particularly suitable for the impedance analogy of the mass.
+
+\begin{itemize}
+    \item Mechanical \textbf{force} corresponds to electrical \textbf{voltage}.
+    \item Mechanical \textbf{velocity} corresponds to electrical \textbf{current}.
+\end{itemize}
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.45\linewidth}
+        \textbf{Type 2: Admittance Analogy}
+        
+        In this case, we map:
+\[
+\begin{cases}
+{F} \leftrightarrow i, \\
+{u} \leftrightarrow v,
+\end{cases}
+\]
+which is better suited for representing the spring (capacitance analogy).
+\begin{itemize}
+    \item Mechanical \textbf{force} corresponds to electrical \textbf{current}.
+    \item Mechanical \textbf{velocity} corresponds to electrical \textbf{voltage}.
+\end{itemize}
+    \end{minipage}
+\end{figure}
+
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Mechanical Element} & \textbf{Impedance Analogy (Type 1)} & \textbf{Admittance Analogy (Type 2)} \\
+\hline
+Mass & Inductor & Capacitor \\
+Resistor (Damper) & Resistor & Conductor (inverse of resistor) \\
+Spring & Capacitor & Inductor \\
+\hline
+\end{tabular}
+\caption{Correspondences between electrical and mechanical elements for impedance and admittance analogies.}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{impedance_admittance_analogies.png}
+    \caption{Mechanical–electrical analogies: impedance (left) and admittance (right).}
+\end{figure}
+
+
+\noindent\textbf{Remark:} Depending on the chosen analogy, mechanical components are represented by different electrical equivalents. Both analogies are valid and can be used based on modeling convenience.
+
+\subsubsection{Impedance Analogy of the Spring}
+
+Using the impedance analogy: \( {F} \leftrightarrow v, \quad 
+{u} \leftrightarrow i\)
+
+We have in the electrical domain:
+\[
+i = C_E \frac{dv}{dt} \Rightarrow v(t) = \frac{1}{C_E} \int_0^t i(\tau)\, d\tau
+\]
+By analogy, in the mechanical domain:
+\[
+{F}(t) = \frac{1}{C_E} \int_0^t {u}(\tau)\, d\tau
+\]
+
+\subsubsection{Admittance Analogy of the Spring}
+
+Using the admittance analogy: $ \underline{F} \leftrightarrow i, \quad
+\underline{u} \leftrightarrow v$
+
+We obtain in the electrical domain:
+\[
+v = L_E \frac{di}{dt}
+\]
+and therefore in the mechanical domain:
+\[
+{u}(t) = L_E \frac{d{F}}{dt}
+\]
+This means that the spring can be modeled as an inductor in the admittance analogy, whereas it was represented by a capacitor in the impedance analogy.
+
+\subsubsection{Impedance Analogy of the Damper}
+
+Using the impedance analogy: $ \underline{F} \leftrightarrow v,\quad {u} \leftrightarrow i $
+
+We obtain:
+\[
+{F} = R_M {u} \quad \Rightarrow \quad {u} = \frac{1}{R_M} {F}
+\]
+In the electrical domain, this becomes:
+\[
+v = R_E\, i \Rightarrow i(t) = \frac{1}{R_E} v(t)
+\]
+which corresponds to the model of an electrical resistor.
+
+\subsubsection{Admittance Analogy of the Damper}
+
+Using the admittance analogy: $ {F} \leftrightarrow i,\quad {u} \leftrightarrow v$
+
+We obtain:
+\[
+i = G_E\, v \Rightarrow v(t) = \frac{1}{G_E} i(t)
+\]
+where $G_E$ is the electrical conductance (inverse of resistance). This model is equivalent to that of a resistor but expressed using admittance rather than impedance.
+
+
+\subsubsection*{Impedance Analogy of the Mass}
+
+The infinitesimal work performed by a force is:
+\[
+dL = F \, dx
+\]
+The instantaneous power in the mechanical domain is then:
+\[
+P_M = \frac{dL}{dt} = F \, \frac{dx}{dt} = F \, u
+\]
+This expression is directly analogous to the electrical power:
+\[
+P_E = v \, i
+\]
+Hence, a mechanical mass can be modeled using an \textbf{inductor} in the impedance analogy. The relationship between force and velocity mirrors that between voltage and current in an inductor:
+\[
+F = M_M \frac{du}{dt}
+\]
+The \textbf{mechano-electrical analogy} simplifies analysis by allowing us to use electrical circuit tools to model mechanical systems, avoiding complex differential equations.
+
+
+\subsection{Impedances from Electrical to Mechanical Domain}
+
+
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.55\linewidth}
+        In the electrical domain, impedances are defined as the ratio between the “across” and “through” variables:
+\[
+Z_E = \frac{v}{i}
+\]
+Similarly, in the mechanical domain, we define a mechanical impedance as:
+\[
+Z_M = \frac{F}{u}
+\]
+This quantity expresses how much force is required to produce a certain velocity, analogous to voltage and current in electrical systems.
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.4\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{mechanical_impedance_analogies.png}
+    \caption{Electrical domain impedance (left) and mechanical impedance (right) analogies.}
+    \end{minipage}
+\end{figure}
+
+
+
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Analogy Type} & \textbf{Mapping} & \textbf{Impedance Formula} \\
+\hline
+Impedance analogy & $F \leftrightarrow v$, $u \leftrightarrow i$ & $Z_M = \dfrac{F}{u} = \dfrac{\text{across}}{\text{through}}$ \\
+\hline
+Admittance analogy & $F \leftrightarrow i$, $u \leftrightarrow v$ & $Z_M = \dfrac{F}{u} = \dfrac{\text{through}}{\text{across}}$ \\
+\hline
+\end{tabular}
+\caption{Mechanical impedance under impedance and admittance analogies.}
+\end{table}
+
+
+\noindent In both analogies, the definition of mechanical impedance remains consistent. However, the formulation of equivalent circuit relationships such as voltage dividers will differ according to the mapping used.
+
+In the admittance analogy, the traditional “voltage divider” formula is modified.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{impedance_admittance_parralel.png}\caption{Mechanical impedance combinations under impedance (left) and admittance (right) analogies.}
+\end{figure}
+
+
+
+With the impedance analogy, we have:
+\[
+Z_M = \frac{F}{u} = \frac{F}{u_1 + u_2} = \frac{F}{\frac{F}{Z_{M1}} + \frac{F}{Z_{M2}}}
+\quad \Rightarrow \quad
+Z_M = \frac{Z_{M1} Z_{M2}}{Z_{M1} + Z_{M2}}
+\]
+This is analogous to \textbf{impedances connected in parallel} in the electrical domain.
+
+In the admittance analogy, we have instead:
+\[
+Z_M = \frac{F}{u} = \frac{F_1 + F_2}{u} = \frac{F_1}{u} + \frac{F_2}{u} 
+\quad \Rightarrow \quad
+Z_M = Z_{M1} + Z_{M2}
+\]
+which is analogous to the \textbf{parallel of admittances}.
+
+
+\subsection{Acoustical Domain Components}
+
+In the acoustical domain, we work with the quantities \( P \) and \( U \), corresponding respectively to \textbf{pressure} and \textbf{volume velocity}.  
+The volume velocity is defined as:
+\[
+V = u \, S \quad \left[ \frac{m^3}{s} \right]
+\]
+where \( u \) is the particle velocity and \( S \) the surface area through which air moves.
+
+
+\subsubsection{Acoustic Mass}
+
+We model here the inertia of air moving in a cylindrical volume. The force acting on the air mass is given by Newton’s law:
+\[
+F = M_M \frac{du}{dt}
+\]
+where \( M_M \) is the mass of the volume of gas under consideration.
+
+Since \( P = \frac{F}{S} \), we can write:
+\[
+P = \frac{M_M}{S} \frac{du}{dt} = \frac{M_M}{S^2} \frac{dU}{dt} = M_A \frac{dU}{dt}
+\]
+where:
+\[
+M_A = \frac{M_M}{S^2} \quad \left[ \frac{kg}{m^4} \right]
+\]
+is the \textbf{acoustic mass}, representing the uncompressed mass of air moving at velocity \( u \) through a surface \( S \).
+
+\subsubsection{Impedance Analogy of the Acoustic Mass}
+
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.7\linewidth}
+        Using the impedance analogy: $ P \leftrightarrow v,\quad
+U \leftrightarrow i$ an acoustic mass behaves as an \textbf{inductor} with inductance \( L = M_A \).
+
+In the electrical domain, the inductor’s equation is:
+\[
+v = L_E \frac{di}{dt}
+\]
+and by analogy, in the acoustic domain:
+\[
+P = M_A \frac{dU}{dt} \equiv L_E \frac{di}{dt}
+\]
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.25\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{acoustic_mass_impedance.png}
+    \caption{Model of the mass for the impedance analogy.}
+    \end{minipage}
+\end{figure}
+
+\subsubsection{Admittance Analogy of the Acoustic Mass}
+
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.7\linewidth}
+Using the admittance analogy: $  P \leftrightarrow i,\quad U \leftrightarrow v $
+an acoustic mass can instead be represented by a \textbf{capacitor} with capacitance \( C_E = M_A \).
+
+In the electrical domain:
+\[
+i = C_E \frac{dv}{dt}
+\]
+and in the acoustic domain:
+\[
+P = M_A \frac{dU}{dt} = C_E \frac{dU}{dt}
+\]
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.25\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{acoustic_mass_admittance.png}
+    \caption{Model of the mass for the impedance analogy.}
+    \end{minipage}
+\end{figure}
+
+
+\clearpage 
+
+\subsubsection{Acoustic Resistance}
+
+We consider a cylindrical volume of gas (e.g., air) with radius \( r \).  
+In the mechanical domain, the law of dampers gives:
+\[
+F = R_M \, u
+\]
+Dividing both sides by the surface \( S \), we obtain:
+\[
+\frac{F}{S} = \frac{R_M}{S^2} \, U \quad \Rightarrow \quad R_A = \frac{R_M}{S^2} \quad \left[ \frac{N \, s}{m^5} \right]
+\]
+where \( R_A \) is the \textbf{acoustic resistance}.  
+Thus, a volume of air can be represented by a resistor in the electrical domain, corresponding to viscous friction losses in air motion.
+
+We now consider a cube of height \( 2b \), width \( w \), and depth \( t \), drilled with holes of radius \( a \) that pass through the entire volume.  
+Each hole can be modeled as a combination of:
+\begin{itemize}
+    \item an \textbf{acoustic resistance} (due to viscosity and friction), and  
+    \item an \textbf{acoustic mass} (due to the inertia of air moving through the hole).
+\end{itemize}
+
+Under the impedance analogy, these two elements are in series, hence:
+\[
+Z_A = R_A + M_A
+\]
+The analytical expressions for these quantities are:
+\[
+R_A = \frac{1}{\pi a^2} \sqrt{\frac{2 \omega \mu}{\rho_0}} \cdot \left[ \frac{t}{a} + 2 \left( 1 - \frac{\pi a^2}{b^2} \right) \right]
+, \qquad 
+M_A = \frac{\rho_0}{\pi a^2} \left[ t + 17 a \left( 1 - \frac{a}{b} \right) \right]
+\]
+where
+\begin{itemize}
+    \item \( \mu \) is the \textbf{dynamic viscosity} (friction coefficient),
+    \item \( \rho_0 \) is the \textbf{density of air}.
+\end{itemize}
+
+\subsubsection{Acoustic Compliance}
+
+Air behaves like a spring. Consider a box with a movable wall, where air compression and rarefaction occur as the wall moves. The displacement is given by:
+\[
+x = C_M F
+\]
+where \( C_M \) is the \textbf{mechanical compliance}. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\textwidth]{acoustic_compliance_box.png}\caption{Acoustic compliance: air in a closed box behaves like a spring.}
+\end{figure}
+Differentiating, we obtain:
+\[
+u(t) = C_M \frac{dF}{dt} \quad \Leftrightarrow \quad F(t) = \frac{1}{C_M} \int_0^t u(\tau) d\tau
+\]
+Considering the acoustic pressure \( P = \frac{F}{S} \) as the variable of interest:
+\[
+P = \frac{F(t)}{S} = \frac{1}{S C_M} \int_0^t u(\tau) d\tau = \frac{1}{S^2 C_M} \int_0^t U(\tau) d\tau = \frac{1}{C_A} \int_0^t U(\tau) d\tau
+\]
+where
+\[
+C_A = C_M S^2 \quad \left[ \frac{m^5}{N} \right]
+\]
+is the \textbf{acoustic compliance}, representing the ability of air to store potential (compressive) energy
+
+
+
+
+\subsubsection{Impedance Analogy of the Acoustic Compliance}
+
+Using the impedance analogy: $ 
+P \leftrightarrow v,\quad U \leftrightarrow i$ the equation
+\[
+P = \frac{1}{C_A} \int_0^t U(\tau) d\tau
+\]
+corresponds to the capacitor relation in the electrical domain:
+\[
+v(t) = \frac{1}{C_E} \int_0^t i(\tau) d\tau
+\]
+Thus, a volume of air can be modeled by a \textbf{capacitor} using the impedance analogy.
+
+\subsubsection{Admittance Analogy of the Acoustic Compliance}
+
+Using the admittance analogy: $ P \leftrightarrow i,\quad U \leftrightarrow v $ the same relation becomes:
+\[
+P = \frac{1}{C_A} \int_0^t U(\tau) d\tau \quad \Leftrightarrow \quad U(t) = C_A \frac{dP}{dt}
+\]
+which corresponds to the inductor equation:
+\[
+v = L_E \frac{di}{dt}
+\]
+Hence, a volume of air can be modeled by an \textbf{inductor} using the admittance analogy.
+
+
+
+\subsubsection{Specific Acoustic Impedance}
+
+We consider an acoustical element represented by a dipole with impedance:
+\[
+Z_A = \frac{P}{U} \quad \left[ \frac{N \cdot s}{m^5} \right]
+\]
+We now introduce the \textbf{specific acoustic impedance}, defined as:
+\[
+Z_s = \frac{P}{u} \quad \left[ \frac{N \cdot s}{m^3} \right]
+\]
+where \( u \) is the \textbf{particle velocity}.  
+In this formulation, we refer to molecular velocity rather than volume velocity. The dimension of the specific acoustic impedance is the \textbf{Rayl}.
+\[
+Z_s = \frac{P}{u} = \frac{P}{\frac{U}{S}} = \frac{P}{U} \cdot S \Rightarrow Z_s = Z_A \, S
+\]
+Thus, the specific acoustic impedance is obtained by multiplying the acoustic impedance by the surface area of the radiating element.
+
+
+
+\subsection{Signal Transformer}
+
+In many situations, we need to convert an electrical signal from one configuration \((v, i)\) to another, while keeping the same power:
+\[
+P_E = v \, i
+\]
+A \textbf{transformer} is an electrical device designed for this purpose. It allows conversion of voltage and current levels without altering the total electrical power.
+
+\begin{itemize}
+    \item The \textbf{primary coil} (with $n_p$ coils/turns) generates a magnetic field \( B \) when a current \( i \) flows through it.
+    \item The \textbf{secondary coil} (with $n_s$ coils/turns) , exposed to the magnetic flux variation \( \Delta \Phi_B \), experiences an induced voltage \( v \) and current \( i \).
+\end{itemize}
+
+When the primary coil carries current, it produces a magnetic field that couples with the secondary coil, inducing a current in it.  
+The direction (or phase) of both voltages and currents is indicated by the \textbf{dots} on the circuit schematic.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.55\textwidth]{signal_transformer.png}
+    \caption{Transformer coupling between primary and secondary coils. The dots indicate phase correspondence.}
+\end{figure}
+
+The \textbf{transformer law} relates voltage and turns ratio:
+\[
+\frac{v_p}{v_s} = \frac{n_p}{n_s} = k
+\]
+where \( k \) is called the \textbf{turn ratio}.
+
+\begin{itemize}
+    \item If \( n_s > n_p : 
+    \begin{cases}
+    v_s > v_p\\
+    i_s < i_p
+    \end{cases}
+    \quad \text{(step-up transformer)}
+    \)
+    \item If \( n_s < n_p : 
+    \begin{cases}
+    v_s < v_p\\
+    i_s > i_p
+    \end{cases}
+    \quad \text{(step-down transformer)}
+    \)
+\end{itemize}
+Since the transformer conserves input power:
+\[
+\textcolor{red}{
+v_p \, i_p = v_s \, i_s
+\quad \Rightarrow \quad
+\frac{i_s}{i_p} = \frac{v_p}{v_s} = k
+}
+\]
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.6\textwidth}
+        The transformer is a \textbf{passive component}: it does not amplify power, 
+        but it enables voltage and current adaptation between circuits.
+
+        \medskip
+
+        \medskip
+
+        A common application is found in power distribution systems, where transformers 
+        convert high transmission voltages into domestic voltage levels.
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{power_transfer_block.png}
+        \caption{Typical example of a power transformer after a transmission line: 
+        voltage reduction from 380~kV to 220~V.}
+    \end{minipage}
+\end{figure}
+
+
+\subsubsection{Load Impedance Transformation}
+
+An important aspect of the signal transformer is that it modifies the load impedance seen by the electrical power source.
+
+We have:
+\[
+Z_{LS} = \frac{v_s}{i_s}
+\]
+We also know that:
+\[
+Z_p = \frac{v_p}{i_p} = \frac{k \, v_s}{i_s / k} = k^2 \frac{v_s}{i_s} 
+\quad \Rightarrow \quad Z_p = k^2 Z_{LS}
+\]
+Thus:
+\[
+k > 1 \Rightarrow Z_{LS} < Z_p, \qquad k < 1 \Rightarrow Z_{LS} > Z_p
+\]
+
+This relation shows that the transformer scales the impedance by the square of the turn ratio \( k \).
+
+\bigskip
+When using a transformer, a key design question arises: given the power \( P \), are we satisfied with the actual impedance, or do we need to adjust it?
+
+
+\textbf{Example:}  Consider a valve amplifier driving a loudspeaker with:
+\[
+P = 100\,W, \quad R_{load} = 4\,\Omega, \quad k = 20
+\]
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.55\linewidth}
+We admit:
+\[
+i_p = 250 \times 10^{-3} \, A, \qquad v_p = 400\,V
+\]
+Then:
+\[
+v_s = \frac{v_p}{k} = 20\,V, \qquad i_s = k \, i_p = 5\,A
+\]
+The primary coil impedance is therefore:
+\[
+Z_p = k^2 Z_{LS} = 20^2 \times 4 = 1600\,\Omega = 1.6\,k\Omega
+\]
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.4\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{valve_amp_to_loudspeaker.png}
+    \caption{Schematic of the example.}
+    \end{minipage}
+\end{figure}
+Considering a Thevenin source at the input of a transformer, we can describe an equivalent circuit by replacing the transformer with its reflected impedance \( Z_p = k^2 Z_{LS} \). This allows us to analyze the passive response by applying a voltage test \( v_s \) and measuring the resulting current \( i_s \).
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Transformer_Thevenin_equiv.png}
+    \caption{Thevenin equivalent of the signal tranformer.}
+\end{figure}
+
+We have for equivalent voltage source and impedance in the Thevenin representation: 
+\[
+\begin{cases}
+    & v_{eq} = \frac{v_0}{k}\\
+    & Z_{eq} = \frac{v_s}{i_s} = \frac{v_p/k}{i_p \cdot k} = \frac{Z_0}{k^2}
+\end{cases}
+\]
+
+\subsection{Gyrator}
+
+A \textbf{gyrator} is a two-port device that converts one \((v, i)\) configuration into another while maintaining the same electrical power.  
+Unlike the transformer, the gyrator relates different electrical quantities through the \textbf{transconductance} \( g \), expressed in Siemens (\( S = \Omega^{-1} \)).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{gyrator_model.png}
+    \caption{Model of the gyrator.}
+    \label{fig:placeholder}
+\end{figure}
+\textbf{Gyrator laws:} $ 
+i_s = g \, v_p, \quad v_s = \dfrac{i_p}{g}$
+
+Hence, we also observe that: $ v_p = \dfrac{i_s}{g}, \quadi_p = v_s \, g $
+
+We know that:
+\[
+Z_p = \frac{v_p}{i_p} = \frac{i_s / g}{g \, v_s} = \frac{1}{g^2} \frac{i_s}{v_s} = \frac{1}{g^2} \frac{1}{Z_{LS}} 
+\quad \Rightarrow \quad Z_p = \frac{1}{g^2} Y_{LS}
+\]
+Thus, the gyrator inverts impedance and converts it according to:
+\[
+Z_p = \frac{1}{g^2 Z_{LS}}
+\]
+Examples :
+\begin{itemize}
+    \item \textbf{Load is a resistor}, i.e. if \( Z_{LS} = R \), then:
+\[
+Z_p = \frac{1}{g^2 R} = \frac{1}{g^2} G
+\]
+where \( G = \frac{1}{R} \) is the conductance.
+\item \textbf{Load is an inductor}, i.e. if \( Z_{LS} = j \omega L \), then:
+\[
+Z_p = \frac{1}{g^2 j \omega L} = \frac{1}{j \omega C_{eq}} \quad \text{with} \quad C_{eq} = g^2 L
+\]
+Thus, an \textbf{inductor is transformed into a capacitor} (behaviorally).
+\item  \textbf{Load is a capacitor}, i.e. if \( Z_{LS} = \frac{1}{j \omega C} \), then:
+\[
+Z_p = \frac{1}{g^2} \, j \omega C = j \omega L_{eq} \quad \text{with} \quad L_{eq} = \frac{1}{g^2 C}
+\]
+Hence, a \textbf{capacitor is transformed into an inductor} (behaviorally).
+\end{itemize}
+
+
+\subsection{Loudspeaker Pipeline}
+
+A loudspeaker can be modeled as a sequence of three transductions:
+\[
+\text{Electrical Domain} \longrightarrow \text{Mechanical Domain} \longrightarrow \text{Acoustical Domain}
+\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{loudspeaker_pipeline.png}
+    \caption{Schematic representation of the loudspeaker transduction chain.}
+\end{figure}
+
+
+\subsubsection{Electrical to Mechanical Transduction}
+
+The conversion from electrical to mechanical energy occurs within the voice coil, where electrical current interacts with the magnetic field.  
+This stage can be represented either by a \textbf{transformer} or by a \textbf{gyrator}, depending on the analogy used.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{electrical_mechanical_transformer.png}
+    \caption{Electrical-to-mechanical transduction block.}
+\end{figure}
+
+\noindent In the \textbf{admittance analogy}, we use a transformer: $ F_c = B \, l \, i,\quad 
+u_c = \dfrac{1}{B \, l} \, v $
+
+In the \textbf{impedance analogy}, the same relationships hold: $  F_c = B \, l \, i,\quad u_c = \dfrac{1}{B \, l} \, v $
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{imageE_M_analogies.png}
+    \caption{Enter Caption}
+    \label{fig:placeholder}
+\end{figure}
+
+The laws do not change, but the nature of the coupling does: under the impedance analogy, this corresponds to a \textbf{gyrator}.  
+We therefore identify the gyrator’s transconductance as:
+\[
+g = \frac{1}{B \, l}
+\]
+where \( B \) is the magnetic flux density and \( l \) the effective length of the wire in the magnetic field.
+
+
+\subsubsection{Mechanical to Acoustical Transduction}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{M_A_Block.png}
+    \caption{Mechanical-to-acoustical block.}
+    \label{fig:placeholder}
+\end{figure}
+The conversion from mechanical motion to acoustic pressure occurs through the diaphragm surface.  
+
+Using the impedance analogy: 
+\[
+P = \dfrac{F}{S_D},\quad U = u \, S_D
+, \quad \text{where \( S_D \) is the diaphragm surface area}
+\]
+In the admittance analogy, the relationships combine into:
+\[
+P \, U = F \, u,
+\]
+which corresponds to a \textbf{signal transformer} model.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{M_A_Analogies.png}
+    \caption{Mechanical-to-acoustical transduction modeled as transformer (admittance analogy) or gyrator (impedance analogy).}
+\end{figure}
+
+
+In summary:
+\begin{itemize}
+    \item In the \textbf{admittance analogy}, the transduction behaves like a transformer.
+    \item In the \textbf{impedance analogy}, the transduction behaves like a gyrator.
+\end{itemize}
+
+
+\subsection{Mechanical Section of the Loudspeaker}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.56\linewidth}
+The basket of the loudspeaker can be modeled as a \textbf{hard immobile wall}.  
+The diaphragm, attached to the basket by the suspension, can be represented by a \textbf{mass} \( M_{MD} \) of surface \( S_D \), moving at velocity \( u_C \) — the same as that of the voice coil.
+
+\medskip
+The suspension behaves as a \textbf{mechanical compliance} \( C_{MS} \) (elastic part) in parallel with a \textbf{mechanical resistance} \( R_{MS} \) (viscous part), accounting for losses in the suspension.
+
+\medskip
+The \textbf{mechanical conductance} of the suspension is defined as:
+\[
+G_{MS} = \frac{1}{R_{MS}}
+\]
+The \textbf{coil’s Lorentz force} drives the motion of the diaphragm:
+\[
+F_C = B \, l \, i
+\]
+The \textbf{spring} reacts with a restoring force that acts in the opposite direction:
+\[
+F_S = \frac{1}{C_M} \, x
+\]
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.43\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{mechanical_loudspeaker_model.png}
+    \caption{Mechanical representation of the loudspeaker suspension and diaphragm.}
+    \end{minipage}
+\end{figure}
+Differentiating the spring's restoring force expression, we have:
+\[
+\frac{dF}{dt} = \frac{1}{C_M} \, u \quad \Leftrightarrow \quad u = C_M \, \frac{dF}{dt}
+\]
+The system reaches equilibrium when \( F = F_S \).
+
+The \textbf{damper} produces a resistive force:
+\[
+F_D = R_M \, u \quad \Leftrightarrow \quad u = \frac{1}{R_M} \, F_D
+\]
+The system becomes static when \( F = F_D \).
+
+The\textbf{ diaphragm’s mass} reacts to an applied force as:
+\[
+F_M = M_M \, \frac{du}{dt} \quad \Leftrightarrow \quad u = \frac{1}{M_M} \int_0^t F_M(\tau) \, d\tau
+\]
+According to D’Alembert’s principle, the sum of all internal and external forces must balance:
+\[
+F = F_S + F_D + F_M
+\]
+Substituting the expressions for each term:
+\[
+F = \frac{1}{C_M} \int_0^t u(\tau) \, d\tau + R_M \, u + M_M \, \frac{du}{dt}
+\]
+
+
+\subsubsection{Admittance and Impedance Analogies in the Mechanical Section}
+
+Working in the \textbf{Admittance Analogy}: $  u_c \equiv v,\quad
+F_c \equiv i $.
+
+In this analogy:
+\begin{itemize}
+    \item The \textbf{mass} behaves as a \textbf{capacitor}.
+    \item The \textbf{suspension} (spring and mechanical losses) behaves as an \textbf{inductor} and a \textbf{conductance}.
+\end{itemize}
+
+We obtain an \textbf{RLC circuit in parallel}, since all components share the same velocity (analogous to voltage in the electrical domain).
+
+Working in the \textbf{Impedance Analogy}: $ u_c \equiv i,\quad F_c \equiv v $
+
+In this analogy:
+\begin{itemize}
+    \item The \textbf{mass} behaves as an \textbf{inductor}.
+    \item The \textbf{suspension} (spring and mechanical resistance) behaves as a \textbf{capacitor} and a \textbf{resistor}.
+\end{itemize}
+
+We obtain an \textbf{RLC circuit in series}, since all components share the same speed (analogous to current in the electrical domain).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{mechanical_section_analogies.png}
+    \caption{Admittance analogy (left): mechanical section modeled as an RLC parallel circuit. Impedance analogy (right): mechanical section modeled as an RLC series circuit.}
+\end{figure}
+
+\clearpage
+
+\textbf{Example of the Entire Signal Path: }
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{loudspeaker_full_model.png}
+    \caption{Complete equivalent model of the loudspeaker: electrical, mechanical, and acoustical domains.}
+\end{figure}
+
+
+The voice coil is modeled by a RL series circuit.  
+The \textbf{electrical-to-mechanical} transduction is represented by a \textbf{signal transformer}, while the \textbf{mechanical section} of the loudspeaker is modeled using the \textbf{admittance analogy} (RLC in parallel).  
+Finally, the \textbf{mechanical-to-acoustical} transduction is also modeled by a signal transformer.
+\[
+Z_{AR} = \frac{\tilde{P}}{\tilde{U}}
+\]
+is the \textbf{radiation acoustic impedance}, which relates the sound pressure at the diaphragm to the corresponding volume velocity.
+
+\subsubsection{Lumped Elements Model}
+
+In many systems (such as transmission lines), it is useful to approximate distributed physical phenomena with equivalent lumped elements.  
+This approach replaces a spatially distributed system by discrete resistors, inductors, and capacitors that reproduce its behavior.
+
+\begin{itemize}
+    \item A single RLC circuit can provide a first-order approximation of the system’s behavior.
+    \item Each RLC element represents the resistive, inductive, and capacitive properties of a small section of the system.
+    \item The complete model is obtained by connecting multiple RLC sections in series.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{lumped_elements_model.png}\caption{Transition from a distributed system to a lumped-element RLC approximation.}
+\end{figure}
+
+For high frequencies (when the wavelength \( \lambda \) becomes comparable to the system’s dimensions), a finer subdivision of the wire into many RLC portions is required.  
+In this case, distributed effects dominate, and the lumped model must be extended.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{lumped_elements_high_freq.png}
+    \caption{Long wire line divided in many many lumped elements (RLC sections).}
+    \label{fig:placeholder}
+\end{figure}
+
+\subsubsection{Pressure Waves}
+
+When an electrical signal excites the coil and moves the diaphragm, it creates a pressure increase at the front of the loudspeaker and a pressure decrease at the back — the two being in phase opposition.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.25\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{loudspeaker_pressure_front_back.png}
+        \caption{Front and back acoustic pressures generated by the diaphragm (in phase opposition).}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.7\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{impedance_redraw.png}
+        \caption{Alternate modeling of the front and back air impedances.}
+    \end{minipage}
+\end{figure}
+
+
+As the front and back environments are different, their corresponding air impedances \( Z_{AF} \) and \( Z_{AB} \) are not identical.
+
+The equivalent acoustic impedance seen by the diaphragm is:
+\[
+Z_{AR} = Z_{AB} + Z_{AF}
+\]
+If we assume symmetry between front and back (\( Z_{AB} = Z_{AF} \)), we can simplify:
+\[
+Z_{AR} = 2Z_{AF} \quad \text{or equivalently} \quad Y_{AR} = \frac{Y_{AF}}{2}
+\]
+
+
+\subsection{From acoustical to mechanical domain}
+
+Starting from the previous observations, we can define the remaining part of the model. We have:
+\[
+Y_{MR} = \frac{u}{F} = \frac{U/S_D}{P \cdot S_D} = \frac{1}{S_D^2} \frac{U}{P} 
+\quad \Rightarrow \quad  Y_{MR} = \frac{1}{S_D^2} Y_{AR}
+\]
+Note that:
+\[
+Z_{MR} = \frac{F}{u} = \frac{1}{Y_{MR}} = S_D^2 \, Z_{AR}
+\]
+\textbf{NB:} MR stands for \textit{mechanical radiation}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{mechanical_radiation_model.png}
+    \caption{Model of the acoustic radiation impedance of the loudspeaker.}
+\end{figure}
+
+\subsection{Mechanical model}
+
+The loudspeaker is enclosed in a box, and the air inside behaves as a spring (compliance). The equivalent mechanical circuit can therefore be modeled as a mass-spring-damper system where the diaphragm motion is characterized by the mechanical admittance \( Y_{MR} \).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{mechanical_model.png}
+    \caption{Mechanical model adding the air inside the loudspeaker's box.}
+\end{figure}
+
+
+\subsubsection{From mechanical to acoustical domain}
+
+We can now express the electrical radiation impedance as:
+\[
+Z_{ER} = \frac{v}{i} = \frac{u \cdot B \cdot l}{F / (B \cdot l)}
+\]
+Thus:
+\[
+Z_{ER} = (B \, l)^2 \frac{u}{F} = (B \, l)^2 Y_{MR} = (B \, l)^2 Y_{MR} = \left( \frac{B \, l}{S_D} \right)^2 Y_{AR}
+\]
+\textbf{NB:} ER stands for \textit{electrical radiation}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{electrical_radiation_model.png}
+    \caption{Model of the electrical radiation impedance of the loudspeaker.}
+\end{figure}
+
+
+\subsubsection{Mass of the diaphragm and voice coil}
+
+The mechanical equation governing the diaphragm and voice coil is derived from Newton’s second law:
+\[
+F = M_{MD} \frac{du}{dt} \quad \Rightarrow \quad i = C \frac{dv}{dt}
+\]
+In the sinusoidal domain:
+\[
+F = j \omega M_{MD} u \quad \text{and} \quad i = j \omega C \, v
+\]
+Using the electromechanical analogy, we have:
+\[
+\frac{u}{F} = \frac{1}{j \omega M_{MD}}, \qquad \frac{v}{i} = (B l)^2 \frac{u}{F} = (B l)^2 \frac{1}{j \omega M_{MD}}
+\qquad \Rightarrow \quad 
+\frac{v}{i} = \frac{1}{j \omega} \frac{M_{MD}}{(B l)^2}
+\]
+This corresponds to a capacitor of capacitance:
+\[
+C_{ED} = \frac{M_{MD}}{(B l)^2}
+\]
+Hence, a smaller diaphragm mass \( M_{MD} \) yields a smaller equivalent electrical capacitance \( C_{ED} \). Since we usually aim for \( C_{ED} \) in the order of nanofarads, an ideal loudspeaker should have a small moving mass.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Diaphragm_capacitor_M_MD.png}
+    \end{minipage}
+    \hspace{2cm}
+    \begin{minipage}[c]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Diaphragm_capacitor_C_ED.png}
+    \end{minipage}
+    \caption{Electrical Diaphragm capacitance in the acoustic domain (left) and electric domain (right).}
+\end{figure}
+
+\subsubsection{Suspension compliance}
+
+We denote \( C_{MS} \) as the mechanical compliance of the loudspeaker suspension system.  
+From the fundamental definition of compliance, we have:
+\[
+x = C_{MS} \cdot F
+\quad \Rightarrow \quad u = C_{MS} \frac{dF}{dt}
+\equiv v = L \frac{di}{dt}
+\]
+using the electromechanical admittance analogy.
+
+Assuming a sinusoidal steady-state regime, we obtain:
+\[
+\frac{u}{F} = j \omega C_{MS}, \quad \text{since \(\dfrac{dF}{dt} = j \omega F\).}
+\]
+Therefore, using the transformer law linking mechanical and electrical domains, we can express:
+\[
+\frac{v}{i} = (B l)^2 \frac{u}{F}
+\Rightarrow \frac{v}{i} = j \omega (B l)^2 C_{MS}
+\]
+which corresponds to an inductor:
+\[
+L_{ES} = (B l)^2 C_{MS}
+\]
+\textbf{NB:} This inductance represents the electrical equivalent of the suspension compliance.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{electrical_suspension_inductance.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{electrical_suspension_inductance_2.png}
+    \end{minipage}
+    \caption{Electrical suspension inductance (left) and resitance (right).}
+\end{figure}
+
+
+\subsubsection{Suspension conductance}
+
+The mechanical losses of the suspension can be modeled as a conductance \( G_{MS} \) defined by:
+\[
+G_{MS} = \frac{u}{F}
+\]
+Using the transformer analogy again, we have:
+\[
+\frac{v}{i} = (B l)^2 \frac{u}{F}
+\Rightarrow \frac{v}{i} = (B l)^2 G_{MS}
+\]
+Therefore, the suspension introduces an electrical resistance:
+\[
+R_{ES} = \frac{1}{(B l)^2 G_{MS}} = \frac{(B l)^2}{R_{MS}}
+\]
+where \( R_{MS} = \frac{1}{G_{MS}} \) is the mechanical resistance.
+
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{electrical_suspension_resistance_0.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{electrical_suspension_resistance.png}
+    \end{minipage}
+    \caption{Electrical suspension inductance (left) and resitance (right).}
+\end{figure}
+
+
+The higher the electrical resistance \( R_{ES} \), the lower the mechanical resistance \( R_{MS} \), and therefore the greater the mechanical damping of the loudspeaker system.
+
+
+\subsubsection{Overall equivalent model}
+
+By combining all the previous elements, the mechanical representation of the loudspeaker system becomes:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{overall_mechanical_model.png}
+    \caption{Circuit of the full loudspeaker's model.}
+\end{figure}
+
+To simplify the representation, we introduce two equivalent impedances:
+\[
+Z_{ES} = R_{ES} + Z_{L_{ES}}
+\]
+which corresponds to the \textbf{suspension-related impedance}, and
+\[
+Z_{EM} = Z_{L_{E_C}} \,//\, R_{ES} \,//\, Z_{C_{ED}} \,//\, Z_{ER}
+\]
+which corresponds to the \textbf{mass-related impedance}.  
+The total equivalent impedance of the electro-mechanical system is therefore:
+\[
+Z_E = Z_{ES} + Z_{EM}
+\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{overall_model_2.png}
+    \caption{Circuit of the model with equivalent impedances.}
+\end{figure}
+
+
+We observe that the electrical analogy of the loudspeaker system can be expressed as a parallel \textbf{RLC circuit}, which exhibits a resonance at a specific frequency \( f_s \).  
+This resonance corresponds to the natural oscillation frequency of the moving mass and suspension system.
+
+\subsection{Quick summary about basics}
+
+For reference, consider a general RLC circuit in parallel configuration:
+
+The impedance of a parallel RLC circuit is given by:
+\[
+Z_{RLC} = \frac{1}{\frac{1}{R} + j\omega C - \frac{j}{\omega L}}
+\]
+The magnitude of this impedance reaches a maximum at the \textbf{resonant frequency}:
+\[
+\omega_s = \frac{1}{\sqrt{L C}} \quad \Rightarrow \quad f_s = \frac{1}{2\pi\sqrt{L C}}
+\]
+At this frequency, the inductive and capacitive reactances cancel each other (\( \omega L = 1 / (\omega C) \)), and the total impedance becomes purely resistive.
+
+Below resonance (\( \omega < \omega_s \)), the circuit behaves predominantly capacitive, while above resonance (\( \omega > \omega_s \)), it behaves inductively.  
+This same principle applies to the loudspeaker’s electro-mechanical equivalent circuit.
+
+\subsection{Summary: LC series and parallel circuits}
+
+We consider a series and a parallel LC circuit.  
+At resonance, the magnitudes of the inductive and capacitive impedances are equal:
+\[
+|Z_L| = |Z_C| \quad \Rightarrow \quad j \omega_s L = \frac{1}{j \omega_s C} \quad \Rightarrow \quad \omega_s = \frac{1}{\sqrt{L C}}
+\]
+
+\subsubsection{LC Series Circuit}
+
+For the series configuration:
+\[
+Z_S = \frac{v}{i} = Z_L + Z_C = j \omega L + \frac{1}{j \omega C} = j \left( \omega L - \frac{1}{\omega C} \right)
+\]
+Rewriting:
+\[
+Z_S = j \frac{\omega^2 L C - 1}{\omega C} = j \frac{1 - \omega_s^2 / \omega^2}{\omega C}
+\]
+At the resonance frequency \( \omega = \omega_s \), we have:
+\[
+Z_S(\omega_s) = 0 \quad \Rightarrow \quad \text{short circuit (minimum impedance).}
+\]
+The magnitude of the impedance is given by:
+\[
+|Z_S| = \frac{|1 - (\omega / \omega_s)^2|}{\omega C}
+\]
+At low frequencies, the capacitor dominates (\(Z_S \approx 1 / j\omega C\)), while at high frequencies, the inductor dominates (\(Z_S \approx j\omega L\)).
+
+\subsubsection{LC Parallel Circuit}
+
+For the parallel configuration:
+\[
+Z_P = \frac{v}{i} = \frac{Z_L Z_C}{Z_L + Z_C}
+\]
+Substituting \( Z_L = j \omega L \) and \( Z_C = \frac{1}{j \omega C} \):
+\[
+Z_P = \frac{j \omega L \cdot \frac{1}{j \omega C}}{j \omega L + \frac{1}{j \omega C}} = \frac{L / C}{j (\omega^2 L C - 1)} = - j \frac{\omega L}{1 - \omega^2 L C}
+\]
+At the resonance frequency \( \omega = \omega_s \):
+\[
+Z_P(\omega_s) \rightarrow \infty \quad \Rightarrow \quad \text{open circuit (maximum impedance).}
+\]
+The magnitude of the impedance is:
+\[
+|Z_P| = \frac{\omega L}{|1 - (\omega / \omega_s)^2|}
+\]
+
+
+\subsubsection{Interpretation}
+
+\begin{itemize}
+    \item In a \textbf{series LC circuit}, the impedance reaches a minimum (short circuit) at resonance.  
+    \item In a \textbf{parallel LC circuit}, the impedance reaches a maximum (open circuit) at resonance.  
+    \item The resonance frequency is the same for both configurations: $ f_s = \frac{1}{2 \pi \sqrt{L C}} $
+    \item The behavior around resonance explains the presence of peaks or dips in the loudspeaker’s impedance curve, which corresponds to the mechanical resonance of the diaphragm–suspension system.
+\end{itemize}
+
+
+\subsection{RLC Parallel Configuration and Frequency Response}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.6\textwidth}
+        The impedance of a parallel RLC circuit can be expressed as:
+\[
+Z_P = \frac{v}{i} = \left( Y_L + Y_C + Y_R \right)^{-1} \Rightarrow Z_P = \left( \frac{1}{j \omega L} + j \omega C + \frac{1}{R} \right)^{-1}
+\]
+Simplifying:
+\[
+Z_P = \left( \frac{1 + j \omega^2 L C + \frac{j \omega L}{R}}{j \omega L} \right)^{-1}
+\Rightarrow Z_P = \frac{j \omega L R}{R(1 - \omega^2 L C) + j \omega L}
+\]
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{RLC parallel.png}
+    \caption{RLC parralel circuit.}
+    \end{minipage}
+\end{figure}
+Rewriting:
+\[
+Z_P = \frac{j \omega L R}{R(1 - \omega^2 L C) + j \omega L} = \frac{j \omega L R}{R - \omega^2 R L C + j \omega L}
+\Rightarrow Z_P = \frac{j \omega L R}{R(1 - \omega^2 L C + j \omega L / R)}
+\]
+Thus, the general impedance expression becomes:
+\[
+Z_P = \frac{j \omega L}{(1 - \omega^2 L C) + j \omega L / R}, \quad 
+\omega_s = \frac{1}{\sqrt{L C}}
+\]
+Substituting this into the previous expression:
+\[
+Z_P = \frac{j \omega L}{\left(1 - \frac{\omega^2}{\omega_s^2}\right) + j \frac{\omega L}{R}}
+\]
+The \textbf{quality factor \(Q\) }expresses the sharpness of the resonance:
+\[
+\frac{1}{Q} = \frac{\omega_s L}{R} = \frac{2 \pi f_s L}{R}
+\quad \Rightarrow \quad Q = \frac{R}{L \omega_s} = \frac{R}{L} \sqrt{L C} 
+\quad \Rightarrow \quad  Q = \frac{R}{L \omega_s} = R \sqrt{\frac{C}{L}}
+\]
+which can also be expressed as:
+\[
+Q = \frac{f_s}{\text{BW}}
+\]
+where $BW$ denotes the \textbf{bandwidth} between the frequencies for which the impedance magnitude decreases by \( \frac{1}{\sqrt{2}} \) of its maximum.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.6\textwidth}
+        Substituting \( Q \) into the impedance expression:
+\[
+Z_P = R \, \frac{j \frac{\omega}{\omega_s} \frac{1}{Q}}{1 - \left( \frac{\omega}{\omega_s} \right)^2 + j \frac{\omega}{\omega_s} \frac{1}{Q}}
+\]
+At resonance (\( \omega = \omega_s \)):
+\[
+Z_P(\omega_s) = R
+\]
+The impedance magnitude reaches its maximum, indicating the \textbf{resonant frequency} of the system.  
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Q_Factor_Graph.png}
+    \caption{Influence of $Q$ on the magnitude response.}
+    \end{minipage}
+\end{figure}
+
+Thus, the \textbf{electrical motion impedance} of the loudspeaker’s equivalent circuit is:
+\[
+Z_{EM} = R \, \frac{j \frac{\omega}{\omega_s} \frac{1}{Q}}{1 - \left( \frac{\omega}{\omega_s} \right)^2 + j \frac{\omega}{\omega_s} \frac{1}{Q}}
+\]
+
+
+The electrical motion impedance \( Z_{EM} \) is defined as:
+\[
+Z_{EM} = \left( j \omega C_{ED} + \frac{1}{j \omega L_{EC}} + \frac{1}{R_{ES}} + \frac{1}{Z_{ER}} \right)^{-1}
+\]
+and we recall that:
+\[
+\frac{1}{Z_{ER}} = j \omega \frac{2 M_{M1}}{(B l)^2}
+\]
+We set the total moving mass as:
+\[
+M_{MS} = M_{MD} + 2 M_{M1}
+\quad \Rightarrow \quad 
+Z_{EM} = \left( j \omega \frac{M_{MS}}{(B l)^2} + (B l)^2 C_{MS} + \frac{1}{(B l)^2 G_{MS}} \right)^{-1}
+\]
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.45\textwidth}
+        After simplification, we obtain:
+\[
+Z_{EM} = \frac{(B l)^2}{R_{MS}} \cdot \frac{j \dfrac{1}{Q_{MS}} \dfrac{\omega}{\omega_s}}{1 - \left( \dfrac{\omega}{\omega_s} \right)^2 + j \dfrac{1}{Q_{MS}} \dfrac{\omega}{\omega_s}}
+\]
+where:
+\[
+\omega_s = \frac{1}{\sqrt{M_{MS} C_{MS}}}, \qquad Q_{MS} = \frac{1}{R_{MS}} \sqrt{\frac{M_{MS}}{C_{MS}}}
+\]
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Z_EM(f).png}
+    \caption{Graph of $|Z_{EM}(f)$ and it's different elements.}
+    \end{minipage}
+\end{figure}
+
+
+The \textbf{total electrical impedance of the loudspeaker} can be expressed as:
+\[
+Z_E = Z_{ES} + Z_{EM} = R_{EC} + j \omega L_{EC} + Z_{EM}
+\]
+where:
+\begin{itemize}
+    \item \( R_{EC} \) is constant with frequency (electrical losses),
+    \item \( j \omega L_{EC} \) increases linearly with frequency (voice coil inductance),
+    \item \( Z_{EM} \) represents the mechanical resonance of the diaphragm-suspension system, behaving as a damped mass-spring impedance.
+\end{itemize}
+
+At this stage, \textbf{we can identify the main physical quantities describing the loudspeaker}:
+\begin{itemize}
+    \item \textbf{Acoustic power and efficiency:} $  \varepsilon = \frac{P_A}{P_E} = \frac{p \cdot U}{v \cdot i} $ 
+    \item \textbf{Sound Pressure Level (SPL)}
+    \item \textbf{Frequency response}
+\end{itemize}
+
+\subsection{From electrical to acoustical domain}
+
+In a loudspeaker, the current flowing through the voice coil generates a magnetic field, which interacts with the magnet and drives the diaphragm.  
+The electrical power \( P_E \) is thus converted into mechanical power \( P_M \), which is in turn radiated as acoustic power \( P_A \), corresponding to the movement of air particles.
+\[
+P_E = v(t) \cdot i(t) \quad \Rightarrow \quad P_M = F(t) \cdot u(t) \quad \Rightarrow \quad P_A = p(t) \cdot U(t)
+\]
+To describe an audio signal in terms of power, we define an equivalent constant power \( \bar{P} \) that represents the same total energy as the time-varying power \( P(t) \).
+
+The energy of the variable and constant signals are:
+\[
+E_V = \int_0^T P(t)\,dt, \qquad E_C = \bar{P} \cdot T
+\]
+By equating \( E_V = E_C \), we get:
+\[
+\bar{P} = \frac{1}{T} \int_0^T P(t)\,dt
+\]
+which corresponds to the time-averaged power.
+
+The instantaneous electrical power associated with a resistor is:
+\[
+P(t) = v(t) \cdot i(t) = \frac{v^2(t)}{R}
+\]
+Hence, the mean power becomes:
+\[
+\bar{P} = \frac{1}{R} \cdot \frac{1}{T} \int_0^T v^2(t)\,dt = \frac{\bar{v^2}}{R} = \frac{v_{RMS}^2}{R}
+\]
+since \( v_{RMS} = \sqrt{\bar{v^2}} \), corresponding to the equivalent constant voltage that produces the same power transfer as \( v(t) \).
+
+In a sinusoidal regime:
+\[
+v(t) = V_P \sin(2\pi f t + \phi) \quad \Rightarrow \quad v_{RMS} = \frac{V_P}{\sqrt{2}} \quad \Rightarrow \quad v_{RMS|dB} = V_P - 3\,\mathrm{dB}
+\]
+Thus:
+\[
+\bar{P} = \frac{v_{RMS}^2}{R} = \frac{V_P^2}{2R}
+\]
+and the peak power is:
+\[
+P_{peak} = \frac{V_P^2}{R} = 2 \bar{P}
+\]
+
+Note that real musical signals are more complex than a single sinusoid, meaning that both peak and RMS values (for voltage or power) vary over time.  
+To describe this difference, we define the \textbf{crest factor (CF)} as the ratio between peak power and mean power:
+\[
+CF = \frac{P_{peak}}{\bar{P}}
+\]
+Typical values:
+\begin{cases}
+    & CF = 2 \; (+3\,\mathrm{dB}) \quad \text{for sinusoidal signals} \\
+    & CF \geq 4 \; (\geq +6\,\mathrm{dB}) \quad \text{for generic audio signals}
+\end{cases}
+
+When expressed in decibels:
+\[
+CF_{dB} = 10 \log_{10}(CF)
+\]
+
+\subsubsection{Power and impedance in the electrical domain}
+
+We consider a sinusoidal steady-state regime:
+\[
+v(t) = V \sin(\omega t), \qquad i(t) = I \sin(\omega t + \beta)
+\]
+where \( \beta \) is the phase difference between voltage and current.
+
+The instantaneous power is given by:
+\[
+W_E(t) = v(t) \cdot i(t) = V I \sin(\omega t) \sin(\omega t + \beta)
+\]
+Using trigonometric identities:
+\[
+W_E(t) = V I \left[ \frac{1}{2} \cos(\beta) - \frac{1}{2} \cos(2 \omega t + \beta) \right]
+\quad \Rightarrow \quad  W_E(t) = \frac{V I}{2} \cos(\beta) - \frac{V I}{2} \cos(2 \omega t + \beta)
+\]
+Expressing in RMS quantities:
+\[
+W_E(t) = V_{RMS} I_{RMS} \cos(\beta) - V_{RMS} I_{RMS} \cos(2 \omega t + \beta)
+\]
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.6\textwidth}    
+The first term \( V_{RMS} I_{RMS} \cos(\beta) \) represents the \textbf{average power} \( \bar{P_E} \), constant in time,  
+while the second term represents the \textbf{oscillating component} around the mean value.
+\[
+\bar{P_E} = V_{RMS} I_{RMS} \cos(\beta)
+\]
+The maximum power occurs when the voltage and current are in phase (\( \beta = 0 \)):
+\[
+P_{E,\text{max}} = V_{RMS} I_{RMS} \left[ \cos(\beta) + 1 \right]
+\]
+In this condition, the system delivers maximum energy transfer from source to load.
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{electrical_power_wf.png}
+    \caption{Instantaneous electrical power \( W_E(t) \) showing the average component and oscillating term.}
+    \end{minipage}
+\end{figure}
+
+In the particular case where:
+\[
+\beta = \frac{\pi}{2} \quad \Rightarrow \quad \cos(\beta) = 0
+\quad \Rightarrow \quad
+W_E(t) = -V_{RMS} I_{RMS} \sin(2 \omega t)
+\]
+In this situation, there is no net transfer of power over one period (the mean power is zero).  
+The system is therefore conservative — the energy oscillates between electrical and magnetic forms without being dissipated.  
+For a loudspeaker, this corresponds to oscillations around the rest position, without radiating acoustic power.
+
+
+\subsubsection{Complex representation of power}
+
+For capacitors, we have:
+\[
+Z_C = \frac{v}{i} = \frac{1}{j \omega C} = -\frac{j}{\omega C}
+\quad \Rightarrow \quad i = j \omega C \, v
+\]
+In such a case, the current leads the voltage by \( \beta = \frac{\pi}{2} \).
+
+For inductors, we have:
+\[
+Z_L = \frac{v}{i} = j \omega L
+\quad \Rightarrow \quad i = -\frac{j}{\omega L} \, v
+\]
+In this case, the current lags the voltage by \( \beta = -\frac{\pi}{2} \).
+
+Using the complex representation, we can write:
+\[
+i(t) = i_p(t) + j \, i_q(t) = I \sin(\omega t + \beta)
+\]
+Hence:
+\[
+i(t) = I \cos(\beta) \sin(\omega t) + I \sin(\beta) \cos(\omega t)
+\Rightarrow i(t) = I_p \sin(\omega t) + I_q \sin\left(\omega t - \frac{\pi}{2}\right)
+\]
+where \( I_p = I \cos(\beta) \) is the in-phase component and \( I_q = I \sin(\beta) \) the quadrature component.
+
+We can now compute the instantaneous power:
+\[
+W(t) = v(t) \cdot i(t) = V \sin(\omega t) \left[ I_p \sin(\omega t) + I_q \sin\left(\omega t - \frac{\pi}{2}\right) \right]
+\]
+Expanding:
+\[
+W(t) = V I_p \sin^2(\omega t) + V I_q \sin\left(\omega t - \frac{\pi}{2}\right) \sin(\omega t)
+\]
+Using trigonometric identities:
+\[
+W(t) = V I_p \frac{1 - \cos(2 \omega t)}{2} + V I_q \frac{1}{2} \sin(2 \omega t)
+\]
+Expressed in RMS quantities:
+\[
+W(t) = V_{RMS} I_{p,RMS} [1 - \cos(2 \omega t)] + V_{RMS} I_{q,RMS} \sin(2 \omega t)
+\]
+The first term corresponds to the \textbf{active (real) power}:
+\[
+W_p(t) = V_{RMS} I_{p,RMS} [1 - \cos(2 \omega t)]
+\]
+which is in phase with the voltage and has an average value:
+\[
+\bar{W}_p = V_{RMS} I_{p,RMS}
+\]
+The second term corresponds to the \textbf{reactive (imaginary) power}:
+\[
+W_q(t) = V_{RMS} I_{q,RMS} \sin(2 \omega t)
+\]
+which is in quadrature and has zero mean value.
+
+\subsubsection{Example: Conservative Mechanical System}
+
+Let us consider a simple conservative mechanical system composed of a mass and a spring:
+
+\begin{enumerate}
+    \item An impulsive force moves the mass \( M \).
+    \item The spring’s potential energy makes \( M \) move back.
+    \item The kinetic energy of \( M \) compresses the spring.
+    \item The spring energy makes \( M \) stop and move forward again.
+    \item The process repeats cyclically.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.7\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{mechanical_conservative_system.png}
+    \caption{Equivalent mechanical model with mass \( M \) and spring representing the conservative system.}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.25\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{example_equiv_circuit.png}
+    \caption{Electrical analog representation with complex impedance \( Z_E \).}
+\end{minipage}
+\end{figure}
+We have:
+\[
+i(t) = \frac{v(t)}{Z_E} = \frac{v(t)}{Z_E} \cdot \frac{Z_E^*}{Z_E^*} = \frac{v(t) Z_E^*}{|Z_E|^2}
+\]
+and since:
+\[
+Z_E = \mathrm{Re}[Z_E] + j\,\mathrm{Im}[Z_E]
+\]
+we can expand:
+\[
+i(t) = v(t) \cdot \frac{\mathrm{Re}[Z_E] - j\,\mathrm{Im}[Z_E]}{(\mathrm{Re}[Z_E])^2 + (\mathrm{Im}[Z_E])^2}
+\]
+Thus:
+\[
+i(t) = \frac{\mathrm{Re}[Z_E]}{|Z_E|^2} v(t) - j \frac{\mathrm{Im}[Z_E]}{|Z_E|^2} v(t)
+\quad \Rightarrow \quad i(t) = i_p(t) + j \, i_q(t)
+\]
+where \( i_p(t) \) is the in-phase component and \( i_q(t) \) is the quadrature component of the current:
+\[
+i_p(t) = \frac{\mathrm{Re}[Z_E]}{|Z_E|^2} v(t), \qquad i_q(t) = \frac{\mathrm{Im}[Z_E]}{|Z_E|^2} v(t)
+\]
+The instantaneous power is:
+\[
+W_E(t) = v(t) \, i(t) = \frac{v^2(t)}{Z_E} = \frac{\mathrm{Re}[Z_E]}{|Z_E|^2} v^2(t) - j \frac{\mathrm{Im}[Z_E]}{|Z_E|^2} v^2(t)
+\]
+Alternatively:
+\[
+W_E(t) = v(t)\,i_p(t) + j\,v(t)\,i_q(t) = W_{E,p}(t) + j\,W_{E,q}(t)
+\]
+The average power is then:
+\[
+\bar{W}_E = \bar{W}_{E,p} + j\,\bar{W}_{E,q} = \bar{W}_{E,p} \quad \Rightarrow \quad \bar{W}_E = \frac{\mathrm{Re}[Z_E]}{|Z_E|^2} \bar{v^2}
+\]
+Expressed in RMS terms:
+\[
+\bar{W} = \frac{\mathrm{Re}[Z_E]}{|Z_E|^2} V_{RMS}^2
+\]
+and since:
+\[
+I_{RMS} = \frac{V_{RMS}}{|Z_E|}
+\]
+we obtain:
+\[
+\boxed{\bar{W} = \mathrm{Re}[Z_E] \, I_{RMS}^2}
+\]
+
+\subsubsection{Power and impedance, mechanical domain}
+
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.7\textwidth}
+We use the admittance analogy
+\[
+F \leftrightarrow i, \qquad u \leftrightarrow v, \qquad u(t) = \frac{F(t)}{Z_M}, \quad Z_M = R_M + jX_M
+\]
+Decomposing \(u(t)\) into in-phase and quadrature parts:
+\begin{align*}
+    & u(t)=\frac{F(t)}{Z_M} = \frac{Z_M^{*}}{|Z_M|^2}F(t)\\
+    \Rightarrow \quad & u(t)     
+     = \frac{R_M}{|Z_M|^2}F(t) - j\,\frac{X_M}{|Z_M|^2}F(t)
+     = u_p(t) + j\,u_q(t),
+\end{align*}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.25\textwidth}
+\centering
+\includegraphics[width=\textwidth]{mechanical_impedance_block.png}
+\caption{Mechanical one-port.}
+\end{minipage}
+\end{figure}
+
+Where
+\[
+u_p(t)=\frac{R_M}{|Z_M|^2}F(t), \qquad
+u_q(t)=\frac{X_M}{|Z_M|^2}F(t).
+\]
+Instantaneous mechanical power:
+\[
+W_M(t)=F(t)\,u(t)
+      = \frac{R_M}{|Z_M|^2}F^2(t)
+        - j\,\frac{X_M}{|Z_M|^2}F^2(t)
+        \quad \Rightarrow \quad         
+      W_M(t)= R_M u^2(t) - jX_M u^2(t)
+            = W_{M,p}(t)+j\,W_{M,q}(t).
+\]
+Average (real) power:
+\[
+\bar W_M=\bar W_{M,p} \ \text{since }  \overline{W}_{M,q}(t)=0
+\quad \Rightarrow \quad 
+\bar W_M =\frac{R_M}{|Z_M|^2}\,\overline{F^2(t)}
+= R_M\,u_{\mathrm{RMS}}^{\,2}, \text{ as we have } u_{\mathrm{RMS}} = \dfrac{F_{\mathrm{RMS}}}{|Z_M|}
+\]
+
+
+\subsubsection{Power and impedance, acoustical domain}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.56\textwidth}
+We adopt the impedance analogy:
+\[
+P \leftrightarrow v,\qquad U \leftrightarrow i,\qquad U(t)=\frac{P(t)}{Z_A}, \quad Z_A=R_A+jX_A
+\]
+Decomposition of the volume velocity:
+\begin{align*}
+    & U(t)=\frac{P(t)}{Z_A}
+     =\frac{Z_A^{*}}{|Z_A|^2}P(t)\\
+    \Rightarrow \quad & U(t) =\frac{R_A}{|Z_A|^2}P(t)-j\,\frac{X_A}{|Z_A|^2}P(t)
+     =U_p(t)+j\,U_q(t)
+\end{align*}
+\textbf{NB:} Here \(P(t)\) denotes \emph{acoustic pressure}.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.38\textwidth}
+\centering
+\includegraphics[width=\textwidth]{acoustic_port_block.png}
+\caption{Acoustic one-port with impedance \(Z_A=R_A+jX_A\).}
+\end{minipage}
+\end{figure}
+
+Instantaneous acoustic power:
+\[
+W_A(t)=P(t)\,U(t)
+=\frac{R_A}{|Z_A|^2}P^2(t)-j\,\frac{X_A}{|Z_A|^2}P^2(t) 
+\quad \Rightarrow \quad W_A(t) = W_{A,p}(t)+j\,W_{A,q}(t)
+\]
+Average power (reactive term averages to zero):
+\[
+\bar W_A=\bar W_{A,p}
+=\frac{R_A}{|Z_A|^2}\,\overline{P^2(t)}
+=\frac{R_A}{|Z_A|^2}P_{\mathrm{RMS}}^{\,2}
+\quad \Rightarrow \quad
+\overline{W}_A = R_A\,U_{\mathrm{RMS}}^{\,2},
+\ \text{ since } U_{\mathrm{RMS}}=\dfrac{P_{\mathrm{RMS}}}{|Z_A|}
+\]
+
+\subsubsection{Specific acoustic impedance and units}
+
+The acoustic radiation impedance depends on geometry and boundary conditions.  
+The \emph{specific} acoustic impedance (per unit area) is
+\[
+Z_S=\frac{P}{u}=\frac{P}{U/S}=Z_A\cdot S .
+\]
+Units:
+\[
+Z_A=\frac{P}{U}\;[\,\mathrm{Pa}\cdot \mathrm{s}\,\mathrm{m}^{-3}\,]
+=\frac{N/m^2}{m^3/s}=\frac{N\cdot s}{m^{5}},
+\qquad
+Z_S=Z_A S=\frac{\mathrm{Pa}\cdot \mathrm{s}}{m} \;\;\text{(Rayls)}.
+\]
+
+\subsubsection{Pressure–velocity relation study}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.58\textwidth}
+\small
+Consider an infinitesimal air element of volume \(dV=dx\,dy\,dz\) and face area \(dS=dy\,dz\).  
+Pressure on the left face: \(f_1=p(x)\,dS\).  
+Pressure on the right face:
+\[
+f_2=p(x+dx)\,dS=\Big(p(x)+\frac{\partial p}{\partial x}dx\Big)dS.
+\]
+Resultant force along \(x\):
+\[
+f=f_1-f_2=-\frac{\partial p}{\partial x}\,dx\,dS=-\frac{\partial p}{\partial x}\,dV.
+\]
+Newton’s law with mass \(m=\rho\,dV\) gives:
+\[
+f=m\,\frac{\partial \underline{u}}{\partial t}\quad\Rightarrow\quad
+-\frac{\partial p}{\partial x}=\rho\,\frac{\partial \underline{u}}{\partial t}.
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.36\textwidth}
+\centering
+\includegraphics[width=\textwidth]{infinitesimal_volume_cube.png}
+\caption{Infinitesimal control volume used to relate pressure gradient to particle velocity \(\underline{u}\).}
+\end{minipage}
+\end{figure}
+
+For harmonic motion, \(\underline{u}(t)=\underline{u}_0\,e^{j\omega t}\) so \(\frac{\partial}{\partial t}\to j\omega\):
+\[
+\frac{\partial p}{\partial x}=-j\omega \rho\,\underline{u}\qquad\Rightarrow\qquad
+\underline{u}=-\frac{1}{j\omega\rho}\,\frac{\partial p}{\partial x}
+= \frac{j}{k\,c\,\rho}\,\frac{\partial p}{\partial x},
+\ \text{ using } k=\frac{\omega}{c}=\frac{2\pi f}{c}=\frac{2\pi}{\lambda}
+\]
+.
+
+The quantity \(Z_0=c\,\rho\) is the \textbf{characteristic acoustic impedance}.
+
+\begin{table}[H]
+\centering
+\caption{Wavelength \(\lambda\) and wavenumber \(k\) (assuming \(c\approx 340~\mathrm{m/s}\)).}
+\begin{tabular}{c c c}
+\toprule
+\(f\,[\mathrm{Hz}]\) & \(\lambda\,[\mathrm{m}]\) & \(k\,[\mathrm{m^{-1}}]\)\\
+\midrule
+20     & 17     & 0.36 \\
+200    & 3.4    & 1.34 \\
+1\,000 & 0.34   & 18.47 \\
+20\,000& 0.017  & 369 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+
+\subsection{Plane waves scenario}
+
+For plane waves, the acoustic pressure can be written as the sum of forward and backward components:
+\[
+p(x,t)=p_{+}(t)\,e^{-jkx}+p_{-}(t)\,e^{+jkx}.
+\]
+In a reflection-free case (\(p_{-}=0\)):
+\[
+p(x,t)=p_{+}(t)\,e^{-jkx}=p_{0}\,e^{j\omega t}\,e^{-jkx}.
+\]
+From the previous result \(\displaystyle \underline{u}=-\frac{1}{j\omega\rho}\frac{\partial p}{\partial x}=\frac{j}{k c \rho}\frac{\partial p}{\partial x}\), we obtain
+\[
+\underline{u}(x,t)=\frac{j}{k c \rho}\,\frac{\partial}{\partial x}\!\left(p_{0}\,e^{j\omega t}\,e^{-jkx}\right)
+=\frac{j}{k c \rho}\,(-jk)\,p_{0}\,e^{j\omega t}\,e^{-jkx}
+=\frac{1}{c\rho}\,p(x,t).
+\]
+
+Hence the \textbf{specific acoustic impedance} is
+\[
+Z_s=\frac{p}{u}= \rho\,c \;\;\approx\; 407~\text{Rayls}\;\;(\text{air}).
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ \clearpage 
+
+
+ 
+\subsection{Summary}
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Electrodynamic Loudspeaker}]
+\begin{itemize}
+    \item A loudspeaker converts \textbf{electrical energy} into \textbf{mechanical motion} through the interaction between current and magnetic field.
+    \item The Lorentz force \( \underline{F} = q\,\underline{u} \times \underline{B} \) governs the movement of the coil in the magnetic gap.
+    \item The diaphragm’s oscillation generates sound waves in air.
+    \item Microphones operate on the same principle, but in reverse: sound induces a voltage.
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Force and Power in Loudspeakers}]
+\begin{itemize}
+    \item The total Lorentz force on the coil is $|\underline{F}| = I\,|\underline{B}|\,l\,\sin(\alpha)$.
+    \item Maximum force occurs when $\underline{u} \perp \underline{B}$ ($\alpha = \frac{\pi}{2}$).
+    \item Electrical power $P_E = V I$ is transformed into mechanical power $P_M = F \underline{u}$.
+    \item Under ideal conditions, $P_E = P_M = P_A$ (no losses).
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Loudspeaker Modeling Approach}]
+\begin{itemize}
+    \item The loudspeaker model follows the chain: Electrical $\rightarrow$ Mechanical $\rightarrow$ Acoustical.
+    \item Electrical domain: $(V, I)$ — input driving voltage and current.
+    \item Mechanical domain: $(\underline{F}, \underline{u})$ — force and velocity of the diaphragm.
+    \item Acoustical domain: $(P, \underline{U})$ — acoustic pressure and volume velocity.
+    \item The diaphragm suspension is modeled mechanically (mass, spring, and damper elements).
+    \item Woofers use large cones for low frequencies; tweeters use small, light diaphragms for high frequencies.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Electrical and Mechanical Domains}]
+\begin{itemize}
+    \item \textbf{Electrical domain:}
+    \begin{itemize}
+        \item $V_R = R\,i$, \quad $V_C = \frac{1}{C}\int i\,dt$, \quad $V_L = L\,\frac{di}{dt}$.
+        \item The three main components are resistor, capacitor, and inductor.
+    \end{itemize}
+    \item \textbf{Mechanical domain:}
+    \begin{itemize}
+        \item \textit{Mass:} $\underline{F} = M_M \frac{d\underline{u}}{dt}$ (mechanical inductance).
+        \item \textit{Spring:} $\underline{u} = \frac{1}{K} \frac{d\underline{F}}{dt}$ (mechanical capacitance).
+        \item \textit{Damper:} $\underline{u} = \frac{1}{R_M} \underline{F}$ (mechanical resistance).
+    \end{itemize}
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Analogy Theory}]
+\begin{itemize}
+    \item Two analogies are used to model electro-mechanical systems:
+    \begin{itemize}
+        \item \textbf{Impedance analogy (Type 1):} $\underline{F} \leftrightarrow v$, $\underline{u} \leftrightarrow i$.
+        \item \textbf{Admittance analogy (Type 2):} $\underline{F} \leftrightarrow i$, $\underline{u} \leftrightarrow v$.
+    \end{itemize}
+    \item Type 1 is well suited for systems where force is analogous to voltage (mass modeling).
+    \item Type 2 is better for systems where velocity corresponds to voltage (spring modeling).
+    \item Depending on the analogy, mechanical elements correspond to different electrical components:
+    \[
+    \text{Mass} \leftrightarrow \text{Inductor or Capacitor}, \quad
+    \text{Spring} \leftrightarrow \text{Capacitor or Inductor}, \quad
+    \text{Damper} \leftrightarrow \text{Resistor or Conductor}.
+    \]
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Mechanical Element Analogs}]
+\begin{itemize}
+    \item \textbf{Spring:}
+    \begin{itemize}
+        \item Impedance analogy: capacitor $C_E$ such that ${F}(t) = \frac{1}{C_E}\int {u}(t)\,dt$.
+        \item Admittance analogy: inductor $L_E$ such that ${u}(t) = L_E \frac{d{F}}{dt}$.
+    \end{itemize}
+    \item \textbf{Damper:}
+    \begin{itemize}
+        \item Impedance analogy: resistor $R_E$ such that ${u} = \frac{1}{R_E}{F}$.
+        \item Admittance analogy: conductor $G_E = 1/R_E$ such that $v = \frac{1}{G_E} i$.
+    \end{itemize}
+    \item The choice between impedance and admittance analogy changes which electrical element represents a given mechanical component but preserves energy equivalence.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Mechanical Impedance}]
+\begin{itemize}
+    \item The power equivalence $P_M = F \, u$ corresponds to $P_E = v \, i$.
+    \item Mass behaves as an inductor in the impedance analogy: $F = M_M \frac{du}{dt}$.
+    \item The mechanical impedance is defined as $Z_M = \frac{F}{u}$.
+    \item Impedance analogy: “across” $\leftrightarrow$ “through”.  
+          Admittance analogy: “through” $\leftrightarrow$ “across”.
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Mechanical Impedance Combinations}]
+\begin{itemize}
+    \item In the \textbf{impedance analogy}, mechanical impedances combine in parallel:
+    \[
+    Z_M = \frac{Z_{M1} Z_{M2}}{Z_{M1} + Z_{M2}}
+    \]
+    \item In the \textbf{admittance analogy}, mechanical impedances add directly:
+    \[
+    Z_M = Z_{M1} + Z_{M2}
+    \]
+    \item This difference arises because force and velocity swap their roles between “across” and “through” variables in each analogy.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Acoustic Mass}]
+\begin{itemize}
+    \item The acoustic domain uses \textbf{pressure} \( P \) and \textbf{volume velocity} \( U \).
+    \item The acoustic mass \( M_A = \frac{M_M}{S^2} \) models the inertia of air in motion.
+    \item Impedance analogy: \( P \leftrightarrow v \), \( U \leftrightarrow i \Rightarrow \) acoustic mass $\leftrightarrow$ inductor.
+    \item Admittance analogy: \( P \leftrightarrow i \), \( U \leftrightarrow v \Rightarrow \) acoustic mass $\leftrightarrow$ capacitor.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Acoustic Resistance}]
+\begin{itemize}
+    \item The acoustic resistance \( R_A = \frac{R_M}{S^2} \) models energy losses due to viscosity.
+    \item Acoustic resistance and mass often occur in series when modeling perforated or duct-like structures.
+    \item The parameters depend on hole geometry (\( a, b, t \)) and on the properties of air (\( \rho_0, \mu \)).
+    \item The total impedance of each hole is \( Z_A = R_A + Z_{M_A} \).
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Acoustic Compliance}]
+\begin{itemize}
+    \item Acoustic compliance \( C_A = C_M S^2 \) quantifies the compressibility of air in a cavity.
+    \item It plays a role analogous to a spring in mechanics and a capacitor in electricity.
+    \item Impedance analogy: \( P \leftrightarrow v, \, U \leftrightarrow i \Rightarrow \) capacitor model.
+    \item Admittance analogy: \( P \leftrightarrow i, \, U \leftrightarrow v \Rightarrow \) inductor model.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Specific Acoustic Impedance}]
+\begin{itemize}
+    \item Acoustic impedance: \( Z_A = \frac{P}{U} \) \([\frac{N \cdot s}{m^5}]\)
+    \item Specific acoustic impedance: \( Z_s = \frac{P}{u} \) \([\frac{N \cdot s}{m^3}] = \text{Rayl}\)
+    \item Relationship: \( Z_s = Z_A \, S \)
+    \item \( Z_s \) considers molecular (particle) velocity rather than volume velocity.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Signal Transformer}]
+\begin{itemize}
+    \item A transformer converts a pair \((v, i)\) into another pair \((v', i')\) while keeping constant power \( P_E = v \, i \).
+    \item The voltage–turn relationship is \( \frac{v_p}{v_s} = \frac{n_p}{n_s} = k \).
+    \item The current–turn relationship is \( \frac{i_s}{i_p} = k \).
+    \item Step-up transformer: \( n_s > n_p \Rightarrow v_s > v_p, \, i_s < i_p \).
+    \item Step-down transformer: \( n_s < n_p \Rightarrow v_s < v_p, \, i_s > i_p \).
+    \item Transformers are passive components; they transfer but do not amplify energy.
+\end{itemize}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Remarks}]
+\begin{itemize}
+    \item A transformer modifies the load impedance as \( Z_p = k^2 Z_{LS} \).
+    \item It allows impedance matching between circuits of different voltage and current ranges.
+    \item In valve amplifiers, transformers are used to adapt the high internal impedance of the tubes to the low impedance of loudspeakers.
+    \item Typical vacuum tubes provide small current (around 60 mA), hence the need for impedance transformation.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Gyrator Behavior}]
+\begin{itemize}
+    \item The gyrator maintains constant power transfer between ports:
+    \[
+    v_s i_s = v_p i_p
+    \]
+    \item The impedance transformation follows:
+    \[
+    Z_p = \frac{1}{g^2 Z_{LS}}
+    \]
+    \item If the load is:
+    \begin{itemize}
+        \item a resistor: \( Z_p = \frac{1}{g^2 R} \),
+        \item an inductor: \( C_{eq} = g^2 L \),
+        \item a capacitor: \( L_{eq} = \frac{1}{g^2 C} \).
+    \end{itemize}
+    \item The gyrator converts inductive behavior into capacitive behavior, and vice versa.
+\end{itemize}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Electrical to Mechanical Transduction}]
+\begin{itemize}
+    \item \textbf{Admittance analogy:} represented by a transformer.
+    \item \textbf{Impedance analogy:} represented by a gyrator.
+    \item Relations: \( F_c = B l i \), \quad \( u_c = \dfrac{1}{B l} v \).
+    \item Transconductance of the gyrator: \( g = \dfrac{1}{B l} \).
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Mechanical to Acoustical Transduction}]
+\begin{itemize}
+    \item Pressure and volume velocity are linked to force and velocity through the diaphragm surface \( S_D \):
+    \[
+    P = \frac{F}{S_D}, \quad U = u \, S_D.
+    \]
+    \item Admittance analogy: transformer model (\( P \, U = F \, u \)).
+    \item Impedance analogy: gyrator model.
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Mechanical Section of the Loudspeaker}]
+\begin{itemize}
+    \item The diaphragm–suspension system is modeled with three main components:
+    \begin{itemize}
+        \item Mass \( M_M \) (diaphragm inertia)
+        \item Compliance \( C_M \) (elastic restoring force)
+        \item Resistance \( R_M \) (viscous damping)
+    \end{itemize}
+    \item The total force on the diaphragm is:
+    \[
+    F = \frac{1}{C_M} \int_0^t u(\tau) \, d\tau + R_M \, u + M_M \, \frac{du}{dt}
+    \]
+    \item This equation represents the dynamic behavior of the moving assembly of the loudspeaker.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Mechanical Analogies}]
+\begin{itemize}
+    \item \textbf{Admittance analogy:} RLC parallel circuit  
+    \( \Rightarrow \) common velocity (analogous to voltage)
+    \item \textbf{Impedance analogy:} RLC series circuit  
+    \( \Rightarrow \) common velocity (analogous to current)
+    \item The mass, compliance, and damping of the loudspeaker suspension are modeled with equivalent electrical components.
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Loudspeaker Equivalent Model}]
+\begin{itemize}
+    \item The loudspeaker combines:
+    \begin{itemize}
+        \item An \textbf{RL circuit} (voice coil),
+        \item An \textbf{RLC circuit in parallel} (mechanical suspension, admittance analogy),
+        \item A \textbf{signal transformer} for both transduction stages.
+    \end{itemize}
+    \item Radiation impedance \( Z_{AR} = \dfrac{\bar{P}}{\bar{U}} \) relates pressure and volume velocity.
+    \item Lumped element models approximate distributed systems using RLC elements.
+    \item Pressure waves at the front and back of the diaphragm are in opposition:
+    \[
+    Z_{AR} = Z_{AB} + Z_{AF} \quad \Rightarrow \quad Y_{AR} = \frac{Y_{AF}}{2} \text{ if } Z_{AB} = Z_{AF}.
+    \]
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key Points]
+\begin{itemize}
+    \item The transition from acoustical to mechanical domain introduces the diaphragm area \( S_D \).
+    \item The transition from mechanical to electrical domain involves the electromagnetic coupling factor \( B \, l \).
+    \item The moving mass \( M_{MD} \) corresponds to a capacitance \( C_{ED} = \dfrac{M_{MD}}{(B l)^2} \).
+    \item A lighter diaphragm results in a higher resonance frequency and lower equivalent capacitance.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key Points]
+\begin{itemize}
+    \item The suspension’s mechanical compliance \( C_{MS} \) is electrically represented as an inductance \( L_{ES} = (B l)^2 C_{MS} \).
+    \item The suspension’s mechanical losses are represented as an electrical resistance \( R_{ES} = \dfrac{(B l)^2}{R_{MS}} \).
+    \item High \( R_{ES} \) implies stronger damping (lower \( R_{MS} \)), reducing unwanted oscillations.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key Points]
+\begin{itemize}
+    \item The complete loudspeaker model combines suspension, diaphragm, and acoustic load effects into an equivalent RLC network.
+    \item The suspension compliance corresponds to the capacitance, the moving mass to the inductance, and the mechanical losses to the resistance.
+    \item The resonance frequency \( f_s = \dfrac{1}{2\pi\sqrt{L_{ES} C_{ED}}} \) defines the fundamental mechanical resonance of the loudspeaker.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key Points]
+\begin{itemize}
+    \item Resonance condition: \( \omega_s = \dfrac{1}{\sqrt{L C}} \).
+    \item Series LC: minimum impedance \( Z_S(\omega_s) = 0 \) → short circuit.
+    \item Parallel LC: maximum impedance \( Z_P(\omega_s) \rightarrow \infty \) → open circuit.
+    \item Resonant LC behavior explains the frequency response of electroacoustic transducers.
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key Points]
+\begin{itemize}
+    \item The resonance frequency is \( \omega_s = \dfrac{1}{\sqrt{L C}} \).
+    \item The quality factor is \( Q = \dfrac{R}{L \omega_s} = \dfrac{f_s}{\text{BW}} \).
+    \item At resonance, \( Z_P = R \), and the circuit behaves purely resistive.
+    \item This model accurately represents the loudspeaker’s electro-mechanical resonance, governed by the mass, compliance, and damping.
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key Points]
+\begin{itemize}
+    \item \( Z_{EM} \) models the electro-mechanical coupling and captures the resonance of the moving system.
+    \item The total impedance \( Z_E \) combines electrical, inductive, and mechanical contributions.
+    \item The resonance frequency \( f_s \) and quality factor \( Q_{MS} \) characterize the loudspeaker’s dynamic behavior.
+    \item The efficiency \( \varepsilon = \dfrac{P_A}{P_E} \) quantifies how effectively electrical energy is transformed into acoustic power.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key Points]
+\begin{itemize}
+    \item Electrical power: \( P_E = v(t) \cdot i(t) \)
+    \item Mechanical power: \( P_M = F(t) \cdot u(t) \)
+    \item Acoustic power: \( P_A = p(t) \cdot U(t) \)
+    \item Average power: \( \bar{P} = \dfrac{v_{RMS}^2}{R} \)
+    \item Crest factor: \( CF = \dfrac{P_{peak}}{\bar{P}} \), \( CF_{dB} = 10 \log_{10}(CF) \)
+    \item Sinusoidal case: \( CF = 2 \; (+3\,\mathrm{dB}) \)
+    \item Generic audio: \( CF \geq 4 \; (\geq +6\,\mathrm{dB}) \)
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key Points]
+\begin{itemize}
+    \item Instantaneous power: \( W_E(t) = v(t) i(t) = V I [\tfrac{1}{2}\cos(\beta) - \tfrac{1}{2}\cos(2 \omega t + \beta)] \)
+    \item Average (active) power: \( \bar{W_E} = V_{RMS} I_{RMS} \cos(\beta) \)
+    \item For \( \beta = 0 \): power is maximized (purely resistive load).
+    \item For \( \beta = \frac{\pi}{2} \): average power is zero (purely reactive load).
+    \item The phase \( \beta \) controls how much of the supplied energy is effectively dissipated or stored.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key Points]
+\begin{itemize}
+    \item The instantaneous power is given by \( W(t) = W_p(t) + W_q(t) \).
+    \item \( W_p \): in phase with voltage (active power) — produces real energy transfer.
+    \item \( W_q \): in quadrature (reactive power) — represents oscillating energy with no average transfer.
+    \item The average electrical power is \( \bar{W} = V_{RMS} I_{RMS} \cos(\beta) \).
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key Points]
+\begin{itemize}
+    \item The current can be decomposed as \( i(t) = i_p(t) + j i_q(t) \), where:
+    \[
+    i_p(t) = \frac{\mathrm{Re}[Z_E]}{|Z_E|^2} v(t), \quad i_q(t) = \frac{\mathrm{Im}[Z_E]}{|Z_E|^2} v(t)
+    \]
+    \item The instantaneous power has both real and imaginary components:
+    \[
+    W(t) = W_p(t) + j W_q(t)
+    \]
+    \item The average power only depends on the real part of the impedance:
+    \[
+    \bar{W} = \mathrm{Re}[Z_E] I_{RMS}^2
+    \]
+    \item In a purely conservative (lossless) system, \( \mathrm{Re}[Z_E] = 0 \), and thus \( \bar{W} = 0 \).
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key results (mechanical domain)]
+\[
+\boxed{\,u(t)=\dfrac{F(t)}{Z_M},\quad
+W_M(t)=F(t)u(t),\quad
+\bar W_M=R_M\,u_{\mathrm{RMS}}^{\,2}\,}
+\]
+Only \(R_M\) contributes to mean power; \(X_M\) stores and returns energy with zero average transfer.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key results (acoustical domain)]
+\[
+\boxed{\,U=\dfrac{P}{Z_A},\quad W_A=P\,U,\quad
+\bar W_A=R_A\,U_{\mathrm{RMS}}^{\,2}
+=\dfrac{R_A}{|Z_A|^2}P_{\mathrm{RMS}}^{\,2}\,}
+\]
+Only \(R_A\) contributes to mean radiated power; \(X_A\) stores and releases energy with zero average transfer.
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key points]
+\begin{itemize}
+\item Momentum balance on \(dV\): \(-\partial p/\partial x=\rho\,\partial\underline{u}/\partial t\).
+\item Harmonic regime: \(\underline{u}=-\dfrac{1}{j\omega\rho}\,\dfrac{\partial p}{\partial x}=\dfrac{j}{k c \rho}\,\dfrac{\partial p}{\partial x}\).
+\item Dispersion relations: \(k=\dfrac{\omega}{c}=\dfrac{2\pi f}{c}=\dfrac{2\pi}{\lambda}\).
+\item Characteristic impedance: \(Z_0=c\rho\).
+\end{itemize}
+\end{tcolorbox}

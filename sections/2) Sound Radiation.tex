@@ -1,0 +1,1594 @@
+\section{Sound Radiation}
+
+\subsection{Sound Fields}
+
+A sound field is a region of space in which sound waves can exist and propagate.
+Each point within a sound field is interested by sound waves, each one arriving from a particular direction and characterized by a certain amplitude and phase.
+
+Three typical sound fields can be defined on the basis of the direction, amplitude and phase of the sound waves arriving at each point:
+\begin{itemize}
+    \item \textbf{Pressure field}: A pressure field is characterized by a sound pressure which has the same magnitude and phase at any position within the field. Pressure fields may be found in enclosures or cavities which are small compared to the wavelength. Such fields occur in couplers applied for testing of earphones or calibration of microphones. They also occur in most types of sound level calibrators.
+    \item \textbf{Free field}: A free sound field may be created where sound waves can propagate freely in a continuous medium without any disturbing objects.
+    \item \textbf{Diffuse field}: A diffuse sound field may be created within a room with hard, sound-reflecting walls and which essentially contains no sound-absorbing materials. Diffuse-field spectra created in such rooms may deviate from that of an ideal field due to resonances in the room and due to the sound absorption of the air.
+\end{itemize}
+
+\subsection{Sound intensity}
+
+We define the acoustic intensity \( I \) and its mean value \( \bar I \) as
+\[
+I=\frac{\text{acoustic energy}}{\text{time}\cdot\text{area}}
+=\frac{\text{acoustic power}}{\text{area}}
+=\frac{W_A}{S}\;\;\left[\frac{\mathrm{W}}{\mathrm{m}^2}\right].
+\]
+The mean radiated power depends on impedance and pressure:
+\[
+\overline{W}_A=\frac{\mathrm{Re}[Z]}{|Z|^{2}}\,p_{\mathrm{RMS}}^{2}.
+\]
+Since the acoustic port impedance is \(Z=Z_S\cdot S=(R_S+jX_S)\,S\),
+\[
+\overline{W}_A=\frac{R_S}{|Z_S|^{2}}\;S\;p_{\mathrm{RMS}}^{2}.
+\]
+Hence the average acoustic intensity is
+\[
+\overline{I}=\frac{\overline{W}_A}{S}=\frac{p_{\mathrm{RMS}}^{2}}{\rho_0 c}.
+\]
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.65\textwidth}
+\textbf{Monopole field:} The pressure radiated by a monopole of volume velocity amplitude \(V_0\) is
+\[
+p(r)= -jk\,\rho_0 c\,V_0\,\frac{e^{-jk(r-R)}}{4\pi r}\;\frac{1}{1+jkr},
+\]
+so that at \(r=R\)
+\[
+|p(r\!=\!R)|=\frac{\rho_0 c\,V_0}{4\pi R}\;\frac{k}{\sqrt{1+(kR)^2}}.
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.30\textwidth}
+\centering
+\includegraphics[width=\textwidth]{monopole.png}
+\caption{Monopol model.}
+\end{minipage}
+\end{figure}
+
+\clearpage 
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.60\textwidth}
+With \(V_0=4\pi R^2\,u_0\) we obtain:
+\[
+p_{\mathrm{RMS}}^{2}=\big(2\pi\,\rho_0\,R\,u_{0,\mathrm{RMS}}\big)^{2}
+\frac{f^{2}}{1+\left(f/f_0\right)^{2}},
+\text{ where } k=\frac{2\pi f}{c} \text{and} f_0=\frac{c}{2\pi R}
+\]
+Therefore, the mean radiated power is:
+\[
+\bar W_A=\frac{S}{\rho_0 c}\,p_{\mathrm{RMS}}^{2}
+= S\,\rho_0 c\,u_{0,\mathrm{RMS}}^{2}\;
+\frac{\left(f/f_0\right)^{2}}{1+\left(f/f_0\right)^{2}},
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.35\textwidth}
+\centering
+\includegraphics[width=\textwidth]{log(W)(f).png}
+\caption{Graph of $ \log (\overline{W})(f).$}
+\end{minipage}
+\end{figure}
+
+The mean intensity is
+\[
+\boxed{\;\bar I=\dfrac{p_{\mathrm{RMS}}^{2}}{\rho_0 c}
+=\rho_0 c\,u_{0,\mathrm{RMS}}^{2}\;
+\dfrac{\left(f/f_0\right)^{2}}{1+\left(f/f_0\right)^{2}}\;}
+\]
+
+
+\subsection{Rigid piston model}
+
+In a first approximation, a loudspeaker can be modeled as a \textbf{rigid circular piston} of radius \(a\) mounted in an infinite baffle.  
+We consider the far field \(r\gg a\). Let \(\underline{u}_0\) be the piston (surface) particle velocity and \(\omega\) the angular frequency.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{rigid_piston_model.png}
+    \caption{Different scenarios for the baffle.}
+    \label{fig:placeholder}
+\end{figure}
+
+
+
+% \begin{figure}[H]
+% \centering
+% \begin{minipage}[c]{0.65\textwidth}
+% The complex pressure in spherical coordinates \((r,\theta)\) is
+% \[
+% \tilde p(r,\theta)= -\,j\,k\,a^{2}\,\rho_0 c\,\tilde{u}_0\,\frac{e^{-jkr}}{2r}\;D(\theta),
+% \qquad
+% D(\theta)=\frac{2\,J_1\!\big(ka\sin\theta\big)}{ka\sin\theta},
+% \]
+% where \(J_1(\cdot)\) is the Bessel function of the first kind.  
+% It is convenient to introduce the dimensionless parameter
+% \[
+% ka=\frac{2\pi a}{\lambda}=\frac{2\pi f a}{c}=\frac{f}{f_0},\qquad f_0=\frac{c}{2\pi a}.
+% \]
+% \end{minipage}\hfill
+% \begin{minipage}[c]{0.34\textwidth}
+% \centering
+% \includegraphics[width=\textwidth]{rigid_piston.png}
+% \caption{Rigid piston of radius \(a\) in an infinite baffle and its polar pattern.}
+% \end{minipage}
+% \end{figure}
+
+The complex pressure in spherical coordinates \((r,\theta)\) is
+\[
+\tilde p(r,\theta)= -\,j\,k\,a^{2}\,\rho_0 c\,\tilde{u}_0\,\frac{e^{-jkr}}{2r}\;D(\theta),
+\qquad
+D(\theta)=\frac{2\,J_1\!\big(ka\sin\theta\big)}{ka\sin\theta},
+\]
+where \(J_1(\cdot)\) is the Bessel function of the first kind.  
+It is convenient to introduce the dimensionless parameter
+\[
+ka=\frac{2\pi a}{\lambda}=\frac{2\pi f a}{c}=\frac{f}{f_0},\qquad f_0=\frac{c}{2\pi a}.
+\]
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{rigid_piston.png}
+\caption{Rigid piston of radius \(a\) in an infinite baffle and its polar pattern.}
+\end{figure}
+
+
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.65\textwidth}
+\textbf{Directivity vs.\ \(ka\).}
+\begin{itemize}
+\item For \(f<f_0\) (\(ka\ll 1\)) the source is approximately \emph{omnidirectional}.
+\item For \(f>f_0\) (\(ka\gtrsim 1\)) the radiation becomes \emph{directional} with a main lobe and sidelobes; increasing \(f\) increases the number of sidelobes.
+\end{itemize}
+Along the axis \(\theta=0\) one has \(D(0)=1\), hence
+\[
+\tilde p(r,0)= - j \rho_0 f \tilde{U}_0\,\frac{e^{-jkr}}{2}\,\frac{a^{2}}{r},
+\qquad
+\tilde{U}_0=\pi a^2\,\tilde{u}_0
+\]
+with \(U_0\) the \emph{volume velocity}. This is consistent with the force/acceleration relations
+\(p=\frac{F}{S}\), \(a=\frac{d\tilde{u}}{dt}=j\omega\,\tilde{u}\).
+\end{minipage}\hfill
+\begin{minipage}[c]{0.25\textwidth}
+\centering
+\includegraphics[width=\textwidth]{directivity.png}
+    \caption{Poler pattern on a single hemisphere.}
+\end{minipage}
+\end{figure}
+
+
+
+
+\subsubsection{Radiation impedance of the piston}
+
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.5\textwidth}
+The specific radiation impedance seen by the piston is
+\begin{align*}
+    & Z_S=\frac{P}{u}=\frac{F/S}{U/S}=\frac{F}{U} \\
+    \Rightarrow \quad & Z_S = \frac{\tilde F}{\tilde U_0}
+=\rho_0 c\!\left[1-\frac{J_1(2ka)}{ka}\right]
++j\,\rho_0 c\!\left[\frac{H_1(2ka)}{ka}\right]
+\end{align*}
+where \(J_1(\cdot)\) is a Bessel function and\(H_1(\cdot)\) is the Struve function.
+
+The average acoustic power radiated by the piston depends on the \emph{resistive} part
+\(R_S=\mathrm{Re}\{Z_S\}\) and scales as \(\omega^2\) at low frequency:
+\[
+\overline{W}_A
+= R_S\,S_D\,u_{\mathrm{RMS}}^{\,2},
+\qquad
+S_D=\pi a^2.
+\]
+Note: although \(R_S\propto \omega^2\) at low \(ka\), \(\overline{W}_A\) is often discussed with respect to a frequency-independent velocity or displacement constraint, depending on the design target.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.45\textwidth}
+\centering
+\includegraphics[width=\textwidth]{piston_radiation_impedance.png}
+\caption{Normalized radiation impedance \(Z_S/(\rho_0 c)\) versus \(ka\): real part (radiation resistance) and imaginary part (reactance).}
+\end{minipage}
+\end{figure}
+
+
+\subsection{Power emitted by loudspeakers}
+
+The electrical power \(W_E\) is converted into mechanical power \(W_M\) and then into acoustic power \(W_A\):
+\[
+W_E \;\longrightarrow\; W_M \;\longrightarrow\; W_A .
+\]
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.68\textwidth}
+\centering
+\includegraphics[width=\textwidth]{electro_mech_acoustic_chain.png}
+\caption{Electrical–mechanical–acoustical equivalent model of the loudspeaker.}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.3\textwidth}
+\centering
+\includegraphics[width=\textwidth]{power_flow_blocks.png}
+\caption{Power flow: \(W_E \to W_M \to W_A\).}
+\end{minipage}
+\end{figure}
+
+
+\textbf{Acoustic radiation port: }
+Let the acoustic radiation impedance be \(Z_{AR}=R_{AR}+jX_{AR}\). Using \( |Z_{AR}| = \dfrac{p_{\mathrm{RMS}}}{U_{\mathrm{RMS}}} \), the mean radiated power is
+\[
+\overline{W}_A=\frac{R_{AR}}{|Z_{AR}|^2}\,p_{\mathrm{RMS}}^{2}=R_{AR}\,U_{\mathrm{RMS}}^{2}.
+\]
+
+\textbf{Mechanic \(\rightarrow\) acoustic passage: }
+With diaphragm area \(S_D\) the specific velocity is \(u_c=\dfrac{U}{S_D}\), hence \(U_{\mathrm{RMS}}=u_{c,\mathrm{RMS}}\,S_D\) and
+\[
+\overline{W}_A=R_{AR}\,(u_{c,\mathrm{RMS}}\,S_D)^2=R_{AR}S_D^2\,u_{c,\mathrm{RMS}}^{2}=R_{MR}\,u_{c,\mathrm{RMS}}^{2},
+\]
+where the \emph{mechanical radiation impedance} is \(Z_{MR}=Z_{AR}\,S_D^{2}\) and \(R_{MR}=\mathrm{Re}\{Z_{MR}\}\).
+
+\textbf{Mechanical port: }
+The mechanical impedance of the moving system is \(Z_M=\dfrac{F}{u}=R_M+jX_M\). Using \(F_{\mathrm{RMS}}=|Z_M|\,u_{c,\mathrm{RMS}}\) we get an equivalent expression for the radiated power:
+\[
+\overline{W}_A=R_{MR}\,\frac{F_{\mathrm{RMS}}^{2}}{|Z_M|^{2}},\qquad |Z_M|^{2}=R_M^{2}+X_M^{2}.
+\]
+
+\textbf{Electrical \(\rightarrow\) mechanical passage: }
+The electromechanical coupling yields \(F=B\,l\,i_c\). With a source of RMS voltage \(v_g\) and voice-coil impedance \(R_g+R_{EC}+j\omega L_{EC}\),
+\[
+i_c=\frac{v_g}{R_g+R_{EC}+j\omega L_{EC}}.
+\]
+If \(|j\omega L_{EC}|\ll R_g+R_{EC}\) (i.e.\ \(f\ll f_L=\dfrac{R_g+R_{EC}}{2\pi L_{EC}}\)), then \(i_c\simeq \dfrac{v_g}{R_g+R_{EC}}\) and
+\[
+F_{\mathrm{RMS}}^{2}=(B\,l)^{2}\,\frac{v_{g,\mathrm{RMS}}^{2}}{(R_g+R_{EC})^{2}}.
+\]
+
+\textbf{Radiated power vs.\ source voltage: }
+Combining the above relations:
+\[
+\boxed{\;\overline{W}_A
+=R_{MR}\,\frac{F_{\mathrm{RMS}}^{2}}{|Z_M|^{2}}
+= \frac{R_{MR}}{R_M^{2}+X_M^{2}}\,(B\,l)^{2}\,
+\frac{v_{g,\mathrm{RMS}}^{2}}{(R_g+R_{EC})^{2}}\;}
+\]
+
+
+\subsection{Mechanical domain equivalent}
+
+The loudspeaker’s electrical network, referred to the mechanical side through the force–current factor \(B\,l\), gives a \emph{mechanical–electric} branch.  
+By the electromechanical transformer:
+\[
+Y_{ME}=\frac{\underline{u}}{F}
+=\frac{v/(B\,l)}{i\,(B\,l)}
+=\frac{1}{(B\,l)^2}\,\frac{v}{i}
+=\frac{1}{(B\,l)^2}\,Z_E,
+\]
+with the voice–coil electrical impedance
+\[
+Z_E=R_g+R_{EC}+j\omega L_{EC}.
+\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{mech_domain_equiv.png}
+    \caption{Model in the mechanical domain.}
+    \label{fig:placeholder}
+\end{figure}
+
+Therefore:
+\[
+Y_{ME}=\frac{1}{(B\,l)^2}\left(R_g+R_{EC}+j\omega L_{EC}\right)
+=\underbrace{\frac{R_g+R_{EC}}{(B\,l)^2}}_{G_{ME}}
++\;j\omega\underbrace{\frac{L_{EC}}{(B\,l)^2}}_{L_{ME}}.
+\]
+This shows that the mechanical–electric branch behaves, in the mechanical domain, like a series of a \emph{resistive term} \(G_{ME}\) and an \emph{inductive term} \(L_{ME}\) obtained by referring the coil quantities through \((B\,l)^2\).
+
+\begin{figure}[H]
+    \centering
+\includegraphics[width=0.8\textwidth]{mech_elec_branch.png}
+\caption{Referring the electrical side to the mechanical domain via the factor \(B\,l\) yields the branch \(Y_{ME}\).}
+\end{figure}
+
+
+Inserted into the full mechanical network (suspension compliance \(C_{MS}\), mechanical losses \(G_{MS}\), moving mass \(M_{MD}\), and radiation admittance \(Y_{MR}\)), we obtain the standard mechanical equivalent:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{mechanical_equivalent_full.png}
+\caption{Mechanical equivalent: \(Y_{ME}=G_{ME}+j\omega L_{ME}\) in series with the usual elements \(C_{MS}\), \(G_{MS}\), \(M_{MD}\), and \(Y_{MR}\).}
+\end{figure}
+
+
+\subsection{From admittance to impedance analogy}
+
+We switch the mechanical branch from admittance \(Y\) to impedance \(Z\) to obtain a series network that is easier to read and to connect with the acoustical radiation impedance.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{analogy_switch.png}
+    \caption{Switching the mechanical branch from admittance \(Y\) (parallel) to impedance \(Z\) (series).}
+    \label{fig:placeholder}
+\end{figure}
+
+Starting from the mechanical–electric admittance \(Y_{ME}=G_{ME}+j\omega L_{ME}\), the series (impedance) form is
+\[
+Z_{ME}=\frac{1}{Y_{ME}} \quad\text{(referred through the electromechanical transformer)}.
+\]
+Together with the suspension and mass elements, the \emph{total mechanical impedance} seen at the diaphragm is written as
+\[
+Z_M=R_M+jX_M,
+\]
+with
+\[
+R_M=R_{ME}+R_{MS}+R_{MR},\qquad
+X_M=\omega M_D-\frac{1}{\omega C_{MS}}-\frac{1}{\omega L_{ME}}+X_{MR}.
+\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\linewidth]{MR_Mech_domain.png}
+    \caption{Mechanical series equivalent: \(R_M\) gathers losses, \(M_D\) is the moving mass, \(C_{MS}\) the suspension compliance, \(L_{ME}\) the referred coil inductance, and \(Z_{MR}\) the radiation load.}
+    \label{fig:placeholder}
+\end{figure}
+
+
+\subsubsection{Mechanical radiation impedance}
+The radiation seen in the mechanical domain is the acoustical radiation referred by the diaphragm area \(S_D\):
+\[
+Z_{MR}=S_D^{2}\,Z_{AR},\qquad
+R_{MR}=S_D^{2}\,R_{AR},\qquad
+X_{MR}=S_D^{2}\,X_{AR}.
+\]
+
+These relations ensure continuity between the acoustical one-port \((P,U,Z_{AR})\) and the mechanical port \((F,u,Z_{MR})\).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]
+{Radiation_graph.png}
+\caption{Referral of acoustical radiation to the mechanical side: \(Z_{MR}=S_D^2 Z_{AR}\).}
+\end{figure}
+
+
+\subsection{Mid-frequency radiation model and low-\(ka\) behavior}
+
+we use the two-time-constant form
+\[
+Z(s)=\big(R_{M1}+R_{M2}\big)\,\frac{1+s\,\tau_1}{1+s\,\tau_2},
+\qquad
+\tau_1=R_{M1}\,C_{M1},\quad
+\tau_2=(R_{M1}\parallel R_{M2})\,C_{M1}.
+\]
+For the radiation load around mid frequencies 
+Asymptotic magnitude:
+\[
+\text{low }f:\ |Z|\approx R_{M1}+R_{M2},
+\qquad
+\text{high }f:\ |Z|\approx R_{M2}.
+\]
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.25\textwidth}
+\centering
+\includegraphics[width=\textwidth]{circuit_mid_freq_resp.png}
+\caption{Mid-frequency circuit..}
+\end{minipage}
+\hspace{3em}
+\begin{minipage}[c]{0.4\textwidth}
+\centering 
+\includegraphics[width=\textwidth]{|Z_MR(f)|.png}
+\caption{Piecewise-linear magnitude of \(|Z|\) with corner frequencies \(f_1,f_2\).}
+\end{minipage}
+\end{figure}
+
+\textbf{Acoustic end correction as an equivalent mass: }
+The acoustic entrance (front of piston) contributes an \emph{air slug} mass. Using the classic baffled-piston result,
+\[
+M_{A1}=\frac{8}{3\pi^2}\,\frac{\rho}{a}\quad\big[\mathrm{kg\,m^{-4}}\big],\qquad
+M_{M1}=M_{A1}\,S_D^2=2.67\,\rho\,a^3=\pi a^2\,(0.85\,a)\,\rho\ \big[\mathrm{kg}\big].
+\]
+\textbf{NB:} \(\pi a^2\,(0.85\,a)\) is the air volume in front of the piston (effective length \(\approx0.85\,a\)).
+
+\textbf{Low-frequency (\(ka<1\)) trends: }
+For \(f<f_0\) with \(f_0=\dfrac{c}{2\pi a}\) (i.e.\ \(ka<1\)):
+\[
+R_S\propto \omega^2,\qquad X_S\propto \omega,\qquad
+R_{AR}=\frac{\rho}{2\pi c}\,\omega^2,\qquad
+X_{AR}=\omega\,2M_{M1}.
+\]
+\textbf{NB:} the factor \(2M_{M1}\) accounts for the air at both the front and the back of the loudspeaker.
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.5\textwidth}
+\centering
+\includegraphics[width=\textwidth]{acoustic_impedance_graph.png}
+\caption{Low-\(ka\) scaling: \(R_S\sim\omega^2\), \(X_S\sim\omega\).}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.35\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{radiation_circuit.png}
+\caption{Equivalent network at low frequency highlighting \(M_{M1}\) and resistive rise.}
+\end{minipage}
+\end{figure}
+We have: 
+\[
+Z^{*} = R + j \left(  \omega L - \frac{1}{\omega c} \right), \quad \omega_s = \frac{1}{\sqrt{M_{MS} C_{MS}}}
+\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{low_freq_equiv.png}
+    \caption{Circuit (left) and magnitude graph of $Z^{*}$.}
+    \label{fig:placeholder}
+\end{figure}
+
+\subsection{Loudspeaker resonance}
+
+Recall the mechanical-domain equivalent model (mechanical series network plus radiation load and the referred coil branch):
+\begin{figure}[H]
+    \centering
+\includegraphics[width=0.65\textwidth]{mechanical_series_equivalent.png}
+\caption{Mechanical series equivalent for the loudspeaker diaphragm (mass \(M_D\), compliance \(C_{MS}\), losses \(R_M\)) with radiation load \(Z_{MR}\) and referred coil branch.}
+\end{figure}
+
+We have: 
+\[
+Z_{AR} = \frac{p}{U} = R_{AR} + jX_{AR} 
+\quad \Rightarrow \quad
+Z_{MR} = S_D^2 Z_{AR} = \underbrace{S_D^2 R_{AR}}_{R_{MR}} + j \underbrace{S_D^2 X_{AR}}_{X_{MR}}
+\quad \Rightarrow \quad
+Z_{MR} = S_D R_S + j S_D X_S
+\]
+We use the \emph{normalized specific} radiation impedance \(Z_S/(\rho_0 c)\) for the piston.  
+Neglect the referred inductance \(L_{ME}\) (valid at low–mid frequencies), so the mechanical network reduces to a \textbf{series RLC} resonator.
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.65\textwidth}
+The impedance of a (frequency-normalized) parallel form commonly used for acoustic radiation around resonance is
+\[
+Z_P
+= R \,\frac{ j\,\dfrac{1}{Q}\,\dfrac{f}{f_s} }{ 1-\left(\dfrac{f}{f_s}\right)^2 + j\,\dfrac{1}{Q}\,\dfrac{f}{f_s} }
+\]
+where :
+\[
+f_s=\frac{1}{2\pi\sqrt{L C}},
+\qquad
+Q=R\sqrt{\frac{C}{L}}=\frac{1}{f_H-f_L}.
+\]
+\textbf{NB:} \(f_H-f_L\) denotes the \emph{bandwidth} between the \(-3\,\mathrm{dB}\) points.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.3\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{parallel_RLC_with_Q.png}
+    \caption{RLC circuit and magnitude response of $|Z_P|$.}
+\end{minipage}
+\end{figure}
+
+Although the mechanical network is naturally modeled with the \emph{impedance} analogy (series elements), the parallel RLC (admittance) form is algebraically convenient for radiation around resonance.  
+Both analogies are equivalent and yield the same physical predictions (same \(f_s\), bandwidth \(f_H-f_L\), and \(Q\)) when referred through the electromechanical transformer.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{parallel_to_series_RLC.png}
+    \caption{Circuit - $Q$ factor - Graph of $|Z_S|$}
+    \label{fig:placeholder}
+\end{figure}
+
+
+\subsubsection{Low-frequency behaviour}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{multi_RLC_hint.png}
+\caption{Multiple RLC contributions: the smallest \(Q\) controls the effective parallel resonance.}
+\end{figure}
+
+What happens when multiple RLC contributions are present on the radiation/mechanical branch?  
+In the low-frequency region (\(ka\ll 1\)) the radiation terms follow the classic small-piston scalings for the \emph{specific} (per-area) radiation impedance:
+\[
+R_s = \frac{a^{2}\,\rho_0}{2c}\,\omega^{2},\qquad
+X_s = \frac{8}{3\pi}\,a\,\rho_0\,\omega .
+\]
+Referring to the \emph{mechanical} side with the diaphragm area \(S_D=\pi a^2\) gives
+\[
+R_{MR} = S_D\,R_s = \pi a^{4}\,\frac{\rho_0}{c}\,\omega^{2},\qquad
+X_{MR} = S_D\,X_s = \frac{8}{3}\,a^{3}\rho_0\,\omega .
+\]
+\textbf{NB:} \(\dfrac{8}{3}a^{3}\rho_0\) is the effective air mass in front of the piston.
+
+Putting the pieces together, the radiation + suspension + referred electrical losses form a \textbf{series} resonant set: 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{loudspeaker_elec_scheme.png}
+    \caption{Equivalent scheme: series resonance of the mechanical path.}
+\end{figure}
+
+
+The total quality factor is
+\[
+Q_{TS}=\frac{1}{R_{ME}+R_{MS}}\sqrt{\frac{M_{MS}}{C_{MS}}}
+=\frac{Q_{ME}\,Q_{MS}}{Q_{ME}+Q_{MS}},
+\]
+with \(Q_{ME}=\dfrac{1}{R_{ME}}\sqrt{\dfrac{M_{MS}}{C_{MS}}}\) and \(Q_{MS}=\dfrac{1}{R_{MS}}\sqrt{\dfrac{M_{MS}}{C_{MS}}}\).
+
+In the very low-frequency region the imaginary part dominates, so:
+\[
+|Z_M|^{2}=| R_{MR}^{2}+X_{MR}^{2} |\;\approx\; | X_{MR}|^{2}.
+\]
+At low frequencies, the mean acoustic power can be expressed as:
+\[
+\overline{P_A} = \overline{P U} = F u = F_{RMS}^2 \frac{R_{MR}}{|Z_M|^2} \approx F_{RMS}^2 \frac{R_{MR}}{X_{MR}^2} = \frac{v_{g,RMS}^2 (B l)^2}{(R_g + R_{EC})^2} \frac{R_{MR}}{(\omega M_{MS})^2}
+\]
+Intuitively, a sinusoidal force acting on the diaphragm moves it with a velocity \( u \propto \frac{1}{\omega} \), which explains why the power behaves as \( \propto \frac{1}{\omega^2} \).
+
+Since \( R_{MS} \propto \omega^2 \), both effects compensate, and the mean acoustic power \(\overline{P_A}\) remains approximately constant with frequency.
+
+Indeed, we have:
+\[
+\overline{P_A} = \overline{pU} = \overline{Fu} \frac{R_{MR}}{|X_{MR}^2|} 
+\quad \Rightarrow \quad \overline{P_A}= \frac{v_{g,RMS}^2}{( R-g + R_{EC} )^2} (Bl)^2 \frac{R_{MR}}{(\omega M_{MS}^2)^2}
+\]
+Intuitively, a sinusoidal force acting upon the diaphragm moves it with a velocity $ u \propto 1/\omega^2$ which justifies what we see from the power: $ \tfrac{F_{RMS}^2}{X_{MR}^2} = u_{RMS}^2 \propto 1/\omega^2 $.
+
+Considering that $ R_{MS} \propto \omega^2 $, they balance each other out and make $\overline{P_A}$ constant in frequency. Indeed: 
+\[
+R_{MR} = 2 S_D^2 R_{AR} = S_D^2 \frac{\rho_0}{\pi c} \omega^2 
+\quad \Rightarrow \quad
+\boxed{\overline{P_A} = \frac{v_{g,RMS}^2 (B l)^2 S_D^2 \rho_0}{(R_g + R_{EC})^2 \pi c (M_{MS})^2}}
+\]
+
+
+The above equation is independent of \(\omega\) and is valid for low frequencies:
+\[
+f_s < f < f_0 = \frac{c}{2\pi a}
+\]
+
+
+The \textbf{efficiency} \(\varepsilon\) of a loudspeaker is defined as the ratio between the radiated acoustic power and the absorbed electrical power:
+\[
+\varepsilon = \frac{\overline{P_A}}{\overline{P_E}}, \qquad \overline{P_E} = \frac{v_{g,RMS}^2}{R_g + R_{EC}} \approx \frac{v_{g,RMS}^2}{R_{EC}}
+\quad \Rightarrow \quad
+\varepsilon = \frac{(Bl)^2}{R_{EC}} \frac{\rho_0}{\pi c} \left( \frac{S_D}{M_{MS}} \right)^2
+\]
+
+
+\textbf:{Numerical Example}
+
+Using typical loudspeaker values:
+\begin{align*}
+    & B l = 10\,\text{N/A}, \quad
+R_{EC} = 6\,\Omega, \quad
+S_D = \pi (0.1)^2 \approx 0.03\,\text{m}^2, \\
+& M_{MS} = M_{MD} + 2 M_{M1} = 0.1 + 0.006 \approx 0.2\,\text{kg}, \quad
+\rho_0 = 1.2\,\text{kg/m}^3, \quad
+c = 343\,\text{m/s}
+\end{align*}
+We obtain:
+\[
+\varepsilon \approx 0.15\%
+\]
+
+\subsubsection{High-Frequency Behaviour}
+
+Let us now consider the high-frequency region, where: $ ka \gg 1 $.
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.4\textwidth]{high_freq_resp.png}
+%     \caption{Typical loudspeaker high-frequency response curve and resonance behavior.}
+% \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{high_freq_circuit.png}
+    \caption{Equivalent scheme}
+    \label{fig:placeholder}
+\end{figure}
+With a complete mechanical model established, we can now study the diaphragm–voice coil velocity \( u_C \), acceleration \( a_C \), and displacement \( x_C \).
+
+Knowing the electrical driving force and the total mechanical impedance, we have:
+\[
+u_C = \frac{F}{Z_M} = \frac{v_g}{R_g + R_{EC}} (B l) \frac{1}{R} \frac{j \frac{1}{Q_{TS}} \frac{f}{f_s}}{1 - \left( \frac{f}{f_s} \right)^2 + j \frac{1}{Q_{TS}} \frac{f}{f_s}}
+\]
+where:
+\[
+R = R_{ME} + R_{MS}, \quad  R_{ME} = \frac{(Bl)^2}{R_g +R_{EC}}
+\]
+We can rewrite:
+\[
+u_C = \frac{v_g}{R_g + R_{EC}} (B l) \frac{1}{R_{ME} + R_{MS}} \frac{1}{Q_{TS}} \beta_C(f)
+\quad \text{where} \quad
+\beta_C(f) = \frac{j \frac{f}{f_s}}{1 - \left( \frac{f}{f_s} \right)^2 + j \frac{1}{Q_{TS}} \frac{f}{f_s}}
+\]
+Since:
+\[
+Q_{TS} = \frac{1}{R_{ME} + R_{MS}} \sqrt{\frac{M_{MS}}{C_{MS}}},
+\]
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.55\textwidth}
+We obtain:
+\[
+u_C = \frac{v_g}{R_g + R_{EC}} (Bl
+) \frac{1}{R_{ME} + R_{MS}} \left( R_{ME} + R_{MS} \right)\sqrt{\frac{C_{MS}}{M_{MS}}}\beta_C(f)\]
+Thus:
+\begin{align*}
+    & u_C  = \frac{v_g}{R_g + R_{EC}} \frac{(B l)^2}{B l} \sqrt{\frac{C_{MS}}{M_{MS}}} \, \beta_C(f) \\
+    \Rightarrow \quad &
+\boxed{
+u_C = \frac{v_g}{B l} \frac{1}{Q_{EC}} \, \beta_C(f), \quad \frac{1}{Q_{EC}} = \frac{(B l)^2}{R_g + R_{EC}} \sqrt{\frac{C_{MS}}{M_{MS}}}}
+\end{align*}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{u_c(f).png}
+    \caption{Graph of $ u_C \left( \log \left(\frac{f}{f_s}\right) \right)$}
+\end{minipage}
+\end{figure}
+
+
+\subsubsection{Behaviour Around the Resonance Frequency}
+
+At low frequencies ( \( f < f_s \) ), the loudspeaker exhibits a \textbf{stiffness-controlled behaviour}, dominated by the suspension compliance:
+\[
+u_C = \frac{F}{Z_M} \approx \frac{F}{1/(j\omega C_{MS})} = j \omega C_{MS} F \propto \omega
+\]
+The corresponding diaphragm displacement is:
+\[
+x_C = C_{MS} F = C_{MS} \frac{v_g}{R_g + R_{EC}} B l
+\]
+which follows the behaviour of a spring displacement.
+
+Above the Resonance Frequency (\( f > f_s \)), the system becomes \textbf{mass-controlled}, dominated by the diaphragm inertia:
+\[
+u_C = \frac{F}{Z_M} \propto \frac{F}{j \omega M_{MS}} \propto \frac{1}{\omega}
+\]
+The diaphragm–voice coil acceleration is given by:
+\[
+a_C = j \omega u_C = j \omega \frac{v_g}{B l \, Q_{EC}} \, \beta_C(f)\]
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.55\textwidth}
+Where 
+\[
+\beta_C(f) = \frac{j \frac{f}{f_s}}{1 - \left( \frac{f}{f_s} \right)^2 + j \frac{1}{Q_{TS}} \frac{f}{f_s}}
+\]
+Thus, we can express:
+\[
+a_C = \frac{v_g}{B l \, Q_{EC}} (2 \pi f_s) \, \alpha_C(f)
+\]
+where:
+\[
+\alpha_C(f) = j \frac{f}{f_s} \beta_C(f) = \frac{-\left( \frac{f}{f_s} \right)^2}{1 - \left( \frac{f}{f_s} \right)^2 + j \frac{1}{Q_{TS}} \frac{f}{f_s}}
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{a_c(f).png}
+    \caption{Normalized acceleration response as a function of frequency.}
+\end{minipage}
+\end{figure}
+
+
+Note that:
+\[
+\frac{2 \pi f_s }{Q_{EC}} = \frac{(B l)^2}{(R_g + R_{EC})} \frac{1}{M_{MS}}
+\quad \Rightarrow \quad 
+a_C = \frac{v_g}{R_g + R_{EC}} \, B l \, \frac{1}{M_{MS}} \, \alpha_C(f)
+\]
+The displacement of the Diaphragm–Voice Coil is related to the velocity by:
+\[
+x_C = \frac{u_C}{j \omega} = \frac{v_g}{B l \, Q_{EC}} \frac{1}{2 \pi f_s} \, \gamma_C(f)
+\]
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.55\textwidth}
+Where: 
+\[ 
+\gamma_C(f) = \frac{\beta_C(f)}{\frac{f}{f_s}} = \frac{1}{1 - \left( \frac{f}{f_s} \right)^2 + j \frac{1}{Q_{TS}} \frac{f}{f_s}}
+\]
+Note that:
+\[
+2 \pi f_s Q_{EC} = \frac{R_g + R_{EC}}{(B l)^2} \frac{1}{C_{MS}}\]
+Thus we obtain: 
+\[
+x_C = \underbrace{\frac{v_g}{R_g + R_{EC}} B l}_{=F} \cdot C_{MS} \, \gamma_C(f)
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{x_c(f).png}
+    \caption{Diaphragm-voice coil displacement $x_C(\log(f/f_s))$.}
+\end{minipage}
+\end{figure}
+
+\subsubsection{Thiele–Small Parameters}
+
+A loudspeaker can be fully characterized by a set of parameters known as the \textbf{Thiele–Small parameters}. These parameters describe its electrical, mechanical, and acoustical properties near resonance.
+
+\begin{itemize}
+    \item \( R_{EC} \): voice coil electrical resistance
+    \item \( Q_{EC} \): electrical quality factor
+    \item \( Q_{MS} \): mechanical quality factor
+    \item \( f_s \): resonance frequency
+    \item \( S_D \): diaphragm surface area
+    \item \( V_{AS} = C_{AS} \, \rho_0 c^2 = C_{MS} \, S_D^2 \, \rho_0 c^2 \): equivalent suspension volume
+\end{itemize}
+
+\noindent The equivalent volume \( V_{AS} \) corresponds to the volume of air that has the same compliance as the mechanical suspension.
+\[
+C_A = \frac{V}{\rho_0 c^2}
+\]
+is the compliance of a volume of air \( V \), which equals the mechanical suspension compliance \( C_{MS} \).
+
+\bigskip
+From these definitions, we can express the following relationships:
+\[
+C_{MS} = \frac{V_{AS}}{S_D^2 \, \rho_0 c^2}, \qquad
+M_{MS} = \frac{1}{(2\pi f_s)^2 \, C_{MS}}, \qquad
+R_{MS} = \frac{1}{Q_{MS}} \sqrt{\frac{M_{MS}}{C_{MS}}}
+\]
+and the electromagnetic force factor:
+\[
+B l = \sqrt{\frac{R_{EC}}{2\pi f_s \, Q_{EC} \, C_{MS}}}
+\]
+
+\subsection{Loudspeaker SPL}
+
+To understand the radiated acoustic field of a loudspeaker, we adopt a simplified yet effective model: a \textbf{plane circular piston} mounted in an infinite baffle.  
+This configuration idealizes the diaphragm as radiating only into the front half-space, preventing rear-wave interference and diffraction effects.
+
+\subsubsection{Far-field Pressure On-axis}
+
+In the far field (\( kr \gg 1 \)), the acoustic pressure along the axis of a piston with surface area \( S_D \), vibrating with velocity \( \tilde{u}_C \), is given by:
+\[
+p(r) = - j \omega \rho_0 U_C \frac{e^{-jkr}}{r}, \qquad U_C = S_D \tilde{u}_C
+\]
+
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.55\textwidth}
+This expression arises from the linearized wave equation, where the piston is treated as a monopole source radiating spherical waves.
+
+Since acceleration is the time derivative of velocity:
+\[
+\tilde{a}_C = \frac{d\tilde{u}_C}{dt} = j \omega \tilde{u}_C \quad \Rightarrow \quad \tilde{u}_C = \frac{\tilde{a}_C}{j \omega}
+\]
+Substituting this relation into the pressure expression yields:
+\[
+p(r) = - \rho_0 S_D \tilde{a}_C \frac{e^{-jkr}}{2 \pi r}
+\]
+From Newton’s second law (\( F = m a \)), and noting that pressure is force per unit area (\( p = F/S \)), we observe that: $ p \propto a $.
+
+Hence, the \textbf{radiated pressure is directly proportional to the diaphragm acceleration}.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{2D_piston.png}
+    \caption{Simplified far-field piston model for loudspeaker sound radiation.}
+\end{minipage}
+\end{figure}
+
+\subsubsection{Frequency-dependent Acceleration}
+
+The diaphragm acceleration depends on frequency because of the mass–spring–damper behavior of the loudspeaker’s mechanical system:
+\[
+a_C = \frac{v_g}{R_g + R_{EC}} \, B l \, \frac{1}{M_{MS}} \, \alpha_C(f)
+\]
+where:
+\begin{itemize}
+    \item \( v_g \): source (generator) voltage,
+    \item \( R_g, R_{EC} \): generator and voice coil resistances,
+    \item \( B l \): electromechanical coupling factor,
+    \item \( M_{MS} = M_{MD} + 2 M_{M1} \): total moving mass (diaphragm + added air mass),
+    \item \( \alpha_C(f) \): normalized frequency response factor.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.55\textwidth}
+From second-order system theory, the frequency-dependent term is:
+\[
+\alpha_C(f) = \frac{- \left( \frac{f}{f_s} \right)^2}{1 - \left( \frac{f}{f_s} \right)^2 + j \frac{1}{Q_{TS}} \frac{f}{f_s}}
+\]
+This expression exhibits a \textbf{resonant peak at} \( f = f_s \), whose amplitude and sharpness depend on the total quality factor \( Q_{TS} \), accounting for both mechanical and electrical damping.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{loudspeaker_freq_resp.png}
+    \caption{Normalized acceleration magnitude \(|\alpha_C(f)|\) showing resonance at \( f = f_s \).}
+\end{minipage}
+\end{figure}
+
+\subsubsection{Sound Pressure Level (SPL)}
+
+The \textbf{Sound Pressure Level (SPL)} quantifies the radiated acoustic pressure relative to the reference hearing threshold:
+\[
+P_{\text{ref}} = 20\,\mu\text{Pa}
+, \quad
+\text{SPL (dB)} = 20 \log_{10} \left( \frac{p(1\text{W}, 1\text{m})}{P_{\text{ref}}} \right)
+\]
+The notation \( p(1\text{W}, 1\text{m}) \) indicates that the loudspeaker is driven with \textbf{1 watt of electrical power} and that the pressure is measured \textbf{1 meter in front of the loudspeaker}, on-axis (center of the radiation pattern).
+
+Assuming we supply a known electrical power \( W_E \) to a nominal load \( R_{\text{nom}} \), we have:
+\[
+\overline{W_E} = \frac{v_{g,\text{RMS}}^2}{R_{\text{nom}}} \quad \Rightarrow \quad v_{g,\text{RMS}} = \sqrt{\overline{W_E} R_{\text{nom}}}
+\]
+At high frequencies (\( f \gg f_s \)), the loudspeaker behaves inertially and \( \alpha_C(f) \approx 1 \), yielding:
+\[
+\text{SPL (dB)} = 20 \log_{10} \left( \frac{\sqrt{\overline{W_E} R_{\text{nom}}} \, B l \, S_D \, a}{2\pi (R_g + R_{EC}) M_{MS} P_{\text{ref}}} \right)
+\]
+This expression encapsulates the full \textbf{electromechanical–acoustic chain}:
+\[
+\text{Electrical Input} \rightarrow \text{Mechanical Motion} \rightarrow \text{Acoustic Output}
+\]
+
+
+
+\subsection{Loudspeaker Systems}
+
+To avoid destructive interference between the \textbf{front and rear acoustic fields} of a loudspeaker diaphragm — which are naturally out of phase — a \textbf{baffle} is required.  
+A baffle physically separates the front and rear radiation, preventing low-frequency cancellation.
+
+\subsubsection{Types of Baffle Configurations}
+\begin{itemize}
+    \item \textbf{Unbaffled Configuration}
+The diaphragm is freely mounted, allowing sound waves from the rear to interfere destructively with those from the front.  
+There is no reflection control, leading to poor low-frequency response.
+\item \textbf{Closed-box (Finite Baffle)}
+The rear of the loudspeaker is enclosed in a cabinet lined with \textbf{absorbing material} (e.g., acoustic foam or damping fiber).  
+This reduces standing waves and increases acoustic stiffness. The box volume \( V_B \) must be kept small to maintain low compliance.
+\item \textbf{Infinite Baffle}
+An idealization in which the front and rear acoustic paths are completely separated.  
+Mathematically, it behaves as if the baffle extended infinitely, ensuring perfect isolation between front and back radiation.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{baffle_configurations.png}
+    \caption{Different baffle configurations: unbaffled, closed-box, and infinite baffle.}
+\end{figure}
+
+
+\subsubsection{Equivalent Acoustic Model of the Enclosure}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.55\textwidth}
+The loudspeaker box can be represented using a \textbf{lumped element acoustic analogy}, where:
+\begin{itemize}
+    \item The \textbf{absorbing material} behaves as a \textbf{resistive element} \( R_{AU} \).
+    \item The \textbf{box cavity} introduces an \textbf{acoustic compliance} \( C_{AA} \) due to the air compressibility.
+    \item A \textbf{port or duct}, if present, contributes an \textbf{acoustic mass} \( M_{AB} \), corresponding to the air plug’s inertance.
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{box_model.png}
+    \caption{Equivalent acoustic model of a loudspeaker enclosure, with resistive, compliant, and inertive components.}
+\end{minipage}
+\end{figure}
+
+
+The acoustic mass of the air in the port is given by:
+\[
+M_{AB} = \frac{B \, \rho_0}{\pi a^2}
+,\quad 
+a = \sqrt{\frac{S_D}{\pi}}
+\]
+is the \textbf{equivalent diaphragm radius}, and \( B \) is a constant (typically \( B \in [0.3, 0.8] \)).
+
+The net acoustic compliance of the air inside the box is:
+\[
+C_{AA} = \frac{V_A}{\gamma P_0}
+\]
+where:
+\begin{itemize}
+    \item \( V_A \): effective air volume inside the box (excluding absorbing material),
+    \item \( \gamma = 1.4 \): adiabatic index for air,
+    \item \( P_0 = 10^5\,\text{Pa} \): atmospheric pressure.
+\end{itemize}
+
+\subsubsection{Resonance Frequencies: Finite vs Closed Box}
+
+The loudspeaker’s resonance frequency depends on the acoustic boundary condition (free-air vs closed-box):
+\[
+f_s = \frac{1}{2\pi \sqrt{M_{MS} C_{MS}}} \quad \text{(free-air resonance)}
+\qquad \qquad 
+f_c = \frac{1}{2\pi \sqrt{M_{MSB} C_{MSB}}} \quad \text{(closed-box resonance)}
+\]
+where:
+\[
+M_{MS} = M_{MD} + 2 M_A, \qquad M_{MSB} = M_{MD} + M_{MA} + M_{AB}
+, \qquad
+C_{MSB} = \frac{C_{MS} C_{MB}}{C_{MS} + C_{MB}}
+\]
+
+\subsubsection{Limiting Cases and Box Suspension}
+
+\textbf{Infinite Volume:}
+If \( V_A \to \infty \), then \( C_{MB} \to \infty \) and \( C_{MSB} \to C_{MS} \), meaning the box has negligible acoustic influence.
+
+\textbf{Tight Box:}
+If \( C_{MB} \ll C_{MS} \), the compliance is dominated by the air spring — this configuration is called \textbf{air suspension} (or pneumatic suspension).  
+In this case, the total compliance is approximately:
+\[
+C_{MSB} \approx C_{MB}
+\]
+
+\subsubsection{Shift in Resonance Frequency}
+
+The ratio between the closed-box and free-air resonance frequencies is approximately:
+\[
+\frac{f_c}{f_s} \approx \sqrt{1 + \frac{V_{AS}}{V_{AB}}}
+\]
+where:
+\[
+V_{AS} = C_{AS} \, \rho_0 c^2 = C_{MS} \, S_D^2 \, \rho_0 c^2
+,\qquad 
+V_{AB} = V_A + \gamma V_M
+,\qquad V_A = V_B - V_M
+\]
+$V_{AB}$ is the effective acoustice volume (including the absorbing material), and $V_A$ the net air volume.
+
+This relation shows that smaller enclosure volumes (or greater air stiffness) \textbf{increase the resonance frequency}, which is an important trade-off in loudspeaker design.
+
+\subsubsection{Final Acoustic Pressure Field}
+
+Including the electromechanical and acoustical transformations, the pressure field radiated by a loudspeaker in a closed-box configuration is given by:
+\[
+p(r) = \frac{v_g}{R_g + R_{EC}} \, B l \, \frac{1}{M_{MSB}} \, \rho_0 S_D \, \frac{e^{-jkr}}{r} \, \alpha_C(f)
+\]
+where \( \alpha_C(f) \) represents the complex, frequency-dependent acceleration transfer function of the diaphragm.
+
+
+
+\subsubsection{Quality Factor: Electrical and Mechanical Contributions}
+
+The total damping of a loudspeaker system is quantified by the \textbf{total quality factor} \( Q_{TC} \), which accounts for both electrical and mechanical losses.
+\[
+\begin{cases}
+Q_{EC} = \dfrac{R_g + R_{EC}}{(B l)^2} \sqrt{\dfrac{M_{MSB}}{C_{MSB}}}, \\[8pt]
+Q_{MC} = \dfrac{1}{R_{MB}} \sqrt{\dfrac{M_{MSB}}{C_{MSB}}}
+\end{cases}
+\quad \Rightarrow \quad
+Q_{TC} = \dfrac{Q_{EC} \, Q_{MC}}{Q_{EC} + Q_{MC}}
+\]
+This relationship corresponds to a \textbf{series combination} of two damping mechanisms, analogous to resistors in parallel.  
+Thus, the total damping is always smaller than either individual damping contribution.
+
+\subsubsection{Resonance–Bandwidth Trade-off}
+
+There exists a fundamental trade-off between the \textbf{resonant peak amplitude} and the \textbf{system bandwidth}:
+
+\begin{itemize}
+    \item A higher \( Q_{TC} \) leads to a sharper and more pronounced resonant peak but a narrower bandwidth.
+    \item A lower \( Q_{TC} \) broadens the response, reducing the peak amplitude.
+\end{itemize}
+
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.55\textwidth}
+The \(-3\,\text{dB}\) bandwidth around the resonance frequency \( f_c \) can be expressed as:
+\[
+f_{\pm 3\text{dB}} = f_c \sqrt{\left( \frac{1}{2 Q_{TC}^2} - 1 \right) + \sqrt{\left( \frac{1}{2 Q_{TC}^2} - 1 \right)^2 + 1}}
+\]
+The bandwidth is minimized (and the system response is maximally flat) when:
+\[
+Q_{TC} = \frac{1}{\sqrt{2}} \approx 0.707
+\]
+This value corresponds to \textbf{critical damping} for second-order systems, ensuring the best compromise between transient response and frequency flatness.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{resonance_bandwidth_response.png}
+    \caption{Illustration of resonance peak amplitude and bandwidth in the pressure response.}
+\end{minipage}
+\end{figure}
+
+
+
+
+
+
+\subsection{Notes from the slides}
+ 
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[c]{0.5\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]
+    {baffle_types.png}
+    \caption{Different types of baffle configurations.}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.5\linewidth}
+  \paragraph{Loudspeaker Systems: }
+ Loudspeaker systems employ an electro-mechanical transducer (the driver) mounted in an acoustic structure designed to control radiation, frequency response, and efficiency. The enclosure interacts with the driver’s compliance, mass, and damping, defining the system’s low-frequency behavior.
+  
+\paragraph{Unbaffled and Baffled Loudspeakers: }
+An unbaffled loudspeaker radiates into free air; front and rear waves interfere destructively at low frequencies, causing acoustic short-circuit losses.  
+Introducing a \emph{baffle}—a rigid surface separating front and rear radiation—reduces this cancellation.  
+An \emph{infinite baffle} idealizes a surface of infinite extent, fully preventing rear-wave leakage, whereas a \emph{closed-box baffle} approximates it in practice. 
+    The closed-box increases radiation resistance at low frequencies, raising acoustic output while limiting cone excursion.
+  \end{minipage}
+\end{figure}
+
+\paragraph{Closed-Box System: }
+The closed enclosure traps air behind the diaphragm, which behaves as an additional elastic compliance \(C_B\).  
+The resulting resonance frequency is higher than the free-air value \(f_s\), and the system exhibits a second-order high-pass response characterized by a cutoff \(f_c\) and quality factor \(Q_{TC}\).  
+The low-frequency attenuation follows
+\[
+|H(j\omega)| \propto \omega^2 \quad\Rightarrow\quad -40~\mathrm{dB/dec}\;(-12~\mathrm{dB/oct}).
+\]
+This configuration ensures good transient response and mechanical protection at the expense of bass extension.
+
+\begin{figure}[H]
+  \centering
+    \begin{minipage}[c]{0.38\linewidth}
+   \centering
+    \includegraphics[width=\linewidth]
+    {closed_box_circuit_1.png}
+    \caption{Analogous acoustical circuit for a loudspeaker box. The volume velocity is $\tilde{U}_c$.}
+  \end{minipage}\hfill
+    \begin{minipage}[c]{0.5\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]
+    {closed_box_circuit.png}
+    \caption{Circuit diagram for a direct-radiator loudspeaker mounted in a closed-box baffle. This circuit is valid for frequencies $\leq$ 400 Hz.}
+  \end{minipage}
+\end{figure}
+
+
+The electro-mechanical parameters of the considered system are given below: 
+\begin{align*}
+    & R_A = R_{AS} + R_{AB} + R_{AR}, \quad 
+X_A = \omega M_A - \frac{1}{\omega C_A}, 
+\quad M_A = M_{AD} + M_{A1} + M_{AB}, 
+\quad C_A = \frac{C_{AS} C_{AB}}{C_{AS} + C_{AB}},  \\
+&  \omega_C = 2 \pi f_C = \frac{1}{\sqrt{M_A C_A}}, \quad Q_{TC} = \frac{Q_{EC} Q_{MC}}{Q_{EC} + Q_{MC}}, 
+\quad Q_{MC} = \frac{1}{R_A}\sqrt{\frac{M_A}{C_A}}, 
+\quad Q_{EC} = \frac{\left(R_g + R_E \right) S_D^2}{B^2 l^2}\sqrt{\frac{M_A}{C_A}} 
+\end{align*}
+The pressure is: 
+\[
+\tilde{p}(r) = - \frac{\tilde{e}_g B l S_D }{\left(R_g + R_E \right)M_M}\frac{e^{-jkr}}{4 \pi r} \alpha_C(f), \qquad kR <<1, \quad \alpha_C(f) = \frac{-(f/f_C)^2}{1-(f/f_C)^2 + j\tfrac{1}{Q_{TC}}(f/f_C)}
+\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\linewidth]{closed_box_SPL.png}
+    \caption{Normalized SPL response of a loudspeaker in a closed box at low frequencies.}
+    \label{fig:placeholder}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[c]{0.3\linewidth}
+\paragraph{Vented (Bass-Reflex) Box: }
+    In a \emph{vented} or \emph{bass-reflex} loudspeaker system, the enclosure includes an air duct or port.  
+    The air mass within this port, denoted \(M_{AB}\), together with the compliance of the air inside the cabinet \(C_{AB}\), forms a \textbf{Helmholtz resonator}.  
+
+    The driver diaphragm interacts acoustically with this resonator, resulting in two coupled resonance modes:  
+one associated with the driver’s moving mass, and the other with the mass of air in the port.  
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.38\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{bass_reflex_model.png}
+    \caption{Schematic model of the bass-reflex configuration.}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.25\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{bass_reflex_air_masses.png}
+    \caption{Representation of the air masses and compliances involved in the bass-reflex enclosure.}
+  \end{minipage}
+\end{figure}
+
+Near the tuning frequency \(f_b\), the port radiates in phase with the diaphragm, increasing the low-frequency output and reducing cone excursion.  
+    
+Consequently, the overall acoustic transfer function exhibits a \textbf{fourth-order high-pass behavior} with a low-frequency roll-off of:
+\[
+|H(j\omega)| \propto \omega^4 
+\quad\Rightarrow\quad 
+-80~\mathrm{dB/dec}\;(-24~\mathrm{dB/oct}).
+\]
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[c]{0.46\linewidth}
+  \centering
+    \includegraphics[width=\linewidth]{bass_reflex_circuit.png}
+    \caption{Equivalent electro-mechanical-acoustic circuit of the bass-reflex loudspeaker.}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.5\linewidth}
+    The equivalent mechanical parameters of the system are:
+\[
+M_{MS} = M_{MD} + S_D^2 \left( M_{A1} + M_{AB} \right), 
+\qquad 
+M_{AT} = M_{A2} + M_{AP},
+\]
+where \(M_{MS}\) and \(M_{AT}\) denote the effective moving masses of the diaphragm and port, respectively, including the acoustic loading from the air.  
+The acoustic pressure radiated at distance \(r\) from the loudspeaker is then given by
+\[
+\tilde{p}(r) = 
+\frac{j \omega \rho_0}{4 \pi r}
+\left( \tilde{U}_C + \tilde{U}_P + \tilde{U}_L \right)
+e^{-jkr},
+\]
+  \end{minipage}
+\end{figure}
+where:
+\begin{itemize}
+  \item \(\rho_0\) is the ambient air density,
+  \item \(\tilde{U}_C\), \(\tilde{U}_P\), and \(\tilde{U}_L\) are the complex volume velocities of the cone, port, and possible leakage paths,
+  \item \(k = \omega / c\) is the acoustic wavenumber.
+\end{itemize}
+By including the electrical and mechanical parts of the transducer, the pressure can be expressed as:
+\[
+\tilde{p}(r) =
+\frac{\tilde{e}_g B l S_D \rho_0}{(R_g + R_E) M_{MS}} 
+\cdot \frac{e^{-jkr}}{4\pi r} \, G(s),
+\]
+where:
+\begin{itemize}
+  \item \(\tilde{e}_g\) is the generator voltage,
+  \item \(B l\) is the force factor (magnetic flux density times coil length),
+  \item \(S_D\) is the effective diaphragm area,
+  \item \(R_g\) and \(R_E\) are the generator and voice coil resistances,
+  \item \(G(s)\) is the system transfer function.
+\end{itemize}
+
+The normalized transfer function \(G(s)\) is:
+\[
+G(s) = \frac{s^4}{s^4 + P_3 s^3 + P_2 s^2 + P_1 s + P_0},
+\]
+with coefficients:
+\[
+P_3 = \frac{\omega_S}{Q_{TS}} + \frac{\omega_B}{Q_L},
+\qquad
+P_2 = \left( 1 + \frac{V_{AS}}{V_{AB}} \right) \omega_S^2 + \omega_B^2 + \frac{\omega_S \omega_B}{Q_{TS} Q_L},
+\qquad
+P_1 = \frac{\omega_S \omega_B^2}{Q_{TS}} + \frac{\omega_S^2 \omega_B}{Q_L},
+\qquad
+P_0 = \omega_S^2 \omega_B^2.
+\]
+\paragraph{System Resonance Frequencies: }
+The characteristic angular frequencies of the system are defined as:
+\[
+\omega_S = \frac{1}{\sqrt{M_{MS} C_{MS}}}, 
+\qquad
+\omega_B = \frac{1}{\sqrt{M_{AT} C_{AB}}},
+\qquad
+Q_L = \omega_B R_{AL} C_{AB},
+\]
+where:
+\begin{itemize}
+  \item \(C_{MS}\): mechanical compliance of the driver suspension,
+  \item \(C_{AB}\): acoustic compliance of the air volume inside the box,
+  \item \(M_{MS}\): total moving mass of the driver (cone, coil, and air load),
+  \item \(M_{AT}\): equivalent acoustic mass of the air in the port,
+  \item \(R_{AL}\): acoustic resistance due to losses in the port,
+  \item \(Q_{TS}\): total quality factor of the driver (including electrical and mechanical damping),
+  \item \(V_{AS}\): equivalent compliance volume of the driver suspension,
+  \item \(V_{AB}\): internal volume of the enclosure.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{bass_reflex_complete_scheme.png}
+    \caption{Complete schematic representation of the bass-reflex system.}
+\end{figure}
+
+\paragraph{Coupled Resonance Behavior: }
+The two resonance frequencies \(f_1\) and \(f_2\) of the coupled diaphragm–port system are given by:
+\[
+f_{1,2} = \frac{1}{2\pi}
+\sqrt{
+\frac{k_\mathrm{eq} \pm k_\mathrm{cpl}}{M_\mathrm{eq}}
+},
+\]
+where \(k_\mathrm{eq}\) and \(M_\mathrm{eq}\) are the equivalent stiffness and mass of the coupled system, and \(k_\mathrm{cpl}\) represents their coupling stiffness.  
+
+Below \(f_1\), the diaphragm and port move in phase, resulting in strong mutual reinforcement.  
+Between \(f_1\) and \(f_2\), the port dominates radiation, while above \(f_2\), the diaphragm’s direct radiation becomes predominant again.
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[c]{0.5\linewidth}
+  \centering
+    \includegraphics[width=\linewidth]
+    {bass_reflex_SPL.png}
+    \caption{On-axis frequency responses of 4th-order bass-reflex alignments.}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.43\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]
+   {bass_reflex_SPL_on_axis.png}
+    \caption{On-axis SPL produced by port and diaphragm of the bass-reflex enclosure.}
+  \end{minipage}
+\end{figure}
+
+
+\paragraph{Other Topologies: }
+Alternative configurations include transmission-line, passive-radiator, band-pass, and open-baffle systems.  
+Each trades efficiency, size, and transient behavior differently: for instance, band-pass designs achieve high output over a limited bandwidth, whereas open-baffle loudspeakers emphasize spatial realism at the cost of bass efficiency.
+
+\paragraph{Horn Loudspeakers: }
+Horn loudspeakers are highly efficient acoustic transducers that use a horn structure to improve coupling between the loudspeaker diaphragm and the surrounding air. The horn acts as an \textbf{acoustic transformer}, gradually matching the high acoustic impedance of the diaphragm to the much lower impedance of free air.
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[c]{0.55\linewidth}
+  \paragraph{Principle of Operation: }
+A horn loudspeaker consists of a \textbf{compression driver} coupled to a flared duct (the horn).  
+The driver includes a diaphragm of area \(S_D\) and a small throat of area \(S_T\).  
+The horn progressively expands from the throat to the mouth, transforming a small-area, high-pressure source into a large-area, low-pressure radiator.
+
+    The horn thus acts as a mechanical-acoustic impedance transformer.  
+    It allows the diaphragm to efficiently transfer its motion to the air load, reducing reflection and increasing radiated power.  
+    The mouth area \(S_D\) is designed to provide good impedance matching at low frequencies, while the throat area \(S_T\) governs the driver loading and sensitivity.
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.4\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{exp_horn_side.png}
+    \caption{Cross section of a simple horn loudspeaker with an exponential cross-section.}
+  \end{minipage}
+\end{figure}
+
+\paragraph{Historical Background: }
+The theoretical foundations of horn loudspeakers were established between 1924 and 1928, with major publications appearing in the \emph{Journal of the American Institute of Electrical Engineers} (1924) and the \emph{Bell System Technical Journal} (1928). These studies formalized the horn as an acoustic transformer and introduced the concept of exponential and conical horn profiles.
+
+\paragraph{Efficiency Considerations: }
+The electroacoustic efficiency of a loudspeaker is defined as:
+\[
+\eta = \frac{\text{mean acoustic power output}}{\text{mean electrical power input}} \times 100~[\%] = \frac{p_{RMS} U _{RMS}}{v_{RMS} i_{RMS}}
+\]
+For a direct-radiator loudspeaker, this efficiency is typically below \(2\%\), since the small diaphragm area and poor impedance match lead to most electrical energy being dissipated as heat.
+
+By contrast, a horn increases efficiency dramatically by matching the diaphragm impedance to that of air. Typical efficiencies of horn loudspeakers can exceed \(20\%\)–\(30\%\), depending on design, at the cost of increased size and directional radiation.
+
+
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[c]{0.65\linewidth}
+  \paragraph{The Horn as an Acoustic Transformer: }
+A horn transforms the acoustic velocity and pressure at its throat into corresponding values at its mouth according to its area expansion law.  
+  If the cross-sectional area of the horn varies as \(S(x)\) along its axis \(x\), then for an \emph{exponential horn}:
+\[
+S(x) = S_T e^{mx},
+\]
+where \(m\) is the \textbf{flare constant} controlling how rapidly the cross-section expands.
+
+The cutoff frequency of the horn is:
+\[
+f_c = \frac{m c}{2\pi},
+\]
+where \(c\) is the speed of sound.  
+Frequencies below \(f_c\) are inefficiently radiated since the horn no longer supports propagating modes.
+
+ Different horn profiles—exponential, conical, hyperbolic, and tractrix—affect directivity, bandwidth, and loading characteristics. The exponential horn provides smooth impedance matching, while the tractrix profile minimizes internal reflections.
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]
+    {horn_profiles.png}
+    \caption{Different horn profiles.}
+  \end{minipage}
+\end{figure}
+
+
+
+\paragraph{Compression Driver and Throat Impedance:}
+The compression driver converts electrical energy into mechanical motion through a diaphragm attached to a voice coil.  
+The diaphragm drives a small air volume at the throat of the horn, where the acoustic admittance is given by:
+\[
+Y_{MT} = \frac{1}{\rho_0 c S_T},
+\]
+with \(\rho_0\) being the air density and \(c\) the local speed of sound.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{horn_circuit.png}
+    \caption{Electro-mechano-acoustical analogous circuit of of the admittance type for the drive unit.}
+    \label{fig:placeholder}
+\end{figure}
+
+The small throat area \(S_T\) provides a \emph{pressure transformation ratio} between diaphragm and mouth:
+\[
+\frac{S_D}{S_T},
+\]
+yielding a theoretical maximum acoustic gain of:
+\[
+G_{\text{max}} = 20 \log_{10} \frac{S_D}{S_T}~[\mathrm{dB}].
+\]
+In practice, this gain is limited by losses, diffraction, and non-ideal horn geometry. Typical values range from \(15\)–\(25~\mathrm{dB}\).
+
+\paragraph{Radiation Impedance of the Horn: }
+The acoustic impedance at the throat \(Z_T\) depends on both the horn geometry and frequency.  
+For a circular horn of mouth radius \(a\), the radiation impedance of a piston in an infinite baffle can be expressed as:
+\[
+k a = \frac{2\pi a f}{c}, \qquad
+f_0 = \frac{c}{2\pi a}.
+\]
+The normalized radiation impedance \(\frac{Z}{\rho_0 c S}\) varies with \(ka\). The table below shows typical values of cutoff frequency \(f_0\) versus mouth radius \(a\):
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Mouth radius \(a\) [cm]} & \textbf{Cutoff frequency \(f_0\) [Hz]} \\
+\hline
+1 & 5500 \\
+10 & 550 \\
+30 & 183 \\
+\hline
+\end{tabular}
+\end{center}
+
+This relationship highlights the trade-off between horn size and low-frequency response: a larger mouth radius extends the lower limit of efficient radiation.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{horn_impedance.png}
+    \caption{Plots of normalized throat impedances for: infinite parabolic (1),  conical (2), exponential (3), hyperbolic (4)}
+    \label{fig:placeholder}
+\end{figure}
+
+\paragraph{Horn Response and Directivity.}
+The horn’s directivity increases with frequency as the mouth dimensions become comparable to the wavelength.  
+At low frequencies, radiation is nearly omnidirectional, while at high frequencies the horn exhibits a narrower beam.
+
+Horn designs can be optimized for specific coverage angles—constant-directivity horns maintain uniform dispersion over a wide frequency range by modifying the flare rate or employing diffraction slots near the throat.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{horn_directivity.png}
+    \caption{On-axis SPL produced by high-frequency horn design.}
+    \label{fig:placeholder}
+\end{figure}
+
+While horn loudspeakers offer high sensitivity and directivity control, they may introduce coloration due to internal reflections and diffraction effects. Careful design of the horn contour and damping is essential to ensure smooth frequency response.
+
+
+
+
+\subsection{Summary}
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key points]
+\begin{itemize}
+\item \( I=W_A/S \), \( \bar I=p_{\mathrm{RMS}}^{2}/(\rho_0 c) \).
+\item For a monopole, \( p_{\mathrm{RMS}}^{2}\propto \dfrac{f^{2}}{1+(f/f_0)^2} \) with \( f_0=\dfrac{c}{2\pi R} \).
+\item Radiated power: \( \bar W_A=\dfrac{S}{\rho_0 c}p_{\mathrm{RMS}}^{2}=S\,\rho_0 c\,u_{0,\mathrm{RMS}}^{2}\dfrac{(f/f_0)^2}{1+(f/f_0)^2} \).
+\end{itemize}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key results]
+\[
+\tilde p(r,\theta)= -\,j\,k\,a^{2}\,\rho_0 c\,\tilde{u}_0\,\frac{e^{-jkr}}{2r}\,D(\theta),\quad
+D(\theta)=\frac{2J_1(ka\sin\theta)}{ka\sin\theta},\quad
+ka=\frac{2\pi f a}{c}.
+\]
+\[
+Z_S=\rho_0 c\!\left[1-\frac{J_1(2ka)}{ka}\right]
++j\,\rho_0 c\!\left[\frac{H_1(2ka)}{ka}\right],\qquad
+\overline{W}_A=R_S\,S_D\,\tilde{u}_{0,\mathrm{RMS}}^{\,2}.
+\]
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key points]
+\begin{itemize}
+\item Acoustic port: \(\overline{W}_A=R_{AR}U_{\mathrm{RMS}}^{2}=R_{MR}u_{c,\mathrm{RMS}}^{2}\) with \(Z_{MR}=Z_{AR}S_D^2\).
+\item Mechanical port: \(Z_M=R_M+jX_M\), \(\overline{W}_A=R_{MR}F_{\mathrm{RMS}}^{2}/|Z_M|^{2}\).
+\item Low-frequency approximation (\(f\ll f_L\)): \(i_c\simeq v_g/(R_g+R_{EC})\Rightarrow F_{\mathrm{RMS}}^{2}=(B\,l)^{2}v_{g,\mathrm{RMS}}^{2}/(R_g+R_{EC})^{2}\).
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key relations]
+\[
+Y_{ME}=\frac{1}{(B\,l)^2}Z_E,\qquad
+G_{ME}=\frac{R_g+R_{EC}}{(B\,l)^2},\qquad
+L_{ME}=\frac{L_{EC}}{(B\,l)^2}.
+\]
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key formulas]
+\[
+Z_M=R_M+jX_M,\quad
+R_M=R_{ME}+R_{MS}+R_{MR},\quad
+X_M=\omega M_D-\frac{1}{\omega C_{MS}}-\frac{1}{\omega L_{ME}}+X_{MR},
+\]
+\[
+Z_{MR}=S_D^{2}Z_{AR},\quad
+R_{MR}=S_D^{2}R_{AR},\quad
+X_{MR}=S_D^{2}X_{AR}.
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!50!black,title=Key points]
+\begin{itemize}
+\item Near resonance, the diaphragm + radiation behaves as an RLC resonator.
+\item Resonant frequency: \( f_s=\dfrac{1}{2\pi\sqrt{LC}} \).
+\item Quality factor and bandwidth: \( Q=R\sqrt{C/L}=\dfrac{1}{f_H-f_L} \).
+\item Using admittance (parallel) or impedance (series) analogies is a modeling choice; results are identical once referred to the same domain.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Loudspeaker Efficiency}]
+\begin{itemize}
+    \item The mean acoustic power at low frequencies is approximately constant:
+    \[
+    \overline{P_A} = \frac{v_{g,RMS}^2 (B l)^2 S_D^2 \rho_0}{(R_g + R_{EC})^2 \pi c (M_{MS})^2}
+    \]
+    \item The loudspeaker efficiency is:
+    \[
+    \varepsilon = \frac{(B l)^2 \rho_0}{\pi c R_{EC}} \left( \frac{S_D}{M_{MS}} \right)^2
+    \]
+    \item For typical values, \(\varepsilon \approx 0.15\%\).
+    \item Efficiency reaches its maximum at resonance frequency but remains approximately constant in the low-frequency range.
+\end{itemize}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – High-Frequency Behaviour}]
+\begin{itemize}
+    \item At high frequencies (\( ka \gg 1 \)), the diaphragm’s mechanical response depends on its total impedance.
+    \item The coil velocity is given by:
+    \[
+    u_C = \frac{v_g}{R_g + R_{EC}} (B l) \frac{1}{R_{ME} + R_{MS}} \sqrt{\frac{C_{MS}}{M_{MS}}} \, \beta_C(f)
+    \]
+    \item The term \( \beta_C(f) \) describes the frequency dependence:
+    \[
+    \beta_C(f) = \frac{j \frac{f}{f_s}}{1 - \left( \frac{f}{f_s} \right)^2 + j \frac{1}{Q_{TS}} \frac{f}{f_s}}
+    \]
+    \item \( Q_{TS} \) represents the total quality factor, and the system exhibits resonance near \( f = f_s \).
+\end{itemize}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Behaviour Around Resonance}]
+\begin{itemize}
+    \item \textbf{Below resonance} (\( f < f_s \)): stiffness-controlled region, \( u_C \propto \omega \), \( x_C \) determined by \( C_{MS} \).
+    \item \textbf{Above resonance} (\( f > f_s \)): mass-controlled region, \( u_C \propto 1/\omega \), \( a_C \propto \omega \).
+    \item \textbf{At resonance} (\( f = f_s \)): velocity is maximum, displacement and acceleration are balanced.
+    \item Characteristic functions:
+    \[
+    \beta_C(f) = \frac{j \frac{f}{f_s}}{1 - \left( \frac{f}{f_s} \right)^2 + j \frac{1}{Q_{TS}} \frac{f}{f_s}}, \quad
+    \gamma_C(f) = \frac{1}{1 - \left( \frac{f}{f_s} \right)^2 + j \frac{1}{Q_{TS}} \frac{f}{f_s}}
+    \]
+\end{itemize}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Thiele–Small Parameters}]
+\begin{itemize}
+    \item These parameters compactly describe the electrical, mechanical, and acoustical behavior of a loudspeaker near its resonance.
+    \item The equivalent air compliance volume \( V_{AS} \) represents the compliance of the mechanical suspension.
+    \item Derived relations:
+    \[
+    C_{MS} = \frac{V_{AS}}{S_D^2 \rho_0 c^2}, \quad
+    M_{MS} = \frac{1}{(2\pi f_s)^2 C_{MS}}, \quad
+    R_{MS} = \frac{1}{Q_{MS}} \sqrt{\frac{M_{MS}}{C_{MS}}}, \quad
+    B l = \sqrt{\frac{R_{EC}}{2\pi f_s Q_{EC} C_{MS}}}
+    \]
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Loudspeaker SPL and Far-field Pressure}]
+\begin{itemize}
+    \item The far-field pressure of a piston radiator is:
+    \[
+    p(r) = - \rho_0 S_D \tilde{a}_C \frac{e^{-jkr}}{2 \pi r}
+    \]
+    \item Radiated pressure is proportional to the diaphragm acceleration.
+    \item The acceleration depends on system parameters:
+    \[
+    a_C = \frac{v_s}{R_g + R_{EC}} \, \frac{B l}{M_{MS}} \, \alpha_C(f)
+    \]
+    \item The function \( \alpha_C(f) \) governs the resonance behavior:
+    \[
+    \alpha_C(f) = \frac{- \left( \frac{f}{f_s} \right)^2}{1 - \left( \frac{f}{f_s} \right)^2 + j \frac{1}{Q_{TS}} \frac{f}{f_s}}
+    \]
+    \item The SPL response peaks at \( f = f_s \), where \( Q_{TS} \) determines the sharpness of the resonance.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – SPL Expression}]
+\begin{itemize}
+    \item SPL is referenced to \( P_{\text{ref}} = 20\,\mu\text{Pa} \).
+    \item The loudspeaker is driven with \( 1\,\text{W} \) and measured at \( 1\,\text{m} \).
+    \item SPL at high frequencies:
+    \[
+    \text{SPL (dB)} = 20 \log_{10} \left( \frac{\sqrt{W_E R_{\text{nom}}} \, B l \, S_D \, a}{2\pi (R_g + R_{EC}) M_{MS} P_{\text{ref}}} \right)
+    \]
+    \item The term \( a \) represents diaphragm acceleration; SPL is proportional to acceleration amplitude.
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Loudspeaker Baffle Systems}]
+\begin{itemize}
+    \item The baffle eliminates destructive interference between the front and rear acoustic fields.
+    \item \textbf{Unbaffled:} free radiation, strong interference at low frequencies.
+    \item \textbf{Closed-box:} limited back radiation, increased stiffness.
+    \item \textbf{Infinite baffle:} ideal separation between front and rear sound fields.
+\end{itemize}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Acoustic Enclosure Model}]
+\begin{itemize}
+    \item The enclosure can be modeled with lumped acoustic components:
+    \[
+    R_{AU} \ (\text{losses}), \quad C_{AA} \ (\text{air compliance}), \quad M_{AB} \ (\text{air plug inertance})
+    \]
+    \item The air compliance inside the box is:
+    \[
+    C_{AA} = \frac{V_A}{\gamma P_0}
+    \]
+    \item Resonance frequencies:
+    \[
+    f_s = \frac{1}{2\pi \sqrt{M_{MS} C_{MS}}}, \quad f_c = \frac{1}{2\pi \sqrt{M_{MSB} C_{MSB}}}
+    \]
+    \item \( C_{MSB} = \frac{C_{MS} C_{MB}}{C_{MS} + C_{MB}} \) combines suspension and box air compliance.
+\end{itemize}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Box Suspension and Acoustic Field}]
+\begin{itemize}
+    \item \textbf{Infinite volume:} \( C_{MB} \to \infty \), box has no effect.
+    \item \textbf{Tight box:} \( C_{MB} \ll C_{MS} \), air spring dominates, \( C_{MSB} \approx C_{MB} \).
+    \item \textbf{Resonance frequency shift:}
+    \[
+    \frac{f_c}{f_s} = \sqrt{1 + \frac{V_{AS}}{V_{AB}}}
+    \]
+    Smaller box volume increases \( f_c \).
+    \item \textbf{Acoustic pressure field:}
+    \[
+    p(r) = \frac{v_s}{R_g + R_{EC}} \, B l \, \frac{1}{M_{ASB}} \, \rho_0 S_D \, \frac{e^{-jkr}}{r} \, \alpha_C(f)
+    \]
+\end{itemize}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Quality Factors and Bandwidth}]
+\begin{itemize}
+    \item \textbf{Electrical damping:} \( Q_{EC} = \dfrac{R_g + R_{EC}}{(B l)^2} \sqrt{\dfrac{M_{MSB}}{C_{MSB}}} \)
+    \item \textbf{Mechanical damping:} \( Q_{MC} = \dfrac{1}{R_{MB}} \sqrt{\dfrac{M_{MSB}}{C_{MSB}}} \)
+    \item \textbf{Total damping:} \( Q_{TC} = \dfrac{Q_{EC} Q_{MC}}{Q_{EC} + Q_{MC}} \)
+    \item \textbf{Bandwidth–resonance relationship:}
+    \[
+    f_{\pm 3\text{dB}} = f_c \sqrt{\left( \frac{1}{2 Q_{TC}^2} - 1 \right) + \sqrt{\left( \frac{1}{2 Q_{TC}^2} - 1 \right)^2 + 1}}
+    \]
+    \item \textbf{Critical damping:} \( Q_{TC} = 0.707 \) (maximally flat response)
+\end{itemize}
+\end{tcolorbox}

@@ -1,0 +1,33 @@
+\documentclass[twoside]{article}
+
+% Load all settings
+\input{default/settings}
+
+\begin{document}
+
+% Title page
+\input{default/titlepage}
+
+% Disclaimer page
+\input{default/disclaimer}
+
+% Table of contents
+\pagestyle{nohead}
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\tableofcontents
+
+% Main content
+\clearpage
+\pagestyle{fancy}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{sections/1) Introduction to Electroacoustics}
+% \newpage
+\input{sections/2) Sound Radiation}
+\newpage
+\input{sections/3) Microphone noise}
+
+\end{document}

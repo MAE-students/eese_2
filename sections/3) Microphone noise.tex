@@ -1,0 +1,1545 @@
+\section{Microphone Noise}
+
+The noise in a microphone originates primarily from \textbf{Brownian motion}, i.e., the random movement of air molecules, which induces pressure fluctuations on the diaphragm.
+
+The noise level of a microphone can be expressed in several equivalent forms:
+\[
+\text{Noise level [Pa] rms} = \text{Noise level [V] rms} / \text{Sensitivity [V/Pa]}
+\]
+It is usually expressed in decibels relative to the reference pressure \( 20\,\mu\text{Pa} \):
+\[
+\text{Noise (dB SPL)} = 20 \log_{10} \left( \frac{p_{\text{noise}}}{20\,\mu\text{Pa}} \right)
+\]
+Typical microphone noise values are in the range: $[0, 40]$ dB SPL.
+
+\textbf{Note:} When a microphone is connected to a preamplifier, the \textbf{total noise} is the sum of both microphone and preamplifier noise contributions.
+
+To evaluate microphone sensitivity, one can apply a known acoustic pressure level and measure the corresponding output voltage.  
+For example, if \( V_{\text{out}} = 1\,\text{mV} \) for \( p = 10^{-1}\,\text{Pa} \), then:
+\[
+\text{Sensitivity} = \frac{10^{-3}}{10^{-1}} = 10^{-2}\,\text{[V/Pa]} = 10^{-2} \times 10^3 = 10\,\text{mV/Pa}
+\]
+The \textbf{dynamic range} defines the range of sound pressures within which distortion remains below a given threshold (e.g., \(< 1\%\)).
+
+
+\subsection{Condenser Microphone}
+
+\subsubsection{Principle of Operation}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.55\textwidth}
+A condenser (capacitor) microphone operates on the principle of \textbf{capacitance variation due to diaphragm motion}.
+
+The capacitance of the microphone is given by:
+\[
+C = \varepsilon \frac{A}{x}
+\]
+where:
+\begin{itemize}
+    \item \( A \): diaphragm area,
+    \item \( x \): spacing between diaphragm and backplate,
+    \item \( \varepsilon \): permittivity of air.
+\end{itemize}
+The capacitor law gives:
+\[
+Q = C \, V
+\]
+where \( Q \) is the charge and \( V \) the voltage.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{condenser_mic.png}
+    \caption{Model of the condenser microphone.}
+\end{minipage}
+\end{figure}
+Assuming a constant charge (\( Q = \text{constant} \)), small variations in capacitance produce voltage variations:
+\[
+V = \frac{Q}{C} = \frac{Q x}{\varepsilon A}
+\]
+
+\subsubsection{Equilibrium Configuration}
+At equilibrium, \( C_0 \) and \( V_0 \) correspond to the static capacitance and bias voltage (at 0 dB SPL).  
+The vent hole in the backplate ensures pressure equalization at equilibrium.
+
+In such a configuration, we have: 
+\[
+P=P_0, \quad C=C_0, \quad V=V_0 \quad \Rightarrow \quad SPL \to -\infty \text{ dB}
+\]
+An increase in pressure $P$ displaces the diaphragm toward the backplate, decreasing $x$ and increasing $C$.
+Consequently, $V$ drops (since $Q$ is fixed).
+
+
+\subsubsection{Output Voltage Variation}
+The microphone’s output voltage therefore depends on pressure-induced variations in capacitance.
+
+The bias charge and bias voltage are defined as:
+\[
+Q_B = \text{constant}, \qquad
+V_B = \dfrac{Q_B}{C_0}
+\]
+When the diaphragm moves, the capacitance changes by \( \Delta C \), giving:
+\begin{align*}
+    & V_B + V_S = \frac{Q_B}{C_0 + \Delta C}
+\quad \Rightarrow \quad
+V_S = \frac{Q_B}{C_0 + \Delta C} - V_B 
+\quad \Rightarrow \quad
+V_S= \frac{Q_B}{C_0 + \Delta C} - \frac{Q_B}{C_0}
+\\
+\Rightarrow \quad & V_S  = Q_B \left( \frac{1}{C_0 + \Delta C} - \frac{1}{C_0} \right)
+\quad \Rightarrow \quad
+V_S = Q_B \left( \frac{-\Delta C}{ C_0 \left(C_0 + \Delta C\right)}\right) 
+\quad \Rightarrow \quad
+V_S = -\underbrace{\frac{Q_B}{C_0}}_{=V_B} \cdot \frac{\Delta C}{C_0 + \Delta C} 
+\end{align*}
+Assuming \( \Delta C \ll C_0 \), this simplifies to:
+\[
+V_S \approx -V_B \cdot \frac{\Delta C}{C_0}
+\]
+\textbf{Interpretation:}  
+A positive voltage output requires a negative \( \Delta C \), meaning the diaphragm moves closer to the backplate (compression).
+
+It is immediate that the output signal voltage is much smaller than the bias voltage:$ V_s \ll V_B $.
+
+\textbf{Note:} The standard bias voltage for condenser microphones is typically \( 48\,\text{V} \).
+
+
+\subsubsection{Planar Plate Analysis}
+For parallel plates (infinite area approximation), the capacitance is:
+\[
+C = \varepsilon \frac{A}{x}
+\]
+At equilibrium (no sound pressure, \( p = 0 \)):
+\[
+C = C_0 = \varepsilon \frac{A}{d_0}
+\]
+where \( d_0 \) is the equilibrium spacing between the diaphragm and the backplate.
+
+\bigskip
+If a sound wave induces a diaphragm displacement \( \Delta d = d - d_0 \), then the capacitance variation is:
+\[
+\Delta C = C - C_0 = \varepsilon A \left( \frac{1}{d} - \frac{1}{d_0} \right)
+\quad \Rightarrow \quad 
+\Delta C= \varepsilon A \frac{d_0 - d}{d \cdot d_0}
+= -\varepsilon A \frac{\Delta d}{d \cdot d_0}
+\]
+Since \( C_0 = \varepsilon \dfrac{A}{d_0} \), we obtain:
+\[
+\Delta C = -C_0 \frac{\Delta d}{d}
+\quad \Rightarrow \quad 
+\frac{\Delta C}{C_0} = -\frac{\Delta d}{d} \approx -\frac{\Delta d}{d}
+\quad  \Rightarrow \quad
+V_S \approx -V_B \frac{\Delta C}{C_0} \approx V_B \frac{\Delta d}{d_0}
+\]
+indicating that the voltage variation is directly proportional to the diaphragm displacement.
+
+
+\subsubsection{Link to Sound Pressure}
+Because diaphragm displacement is proportional to applied pressure, we can express:
+\[
+V_S \propto p = \frac{F}{S_D}
+\]
+and with \( S_D = A \) (diaphragm surface area):
+\[
+\Delta d \propto F  \ \  \text{since} \ \  \Delta d = C_{MS}F
+\]
+where \( C_{MS} \) is the \textbf{mechanical compliance} of the diaphragm (analogous to a loudspeaker suspension).
+
+Therefore:
+\[
+V_S = \frac{V_B}{d_0} \, \Delta d = \frac{V_B}{d_0} \, C_{MS} \, F = \frac{V_B}{d_0} \, C_{MS} \, S_D \, p
+\]
+
+Since \( \frac{S_D}{d_0} = \dfrac{C_{E0}}{\varepsilon} \), where \( C_{E0} \) is the equilibrium electrical capacitance (i.e. at $p=0 \ \Leftrightarrow \ d = d_0$), we obtain:
+\[
+V_S = \frac{C_{E0}  V_B}{\varepsilon} \, \, C_{MS} \, p = \frac{Q_B}{\varepsilon} \, C_{MS} \, p
+\]
+
+\subsubsection{Microphone's Sensitivity}
+The \textbf{sensitivity} of the condenser microphone is thus:
+\[
+S = \frac{V_S}{p} = \frac{Q_B}{\varepsilon} \, C_{MS}
+\]
+
+\textbf{Interpretation:}
+\begin{itemize}
+    \item The output voltage is proportional to diaphragm displacement and hence to acoustic pressure.
+    \item The compliance \( C_{MS} \) determines how easily the diaphragm moves under pressure (stiffness control).
+    \item The condenser microphone operates in a \textbf{stiffness-controlled regime}, while an electrodynamic loudspeaker operates in a \textbf{mass-controlled regime}.
+\end{itemize}
+
+\subsubsection{Condenser Microphone Model}
+
+To analyze the operation of a condenser microphone in detail, we model the interaction of the \textbf{sound pressure} \( p \) with the diaphragm and the electromechanical elements of the capsule.
+
+The incident pressure \( p \) produces a force on the diaphragm:
+\[
+F = p S_D
+\]
+which displaces the diaphragm with a mechanical compliance \( C_{MS} \), resulting in a displacement \( u \).
+
+The equivalent circuit model includes a voltage source related to the mechanical force and the electrical capacitance of the capsule:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{condenser_mic_equiv_circuit.png}
+    \caption{Equivalent electro-mechanical circuit of a condenser microphone.}
+\end{figure}
+
+In this model:
+\begin{itemize}
+    \item \( C_{MS} \): mechanical compliance of the diaphragm.
+    \item \( C_{E0} \): equilibrium electrical capacitance between diaphragm and backplate.
+    \item \( S_D \): diaphragm surface area.
+    \item \( v_s \): output signal voltage corresponding to the sound-induced capacitance variation.
+\end{itemize}
+
+\bigskip
+The mechanical force \( F \) and sound pressure \( p \) are related through the electromechanical transformer with turns ratio \( 1/S_D \).  
+The voltage source on the electrical side represents the pressure-induced mechanical-to-electrical conversion.
+
+
+\subsubsection{Electret Microphones}
+
+In \textbf{electret microphones}, no external bias voltage is required.  
+The backplate is permanently polarized using a dielectric material, maintaining a built-in \textbf{bias charge} \( Q_B \).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\textwidth]{electret_mic_structure.png}
+    \caption{Structure of an electret microphone with permanently charged dielectric backplate.}
+\end{figure}
+
+
+\textbf{Biasing and Signal Extraction: }
+To extract the signal voltage \( v_s \) when using a bias voltage \( V_B \), a large resistor \( R \) is required in the circuit.  
+Without this resistor, the bias voltage would dominate, and no variation in the output signal would be measurable:
+\[
+v_M = V_B \quad \Rightarrow \quad \text{no signal variation.}
+\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{electret_mic_bias_circuit.png}
+    \caption{Biasing circuit for signal extraction in an electret microphone. A large resistor $R$ is required for signal coupling.}
+\end{figure}
+
+
+The resistor \( R \) allows the slow discharge of the bias and isolates the AC signal voltage variations caused by sound pressure.
+
+\subsubsection{High-pass Behavior}
+
+The microphone circuit composed of the resistor \( R \) and the coupling capacitor \( C_E \) behaves as a \textbf{high-pass filter}:
+\[
+\frac{v_M}{v_s} = \frac{j \omega R C_{E0}}{1 + j \omega R C_{E0}}
+\quad \Rightarrow \quad
+\left| \frac{v_M}{v_s} \right| = \frac{f/f_L}{\sqrt{1 + \left( f/f_L \right)^2}}
+, \quad
+f_L = \frac{1}{2 \pi R C_{E0}}
+\]
+For \textbf{audio applications}, this cutoff frequency must be below the human hearing threshold: $ f_L \leq 20\,\text{Hz}$.
+
+For example, with \( C_{E0} = 10\,\text{pF} \):
+\[
+f_L \leq 20\,\text{Hz} \quad \Rightarrow \quad R \geq \frac{1}{2\pi f_L C_{E0}} \approx 800\,\text{M}\Omega
+\]
+This very low-frequency cutoff requires a high-value resistor to avoid attenuation of bass frequencies.
+
+\begin{table}[H]
+\centering
+\caption{Attenuation factor $a = \frac{|v_M|}{|v_s|}$ for different levels.}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{$a_{dB}$} & \textbf{$a$} & \textbf{$f/f_L$} \\
+\hline
+-3 & 0.707 & 1 \\
+-1 & 0.891 & 1.96 $\approx$ 2 \\
+-0.5 & 0.944 & 2.86 $\approx$ 3 \\
+-0.1 & 0.989 & 6.69 $\approx$ 7 \\
+\hline
+\end{tabular}
+\end{table}
+
+The attenuation factor is given by:
+\[
+a = \frac{|v_M|}{|v_s|} = \frac{f/f_L}{\sqrt{1 + (f/f_L)^2}}
+\]
+
+
+\subsubsection{Cable Influence Without Internal Preamplifier}
+
+When the microphone is connected directly to the audio cable (without an internal preamplifier), the cable capacitance adds extra filtering, forming a capacitive voltage divider.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{microphone_cable_effect.png}
+    \caption{Equivalent circuit showing capacitive loading due to the cable and preamp input capacitance.}
+\end{figure}
+
+The total capacitance at the preamp input results from:
+\begin{itemize}
+    \item Microphone’s internal capacitance: \( C_{E_0} \approx 10\,\text{pF} \),
+    \item Preamp input capacitance: \( C_{IN} \approx 10\,\text{pF} \),
+    \item Cable capacitance per meter: \( C_{CABLE} \approx 100\,\text{pF/m} \).
+\end{itemize}
+
+For a 1-meter cable, the voltage received at the preamp input is:
+\[
+v_{IN,PREAMP} = v_s \frac{C_{E_0}}{C_{E_0} + C_{CABLE} + C_{IN}} \approx v_s \frac{1}{12} \approx 0.08\,v_s < 10\%\cdot v_s
+\]
+This corresponds to a signal loss of over \( 90\% \), demonstrating the importance of placing the preamplifier as close as possible to the microphone capsule.
+
+
+\subsubsection{Phantom Power Supply Architecture}
+
+To power the microphone and its internal electronics (such as the impedance converter or preamplifier), a supply voltage \( V_B \) — typically \( 48\,\text{V} \) — is applied using a symmetric topology known as \textbf{phantom power}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{phantom_power.png}
+    \caption{Simplified schematic of a phantom power supply system for condenser microphones.}
+\end{figure}
+
+After the signal is conditioned by the internal electronics, the microphone output is converted into a \textbf{differential signal} \( v_s \).  
+The single-ended voltage \( v_p \) becomes a balanced differential voltage split across two lines:
+\[
++\frac{v_s}{2} \quad \text{and} \quad -\frac{v_s}{2}
+\]
+This differential signal \( v_s \) is transmitted to the preamplifier through a balanced cable.  
+The bias voltage \( V_B \) is applied at the midpoint of the transformer coil, ensuring that any current disturbance \( i \) on the transmission line does not interfere with the audio signal.
+
+\textbf{Operating Principle:}
+\begin{enumerate}
+    \item The capsule’s single-ended output \( v_p \) is first converted to a \textbf{differential signal} \( \pm \frac{v_s}{2} \) using an output transformer.
+    \item The two balanced lines (pins 2 and 3 of the XLR connector) both carry the same DC bias \( V_B \).  
+    Any \textbf{common-mode} current disturbance in the cable is thus invisible to the differential input stage.
+    \item At the preamp end, an input transformer recombines the differential audio and \textbf{blocks the DC phantom voltage} from reaching the audio electronics.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{phantom_power_2.png}
+    \caption{Differential transmission of the phantom-powered microphone signal through a balanced XLR connection.}
+\end{figure}
+
+
+
+\textbf{Key Design Principles:}
+\begin{itemize}
+    \item \textbf{Symmetric bias resistors:}  
+    Two equal resistors \( R_p \) (one per signal leg to $V_B$) ensure that the DC supply splits evenly between both lines, maintaining perfect symmetry.
+
+    \item \textbf{Common-mode rejection:}  
+    The differential preamp only detects the voltage difference between the two lines (\( +v_s/2 - (-v_s/2) = v_s \)).  
+    Any identical voltage or current noise (e.g., phantom power ripple) appearing on both conductors is canceled.
+
+    \item \textbf{DC-blocking capacitors:}  
+    At both the microphone capsule and the preamp input, coupling capacitors block DC components while allowing the AC audio signal to pass.
+
+    \item \textbf{Transformer coupling:}  
+    Provides galvanic isolation, blocks ground loops, and ensures impedance matching between the microphone and preamp stages.
+\end{itemize}
+
+\subsection{Microphones Directivity}
+
+Microphones are classified according to their \textbf{directivity}, i.e., their sensitivity to sound arriving from different directions.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{directivity_pattern.png}
+    \caption{Typical directivity patterns: omnidirectional, cardioid, supercardioid, hypercardioid, and bidirectional.}
+\end{figure}
+
+
+\textbf{Principle of Operation: }
+Microphone directivity fundamentally depends on how \textbf{pressure} is sensed by the capsule:
+\begin{itemize}
+    \item \textbf{Pressure microphones} respond to the \textit{absolute pressure}.
+    \item \textbf{Gradient microphones} respond to the \textit{pressure difference} (spatial pressure gradient).
+    \item \textbf{Combination microphones} use both absolute and gradient components.
+\end{itemize}
+
+\subsubsection{Pressure Microphones}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.57\textwidth}
+A condenser (capacitor) microphone operates For a pressure microphone, the output voltage is proportional to the sound pressure acting on the diaphragm:
+\[
+\tilde{p} = p_0 e^{-j k x}, \qquad \tilde{f}_0 = \tilde{p} \, S_D
+\]
+where \( S_D \) is the diaphragm surface area.
+
+Let us consider a large room with a harmonic piston source.  
+If the wavelength \( \lambda \) is large compared to the microphone dimensions, the pressure can be considered uniform across the diaphragm.
+
+The cavity behind the diaphragm is connected to the outside through an \textbf{equalization hole}, which ensures static pressure equilibrium without affecting the audio-band response.
+
+In the limit \( \lambda \gg L \) (with \( L \) the microphone size), the following approximations hold:
+
+\begin{itemize}
+    \item The pressure \( p \) does not vary appreciably across the diaphragm surface.
+    \item The microphone output \( v_s \propto p \) is independent of direction.
+    \item The microphone is thus \textbf{omnidirectional}.
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{pressure_mic_structure.png}
+    \caption{Pressure microphone capsule with equalization hole behind the diaphragm.}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{room.png}
+    \caption{For $\lambda \gg L$, the pressure field is uniform and the microphone behaves as omnidirectional.}
+\end{figure}
+\textbf{Remark:}  
+To ensure accurate pressure measurements without disturbing the acoustic field, the microphone’s physical dimensions must remain \textbf{small relative to the wavelength of sound}.
+
+
+
+
+
+\subsection{Pressure Gradient Microphones}
+
+A \textbf{pressure-gradient microphone} measures the difference between the acoustic pressures acting on the two sides of its diaphragm.  
+Unlike a pressure microphone, which senses the absolute pressure \( p \), the gradient microphone responds to the local \textbf{pressure gradient}: $\frac{\partial p}{\partial x}$.
+
+This makes it inherently \textbf{directional}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{pressure_grad_mic_1.png}
+    \caption{Principle of a pressure-gradient microphone: forces acting on both sides of the diaphragm.}
+\end{figure}
+Let \( p_1 \) and \( p_2 \) be the pressures on the front and rear faces of the diaphragm, respectively, acting on a diaphragm area \( S_D \).  
+The instantaneous acoustic force acting on the diaphragm is:
+\[
+f_D = (p_1 - p_2) S_D
+\]
+This differential pressure drives the diaphragm motion, which is then transduced into an electrical signal.
+
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.57\textwidth}
+Projecting the force onto the normal of the diaphragm’s surface gives:
+\[
+f_{D,\perp} = f_D \cos(\theta) = (p_1 - p_2) S_D \cos(\theta)
+\]
+where \( \theta \) is the angle of incidence of the plane wave (measured from the diaphragm normal).  
+Only the normal component of the pressure difference contributes to diaphragm motion.
+
+Writing the acoustic pressure as a function of position \( p(x) \), and assuming a small separation \( \Delta l \) between the diaphragm faces, we have:
+\[
+p_1 - p_2 \approx -\Delta l \, \frac{\partial p}{\partial x}
+\]
+Hence, the normal force becomes:
+\[
+f_{D,\perp} = -\frac{\partial p}{\partial x} \, \Delta l \, S_D \cos(\theta)
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{pressure_grad_mic_plane.png}
+    \caption{Plane wave incident at an angle $\theta$, showing effective path difference $\Delta l$ across the diaphragm.}
+\end{minipage}
+\end{figure}
+
+From the \textbf{acoustic momentum equation} (Newton’s law for fluids):
+\[
+\frac{\partial p}{\partial x} = \rho_0 \frac{\partial u}{\partial t}
+\]
+where \( u \) is the particle velocity and \( \rho_0 \) is the density of air. Substituting gives:
+\[
+f_{D,\perp} = \rho_0 \frac{\partial u}{\partial t} \, \Delta l \, S_D \cos(\theta)
+\]
+
+\subsubsection{Frequency-Domain Analysis}
+
+In the frequency domain, the particle velocity is expressed as:
+\[
+\tilde{u} = u_0 e^{j \omega t} \quad \Rightarrow \quad \frac{\partial \tilde{u}}{\partial t} = j \omega \tilde{u}
+\]
+Thus, from the previous formulation:
+\[
+\tilde{f}_{D\perp} = j \omega \rho_0 \tilde{u} \, \Delta l \, S_D \cos \theta = j k \rho_0 c \, \tilde{u} \, S_D \, \cos \theta \quad \propto \ \tilde{u}
+\]
+The geometric path difference \( \Delta l \) depends on the diaphragm’s geometry and mounting (not only on its width).  
+For a circular diaphragm of radius \( a \):
+\[
+S_D = \pi a^2, 
+\quad 
+Z_S = \frac{\tilde{p}}{\tilde{u}} = \frac{\tilde{f}_{D\perp}}{S_D \tilde{u}} = j \omega \rho_0 \Delta l \cos (\theta),
+\]
+Evaluating the specific acoustic impedance along the normal to the diaphragm (\( \theta = 0 \)):
+\[
+Z_S (\theta = 0) = j \omega \rho_0 \Delta l \quad \Rightarrow \quad \Delta l = \frac{Z_S (\theta = 0)}{j \omega \rho_0}
+\]
+
+\textbf{Rigid-Piston Limit (No Baffle): } A large diaphragm acting as a rigid piston in free space exhibits the radiation impedance:
+\[
+Z_S = j \rho_0 c \frac{4ka}{3\pi}
+\quad \Rightarrow \quad
+\Delta l = \frac{4a}{3\pi} \approx \frac{a}{2}
+\]
+
+\textbf{Flexible-Disk Limit: } If the diaphragm bends (plate bending mode), the radiation impedance is:
+\[
+Z_S = j \rho_0 c \frac{\pi k a}{4} \quad \Rightarrow \quad \Delta l = \frac{\pi a}{4} \approx \frac{3a}{4}
+\]
+
+\subsubsection{Force from Plane Waves}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.7\textwidth}
+For a plane wave:
+\[
+\tilde{p} = p_0 e^{-jkx}, \quad k = \frac{\omega}{c} \quad \Rightarrow \quad \frac{\partial \tilde{p}}{\partial x} = -j k \tilde{p}
+\]
+Hence, the diaphragm force per unit area is:
+\[
+\tilde{f}_{D\perp} = j \frac{\omega}{c} \tilde{p} \, \Delta l \, S_D \cos \theta
+\quad \Rightarrow \quad
+|\tilde{f}_{D\perp}| = \frac{\omega}{c} |\tilde{p}| \, \Delta l \, S_D |\cos \theta|
+\]
+\begin{itemize}
+    \item The response peaks at \( \theta = 0^\circ \),
+    \item It vanishes at \( \theta = \pm 90^\circ \),
+    \item It peaks again with opposite phase at \( \theta = 180^\circ \).
+\end{itemize}
+
+Thus, the pressure-gradient microphone exhibits a \textbf{bi-directional pattern} for plane-wave excitation.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.25\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{bi_directional_pattern.png}
+    \caption{Bi-directional (figure-eight) polar pattern of a pressure-gradient microphone.}
+\end{minipage}
+\end{figure}
+
+\subsubsection{Force from Spherical Waves}
+
+When the sound source is a point source or piston in a large room, the pressure field is \textbf{spherical}:
+\[
+\tilde{p}(r) = A_0 \frac{e^{-jkr}}{r}
+\]
+The radial pressure gradient becomes:
+\[
+\frac{\partial \tilde{p}}{\partial r} = A_0 \left( \frac{1 + jkr}{r} \right) \frac{e^{-jkr}}{r} = \frac{1 + jkr}{r} \, \tilde{p}(r)
+\]
+Projecting this onto the diaphragm normal gives:
+\[
+\tilde{f}_{D\perp} = \frac{1 + jkr}{r} \, \tilde{p} \, S_D \, \Delta l \cos \theta
+\]
+This relation shows that the microphone’s directional response is modified in the near field, where \( kr \) is small, producing a deviation from the ideal plane-wave pattern.
+
+
+\subsubsection{Distance and Frequency Dependence}
+
+At a measurement point located at distance \( r \), the RMS force magnitude is:
+\[
+|\tilde{f}_{D,\text{RMS}}| = |\tilde{p}|_{\text{RMS}} \, S_D \, \Delta l \cos(\theta) \, \frac{\sqrt{1 + (k r)^2}}{r}
+\quad \Rightarrow \quad |\tilde{f}_{D,\text{RMS}}| = |\tilde{p}|_{\text{RMS}} \, \frac{\omega S_D \Delta l \cos(\theta)}{c} \, \frac{\sqrt{1 + (k r)^2}}{k r}
+\]
+Relating this to particle velocity through the acoustic impedance \( Z_A = \rho_0 c \), we obtain:
+\[
+|\tilde{u}|_{\text{RMS}} = \frac{|\tilde{p}|_{\text{RMS}}}{Z_A} = \frac{|\tilde{p}|_{\text{RMS}}}{\rho_0 c}\frac{\sqrt{1 + (kr)^2}}{kr}
+\quad \Rightarrow \quad
+|\tilde{f}_{D,\perp}|_{\text{RMS}} = |\tilde{u}|_{\text{RMS}} \omega \rho_0 S_D \, \Delta l \cos(\theta)
+\]
+
+\subsubsection{Distance and Frequency Dependence}
+
+The frequency dependence of the output voltage arises from the spatial derivative of pressure.  
+We have:
+\[
+|v_{\text{out}}| \propto |\tilde{f}_{D,\perp}| \propto \left| \frac{\partial \tilde{p}}{\partial r} \right| = \frac{\sqrt{1 + (k r)^2}}{r} |\tilde{p}(r)|
+\]
+We define the \textbf{frequency-normalized distance factor}:
+\[
+\gamma = \frac{\sqrt{1 + (k r)^2}}{r} = \frac{\sqrt{1 + (f / f_0)^2}}{r}, \quad \text{with} \quad f_0 = \frac{c}{2 \pi r}
+\]
+
+\textbf{Case 1: High Frequencies (\( f \gg f_0 \), i.e. \( k r \gg 1 \)):} In this regime we have
+\[
+\gamma \approx \frac{f / f_0}{r} = \frac{f}{c / (2\pi r)} = \frac{2\pi f}{c} = k
+\quad \Rightarrow \quad \frac{\partial \tilde{p}}{\partial r} \propto \frac{\tilde{p}}{r}
+\]
+
+Thus, no additional distance dependence is observed beyond spherical spreading.
+
+\textbf{Case 2: Low Frequencies (\( f \ll f_0 \), i.e. \( k r \ll 1 \)): } In this regime we have
+\[
+\gamma \approx \frac{1}{r}
+\quad \Rightarrow \quad \frac{\partial \tilde{p}}{\partial r} \propto \frac{\tilde{p}}{r^2}
+\]
+Hence, low frequencies experience additional attenuation with distance — a phenomenon known as \textbf{extra low-frequency roll-off}.
+
+\begin{table}[H]
+\centering
+\caption{Relation between distance $r$ and corresponding cut-off frequency $f_0$.}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Distance $r$ (mm)} & \textbf{Cutoff frequency $f_0$ (Hz)} \\
+\hline
+1000 & 55 \\
+100 & 550 \\
+10 & 5.5k \\
+2.7 & 20k \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{v_mic_out.png} \hfill
+    \includegraphics[width = 0.45 \textwidth]{f_D_perp.png}
+    \caption{Frequency and distance dependence of the pressure-gradient microphone response.}
+\end{figure}
+
+
+\textbf{Interpretation:}  
+Distance has a significant influence on low-frequency response, giving rise to the \textbf{proximity effect}, which amplifies low frequencies when the sound source is close to the microphone.  
+Some microphones incorporate a low-frequency compensation filter (high-pass response) to counteract this effect, achieving a flat response for close-range recording.
+
+
+\subsubsection{Combined Pressure + Gradient Directivity}
+
+By combining the outputs of a pressure microphone and a pressure-gradient microphone, one can synthesize \textbf{intermediate directivity patterns} between the omnidirectional and bidirectional extremes.
+
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.7\textwidth}
+Let the pressure microphone output be \( v_p(\theta) = v_{p0} \),  
+and the pressure-gradient microphone output be \( v_g(\theta) = v_{g0} \cos\theta \).
+
+The total output becomes:
+\[
+v_M(\theta) = v_{p0} + v_{g0}\cos\theta = v_{p0}\left(1 + B\cos\theta\right)
+, \quad
+B = \frac{v_{g0}}{v_{p0}}
+\]
+Depending on the value of \( B \), different polar patterns are obtained:
+
+\begin{itemize}
+    \item \( B = 0 \): \textbf{Omnidirectional} – pure pressure microphone, no gradient component.
+    \item \( B = 1 \): \textbf{Cardioid} – \( v_M = v_{p0}(1 + \cos\theta) \), null at \( \theta = 180^\circ \).
+    \item \( B \rightarrow \infty \): \textbf{Figure-8 (Bidirectional)} – pure gradient response, no pressure component.
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.25\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{mic_combination.png}
+    \caption{Schematic representation of combined pressure and gradient responses.}
+\end{minipage}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.7\textwidth}
+In the case of a cardioid pattern, we have:
+$\begin{cases}
+\theta = 0^\circ &\quad \Rightarrow \quad v_M = 2v_{p0} \\
+\theta = \pm 90^\circ &\quad \Rightarrow \quad v_M = v_{p0} \\
+\theta = 180^\circ &\quad \Rightarrow \quad v_M = 0
+\end{cases}$
+\end{minipage}\hfill
+\begin{minipage}[c]{0.25\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{cardioid_pattern.png}
+    \caption{Cardioid pattern.}
+\end{minipage}
+\end{figure}
+
+In general, we define the \textbf{directivity index} as:
+\[
+D(\theta) = \frac{v_M(\theta)}{v_M(0)} = \frac{1 + B\cos\theta}{1 + B}, \qquad D(\theta) \in [-1, +1]
+\]
+The polar pattern amplitude in dB is given by:
+\[
+20\log_{10}|D(\theta)|
+\]
+
+\subsection{Directionality in Microphones}
+
+As discussed previously, the \textbf{directivity} of a microphone describes how its sensitivity varies with the direction of the incident sound.  
+To quantify this property, we introduce the \textbf{directivity factor} \( Q \), which measures how much a microphone emphasizes certain directions over others.
+
+\subsubsection{Definition of the Directivity Factor}
+
+Assuming a \textbf{homogeneous and isotropic sound field} (i.e., sound arriving equally from all directions), let:
+
+\begin{itemize}
+    \item \( \overline{W}_{A,OMN} \): mean acoustic power received by an omnidirectional reference microphone.
+    \item \( \overline{W}_{A,MUT} \): mean acoustic power received by the microphone under test.
+\end{itemize}
+
+The \textbf{directivity factor} is defined as:
+\[
+Q = \frac{\overline{W}_{A,OMN}}{\overline{W}_{A,MUT}}
+\]
+
+For an omnidirectional microphone, \( Q = 1 \).  
+Directional microphones, which emphasize certain angles, exhibit \( Q > 1 \).
+
+\textbf{Interpretation:}  
+The more a microphone favors specific directions (e.g., cardioid, hypercardioid), the less total power it receives from a uniform sound field.  
+This leads to a higher directivity factor \( Q \).  
+Hence, \( Q \) represents a trade-off between spatial focus and total energy capture:  
+microphones with higher \( Q \) have narrower acceptance angles and greater spatial selectivity.
+
+\subsubsection{Mean Acoustic Power over a Sphere}
+
+
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.55\textwidth}
+To compute the mean acoustic power radiated over a spherical surface, we integrate over an infinitesimal surface element:
+\[
+dA = r^2 \sin(\theta)\, d\theta\, d\phi
+\]
+The instantaneous power through this element is:
+\[
+dW_A = p(r, \theta, \phi) \cdot U(r, \theta, \phi) = p(r, \theta, \phi) \cdot u(r, \theta, \phi) \, dA
+\]
+Using the acoustic impedance for spherical waves:
+\[
+Z_S = \rho_0 c \, \frac{1 + j k r}{1 + (k r)^2}
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{polar_coord.png}
+    \caption{Spherical integration of acoustic power over solid angles.}
+\end{minipage}
+\end{figure}
+The real part of the specific impedance ratio is:
+\[
+\frac{\Re[Z_S]}{|Z_S|^2} = \frac{1}{\rho_0 c}
+\]
+Hence, under sinusoidal steady-state conditions:
+\[
+d\overline{W}_A = \frac{\Re[Z_S]}{|Z_S|^2} |p_{\text{RMS}}|^2 \, dA = \frac{1}{\rho_0 c} |p_{\text{RMS}}|^2 r^2 \sin(\theta)\, d\theta\, d\phi
+\]
+
+\subsubsection{Microphone Voltage and Directivity}
+
+Let the microphone diaphragm lie in the \( x\text{-}y \) plane.  
+The output voltage at a given angular direction \( (\theta, \phi) \) is:
+\[
+v_M(\theta, \phi) = v_M(0, \phi) \cdot D(\theta, \phi)
+\]
+where \( v_M(0, \phi) = v_{M,0} \) represents the reference diaphragm voltage, and \( D(\theta, \phi) \) is the microphone’s directivity function.
+
+For simplicity, we assume that the directivity only depends on the polar angle:
+\[
+D(\theta, \phi) = D(\theta)
+\]
+Recalling the directivity index:
+\[
+D(\theta) = \frac{1 + B \cos(\theta)}{1 + B}
+\]
+
+The instantaneous electrical power captured by the microphone element is thus:
+\[
+d\overline{W}_{A,M} = d\overline{W}_A \cdot D^2(\theta)
+\quad \Rightarrow \quad 
+d\overline{W}_{A,M} = \frac{1}{\rho_0 c} |D(\theta)|^2 |p_{\text{RMS}}|^2 r^2 \sin(\theta)\, d\theta\, d\phi
+\]
+
+\subsubsection{Integration Over Solid Angle}
+
+To compute the mean acoustic power received by a microphone over the entire sphere, we integrate over all directions:
+\[
+\overline{W}_{A,M} = \frac{1}{\rho_0 c} \int_{\phi=0}^{\phi=2\pi} \int_{\theta=0}^{\theta=\pi} D^2(\theta) \, p_{\text{RMS}}^2(r, \theta, \phi) \, r^2 \sin(\theta)\, d\theta\, d\phi
+\]
+
+Assuming a \textbf{homogeneous and isotropic sound field}, we have \( p_{\text{RMS}}(r, \theta, \phi) = p_{\text{RMS}} \), so that:
+\[
+\overline{W}_{A,M} = r^2 \frac{p_{\text{RMS}}^2}{\rho_0 c} \int_{\phi=0}^{\phi=2\pi} d\phi\int_{\theta=0}^{\theta=\pi} D^2(\theta) \sin(\theta)\, d\theta
+\]
+Integrating over \( \phi \):
+\[
+\overline{W}_{A,M} = 2\pi r^2 \frac{p_{\text{RMS}}^2}{\rho_0 c} \int_{0}^{\pi} D^2(\theta) \sin(\theta)\, d\theta
+\]
+
+\noindent
+\textbf{Note:}  
+The normalization integral \( \int D^2(\theta)\sin\theta\, d\theta \) quantifies the microphone’s \textbf{directivity effect} on received power.
+
+Defining a proportionality constant \( \kappa \):
+\[
+\overline{W}_{A,M} = \kappa \int_{0}^{\pi} D^2(\theta) \sin(\theta)\, d\theta
+\]
+
+\subsubsection{Directivity Factor for a Generic Microphone}
+
+The directivity factor \( Q(B) \) is defined as the ratio between the omnidirectional and directional mean acoustic powers:
+\[
+Q(B) = \frac{\overline{W}_{A,M(\text{OMNI})}}{\overline{W}_{A,M(\text{MUT})}} = 
+\frac{\int_{0}^{\pi} D^2(\theta)_{\text{OMNI}} \sin(\theta)\, d\theta}{\int_{0}^{\pi} D^2(\theta)_{\text{MUT}} \sin(\theta)\, d\theta}
+\]
+For the omnidirectional case \( D(\theta)_{\text{OMNI}} = 1 \), and for a general microphone:
+\[
+D(\theta) = \frac{1 + B\cos(\theta)}{1 + B}
+\]
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.5\textwidth}
+Hence:
+\[
+Q(B) = \frac{2(1 + B)^2}{\int_{0}^{\pi} (1 + B\cos(\theta))^2 \sin(\theta)\, d\theta}
+\]
+Computing the denominator:
+\[
+\int_{0}^{\pi} (1 + B\cos(\theta))^2 \sin(\theta)\, d\theta = \frac{6 + 2B^2}{3}
+\]
+Therefore:
+\[
+Q(B) = \frac{2(1 + B)^2}{\frac{6 + 2B^2}{3}} \quad \Rightarrow \quad  \boxed{Q= \frac{3(1 + B)^2}{3 + B^2}}
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.45\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{Q_Factor_Mic.png}
+    \caption{Graph of $ Q(B)$.}
+\end{minipage}
+\end{figure}
+
+\textbf{Interpretation:}
+
+Recalling \( B = \frac{v_{g,0}}{v_{p,0}} \) from the combined pressure–gradient relationship, we find:
+\begin{itemize}
+    \item \( B = 0 \Rightarrow Q = 1 \) \quad (Omnidirectional microphone)
+    \item \( B = 1 \Rightarrow Q = 3 \) \quad (Cardioid microphone)
+    \item \( B \to \infty \Rightarrow Q = 3 \) \quad (Bidirectional or figure-8 microphone)
+\end{itemize}
+
+The sensitivity of the directivity factor to \( B \) is given by:
+\[
+\frac{\partial Q}{\partial B} = \frac{6(1 + B)(3 - B)}{(3 + B^2)^2}
+\]
+Setting the derivative to zero yields the condition for maximum directivity:
+\[
+\frac{\partial Q}{\partial B} = 0 \quad \text{at} \quad B = 3
+\quad \Rightarrow \quad Q_{\text{max}} = 4
+\]
+From the directivity factor analysis, we note that retrieving \( 25\% \) of the energy corresponds to \( 1 / Q \).  
+This configuration is achieved by a \textbf{hypercardioid microphone}.
+\[
+D(\theta) = \frac{1 + B\cos(\theta)}{1 + B} \quad \Rightarrow \quad D_{\text{hypercardioid}}(\theta) = \frac{1 + 3\cos(\theta)}{4}
+\]
+
+\subsubsection{Front–Rear Ratio (FR)}
+
+To quantify a microphone’s ability to reject sound from the rear, we define the \textbf{Front–Rear ratio (FR)} as:
+\[
+FR = \frac{\overline{W}_{A,\text{Front}}}{\overline{W}_{A,\text{Rear}}}
+\]
+The front and rear mean powers are defined by integration over the respective hemispheres:
+\[
+FR = \frac{2 \int_{0}^{\pi/2} D^2(\theta) \sin(\theta)\, d\theta}{2 \int_{\pi/2}^{\pi} D^2(\theta) \sin(\theta)\, d\theta}
+= \frac{\int_{0}^{\pi/2} D^2(\theta) \sin(\theta)\, d\theta}{\int_{\pi/2}^{\pi} D^2(\theta) \sin(\theta)\, d\theta}
+\]
+\textbf{Note:}  
+The factor 2 accounts for symmetry with respect to the \( x\text{-}y \) plane and cancels out between numerator and denominator.
+
+Substituting the general directivity function \( D(\theta) = \frac{1 + B\cos(\theta)}{1 + B} \), we obtain:
+\[
+FR = \frac{3 + 3B + B^2}{3 - 3B + B^2}
+\]
+\textbf{Optimization: } Differentiating with respect to \( B \):
+\[
+\frac{\partial FR}{\partial B} \geq 0, \qquad \frac{\partial FR}{\partial B} = 0 \text{ at } B = \sqrt{3}
+\]
+Thus, the \textbf{supercardioid microphone} corresponds to \( B = \sqrt{3} \), where the front–rear ratio is maximized.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Front_Rear_Ratio.png}
+    \caption{Graph of $ FR(B)$.}
+    \label{fig:placeholder}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Comparison of microphone polar patterns, directivity factors, and front–rear ratios.}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Polar Pattern} & \textbf{$B = v_{g0}/v_{p0}$} & \textbf{Directivity Factor $Q = \dfrac{3(1 + B)^2}{3 + B^2}$} & \textbf{FR Ratio $FR = \dfrac{3 + 3B + B^2}{3 - 3B + B^2}$} \\
+\hline
+Omnidirectional & $0$ & $1$ & $1$ \\
+Bi-directional & $\infty$ & $3$ & $1$ \\
+Cardioid & $1$ & $3$ & $7$ \\
+Hypercardioid & $3$ & $4$ & $14$ \\
+Supercardioid & $\sqrt{3}$ & $\dfrac{4 + 2\sqrt{3}}{3} \approx 3.7$ & $14$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Interpretation:}  
+\begin{itemize}
+    \item The hypercardioid and supercardioid patterns represent optimal trade-offs between directivity and rear rejection.
+    \item The \textbf{supercardioid} maximizes the front–rear rejection ratio, minimizing pickup from the rear lobe.
+    \item The cardioid pattern (\( B = 1 \)) offers a balanced compromise between directionality and uniform frequency response.
+\end{itemize}
+
+\subsection{Pressure + Pressure Gradient Microphones}
+
+To achieve different polar patterns, pressure and pressure-gradient configurations can be combined within the same microphone.  
+The back of such a microphone includes an \textbf{acoustic resistance} composed of both an acoustic \textbf{compliance} \( C_A \) and a \textbf{resistance} \( R_A \).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\linewidth]{pressure_plus_gradient_mic_model.png}
+    \hfill
+    \includegraphics[width=0.45\linewidth]{pressure_plus_grad_mic_circuit.png}
+    \caption{Model (left) and equivalent circuit (right) of acombined pressure and pressure-gradient .}
+\end{figure}
+
+Let \( \tilde{p}_1 \) and \( \tilde{p}_2 \) be the acoustic pressures at the front and back of the diaphragm, respectively.  
+The differential pressure across the diaphragm is:
+\[
+\tilde{p}_D = \tilde{p}_1 - \tilde{p}_2
+\]
+We consider a one-dimensional acoustic model.  
+The total pressure field can be expressed as:
+\[
+\tilde{p} = p_0 e^{-jkx}
+, \quad 
+\tilde{p}_1 = p_0 e^{-jkx_1}
+,\quad
+\tilde{p}_2 = \tilde{p}_1 + \dfrac{\partial p}{\partial x}\bigg|_{x=x_1} \Delta \ell \cos(\theta)
+= \tilde{p}_1 \left( 1 - j\dfrac{\omega}{c}\Delta \ell \cos(\theta) \right)
+\]
+The acoustic velocities at the diaphragm and at the back cavity are denoted:
+\[
+\tilde{U}_D \quad \text{(at the diaphragm)}, \qquad \tilde{U}_0 \quad \text{(at the back of the cavity)}
+\]
+The pressure at the microphone’s opening is \( \tilde{p}_A \).
+
+The pressures at the front and back faces can be expressed as:
+\[
+\begin{cases}
+\tilde{p}_1 = \tilde{p}_A + \tilde{p}_R = \dfrac{1}{j\omega C_A} (\tilde{U}_D - \tilde{U}_0) + Z_{AD} \tilde{U}_D \\
+\tilde{p}_2 = \tilde{p}_A - \tilde{p}_R = \dfrac{1}{j\omega C_A} (\tilde{U}_D - \tilde{U}_0) - R_A \tilde{U}_0
+\end{cases}
+\]
+Thus, the differential pressure becomes:
+\[
+\tilde{p}_D = Z_{AD} \tilde{U}_D = \frac{Z_{AD} \left( \tilde{p}_1R_A - \frac{\tilde{p}_1 - \tilde{p}_2}{j \omega C_A}\right)}{Z_{AD}R_A - j \frac{R_A + Z_{AD}}{\omega C_A}}
+\quad \Rightarrow \quad
+\tilde{p}_D = \tilde{p}_1 \frac{Z_{AD} R_A}{Z_{AD} R_A - j \dfrac{R_A + Z_{AD}}{\omega C_A}}
+ \left( 1 + \frac{\Delta \ell \cos(\theta)}{c R_A C_A} \right)
+\]
+We define:
+\[
+B = \frac{\Delta \ell}{c R_A C_A}, \qquad A = \frac{Z_{AD} R_A}{Z_{AD} R_A - j \dfrac{R_A + Z_{AD}}{\omega C_A}}
+\]
+Hence, the pressure difference acting on the diaphragm is:
+\[
+|\tilde{f}_D| = \tilde{p}_D S_D = \tilde{p}_1 S_D|A| (1 + B\cos(\theta))
+\]
+Finally, the microphone voltage response (proportional to the pressure difference) becomes:
+\[
+\tilde{v}_M = v_{S,0} (1 + B\cos(\theta)) 
+\quad \Rightarrow \quad
+\tilde{v}_M \propto \tilde{f}_D 
+\]
+
+
+
+
+
+\subsection{Dynamic Microphone}
+
+\clearpage
+
+
+
+\subsection{Notes from the slides}
+
+\textbf{Microphones, Introduction and Specifications: }
+Microphones are \textbf{electroacoustic transducers} that convert acoustic pressure variations into electrical signals.  
+Their design and characteristics determine how accurately they reproduce sound in various contexts — from measurements and studio recording to broadcast and live reinforcement.
+
+\paragraph{Historical Overview.}
+Early developments in microphone technology led to several distinct transduction principles:
+\begin{itemize}
+  \item \textbf{Carbon microphone (1921, Westinghouse):} based on variable resistance through compressed carbon granules.
+  \item \textbf{Condenser (capacitor) microphone (1925, Westinghouse):} converts diaphragm motion into voltage variation through capacitance change.
+  \item \textbf{Ribbon microphone (1933):} generates voltage by electromagnetic induction in a moving ribbon.
+  \item \textbf{Crystal (piezoelectric) microphone:} uses deformation of a piezoelectric crystal to produce a voltage.
+\end{itemize}
+
+\paragraph{Microphone Classification.}
+Microphones can be categorized by:
+\begin{itemize}
+  \item \textbf{Transduction principle:} condenser, moving-coil (dynamic), piezoelectric, ribbon...
+  \item \textbf{Application:} sound-level measurement, speech reinforcement, recording...
+  \item \textbf{Directionality:} omnidirectional, cardioid, supercardioid, hypercardioid...
+\end{itemize}
+
+\paragraph{Operating Principles of Main Microphone Types:}
+\begin{itemize}
+    \item \textbf{Carbon Microphone: }
+Operates on a piezoresistive principle: a diaphragm compresses carbon granules, changing resistance. A DC bias current passes through; pressure fluctuations modulate this resistance, generating an AC signal.  
+The signal is coupled via a transformer that both increases voltage and performs AC coupling.  
+Due to high distortion, high noise, and limited frequency response, carbon microphones are now obsolete but historically significant.
+\item \textbf{Ribbon Microphone.}
+A thin metallic ribbon suspended in a magnetic field vibrates with incident sound waves. Its motion induces a voltage proportional to velocity. Ribbon microphones are inherently bidirectional (figure-eight polar pattern) and provide a smooth, natural frequency response with low sensitivity to plosives.
+\item \textbf{Crystal (Piezoelectric) Microphone.}
+Sound-induced diaphragm motion applies pressure to a piezoelectric crystal, generating a proportional voltage. Although rugged and inexpensive, crystal microphones suffer from high output impedance and poor linearity, thus rarely used in precision applications.
+\item \textbf{Moving-Coil (Dynamic) Microphone.}
+A conductive coil attached to a diaphragm moves within a magnetic field, inducing a voltage across the coil.  
+Diaphragms are usually made of Mylar™, and hum-compensation coils reduce magnetic interference. Dynamic microphones are robust, insensitive to humidity, and ideal for stage and instrument use.
+\item \textbf{Condenser (Capacitor) Microphone.}
+The diaphragm and backplate form a variable capacitor with capacitance \(C\). When charged with a constant charge \(Q\),
+sound-induced diaphragm motion changes \(C\), generating a voltage variation:
+\[
+Q = C V \quad \Rightarrow \quad V = \frac{Q}{C}.
+\]
+A bias voltage (polarization) is required — either externally supplied or through an internal electret layer.  
+Condenser microphones offer the best linearity, extended bandwidth, and low noise, making them standard for studio and measurement applications.
+\end{itemize}
+
+\subsubsection{Microphone Characteristics}
+
+For microphones, the \textbf{key performance parameters} are: 
+\begin{enumerate}
+  \item Sensitivity
+  \item Directionality
+  \item Frequency response
+  \item Noise
+  \item Dynamic range
+\end{enumerate}
+
+\paragraph{Sensitivity:}
+The \textbf{sensitivity} \(S\) is defined as:
+\[
+S = \frac{V_{\text{out}}}{p_{\text{in}}} \quad [\mathrm{V/Pa}]
+, \quad 
+S_{\mathrm{dB}} = 20 \log_{10}\!\left(\frac{S}{1~\mathrm{V/Pa}}\right).
+\]
+Typical sensitivity values are around \(10~\mathrm{mV/Pa}\).  
+A higher sensitivity means that less gain is required in the preamplifier, but excessive sensitivity may increase noise pickup.
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.4\textwidth}
+\paragraph{Directionality: }
+The sensitivity depends on the angle of incidence \(\alpha\) of the sound wave. The relative directional sensitivity is defined as:
+\[
+S_{\mathrm{REL}}(\alpha) = \frac{S(\alpha)}{S(0)}.
+\]
+In decibel form:
+\[
+S_{\mathrm{REL,dB}}(\alpha) = 20 \log_{10} \frac{S(\alpha)}{S(0)}.
+\]
+This function characterizes how uniformly the microphone responds to sounds arriving from different directions.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.55\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{polar_patterns.png}
+  \caption{Polar patterns representing relative directional sensitivity at a fixed frequency.}
+\end{minipage}
+\end{figure}
+
+
+\paragraph{Omnidirectional Microphones.}
+Omnidirectional microphones have a single front entry exposing the diaphragm to the sound field.  
+Their omnidirectionality relies on diffraction: when the diaphragm diameter \(D\) is much smaller than the wavelength \(\lambda\), sound waves wrap around it, maintaining uniform response.  
+At high frequencies (\(D \gtrsim \lambda/10\)), diffraction is insufficient, leading to directionality.  
+To remain omnidirectional up to 20~kHz, \(D \approx 1.7~\mathrm{mm}\) is required. Thus, the omnidirectionality condition can be written as: 
+\[
+\lambda = c/f > 10 D \quad \Rightarrow \quad f < \frac{c}{10 D}\approx 3/D
+\]
+High-frequency sound:
+The microphone, whose dimension is comparable to the sound wavelength, causes an acoustic shadow, so the diaphragm is not exposed to the sound field. The microphone does not produce any signal.
+
+Low-frequency sound:
+The microphone is a small obstacle and does not cause an acoustic shadow in the sound field. Diffraction allows the wave to reach the diaphragm, and the microphone response is complete.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{omni_mic.png}
+    \caption{Typical directional characteristics for a $1/2$" microphone normalized to a $0^{\circ}$ incidence.}
+    \label{fig:placeholder}
+\end{figure}
+
+\paragraph{Directional Microphones.}
+Directional (pressure-gradient) microphones use both front and rear sound entries.  
+Rear-entry ports create a delay so that at 0° incidence, front and rear waves arrive out of phase by 180°, moving the diaphragm coherently.  
+At 180° incidence, the waves are in phase and cancel, resulting in directional rejection.  
+Common directional types include \textbf{cardioid, supercardioid, and hypercardioid}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{directional_mic.png}
+    \caption{Illustration of the front and rear entry.}
+    \label{fig:placeholder}
+\end{figure}
+
+A cardioid microphone has a greater “reach” than an omnidirectional microphone.
+Because of its forward-oriented pickup pattern, it exhibits a higher ratio of on-axis response to randomly arriving sound.
+A comparison of different polar patterns in terms of equivalent working distance shows that a cardioid microphone can be placed approximately 1.7 times farther from the sound source than an omnidirectional microphone while maintaining the same suppression of ambient noise.
+Similarly, a supercardioid can be used at 1.9 times, and a hypercardioid at 2 times the distance of an omni for equivalent performance.
+In terms of rejection at equal working distance, the cardioid provides about 4.8 dB better attenuation of random sound than the omni.
+The supercardioid improves this to 5.8 dB, and the hypercardioid to 6 dB.
+
+\paragraph{Directionality in a diffuse field: }
+The polar pattern of a microphone is typically measured in a free-field condition, such as within an anechoic chamber, where no reflections are present.
+However, in real environments, the microphone’s directional behavior can change significantly.
+Objects located near the microphone — such as walls, instruments, or even the performer’s head — reflect sound waves, altering how the microphone perceives directionality.
+For example, when a cardioid microphone is used close to a singer, sound waves arriving from the rear (around 180°) may be reflected off the performer’s head.
+These reflected waves can reach the microphone’s diaphragm and be picked up, partially reducing the microphone’s intended rear rejection and modifying its effective polar pattern, especially at mid frequencies.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{obstacle_consequence.png}
+    \caption{Example of head obstacle on a polar response.}
+    \label{fig:placeholder}
+\end{figure}
+
+\paragraph{Multiple-Pattern Microphones: }
+Some condenser microphones (e.g., Neumann U-89i) use two diaphragms and variable bias voltages to combine pressure and pressure-gradient signals, allowing selectable patterns (omni, cardioid, bidirectional, etc.).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{U_89i_circuit.png}
+    \caption{Circuit of a condenser microphone with electrically switchable direction characteristic.}
+\end{figure}
+
+\paragraph{Highly Directional Microphones: }
+When the distance between the sound source and the microphone increases, the sound pressure level at the microphone decreases.
+To maintain the same output level, the amplifier gain must be raised — but this also amplifies ambient and environmental noise, reducing the overall signal-to-noise ratio.
+Interference-tube microphones (commonly known as shotgun microphones) are designed to achieve very high directionality and sensitivity.
+They consist of a cardioid-type capsule combined with a long, narrow tube (typically 20–40 cm in length) placed in front of the diaphragm.
+The tube has multiple side openings that allow sound waves to enter from different points along its length.
+For sound waves arriving off-axis (at an angle $\theta \neq 0 ^\circ $), each wavefront travels a slightly different distance before reaching the diaphragm.
+These unequal path lengths cause phase shifts between the incoming waves, leading to destructive interference for off-axis sounds while maintaining constructive interference for on-axis sounds.
+This selective interference effect gives shotgun microphones their characteristic narrow pickup pattern and excellent background noise rejection.
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.3\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{highly_directional_mic.png}
+    \caption{Polar pattern of a highly directional mic: Sennheiser MKH416.}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.55\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{shotgun_mic_view.png}
+    \caption{Principle of interference tube (shotgun) microphone directionality.}
+\end{minipage}
+\end{figure}
+
+\paragraph{Frequency Response.}
+The relative frequency response is defined as:
+\[
+S_{\mathrm{rel}}(f) = 20 \log_{10}\!\left( \frac{S(f)}{S_{\mathrm{ref}}(1~\mathrm{kHz})} \right).
+\]
+Small diaphragms extend the upper frequency limit but reduce sensitivity (proportional to \(D^2\)).  
+Larger diaphragms offer higher sensitivity but a narrower flat range.
+
+\paragraph{Diaphragm's diameter influence: }
+The diaphragm diameter has a major influence on both the sensitivity and the frequency response of a microphone.
+A smaller diaphragm extends the flat portion of the frequency response toward higher frequencies, allowing the microphone to capture more detail and better transient response.
+The upper operating frequency is approximately inversely proportional to the diaphragm diameter : 
+\[
+f_{\text{high}} \propto 1/D
+\]
+In contrast, the sensitivity increases roughly with the square of the diameter:
+\[
+S \propto D^2
+\]
+Therefore, larger diaphragms provide higher sensitivity but a narrower usable frequency range, while smaller diaphragms offer wider bandwidth at the cost of lower sensitivity.
+Microphones of equal diameter may still exhibit different sensitivities and frequency responses due to differences in diaphragm tension and mechanical design.
+In practice, high-sensitivity microphones (around 50 mV/Pa) typically use lower-tension diaphragms, whereas low-sensitivity types (around 12.5 mV/Pa) employ tighter diaphragms.
+The designer can adjust this tension parameter within certain limits to balance sensitivity, stability, and frequency response according to the intended application.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{diaphragm_diameter.png}
+    \caption{Frequency response of a given microphone with different values of $D$.}
+    \label{fig:placeholder}
+\end{figure}
+
+\paragraph{Proximity Effect:}
+For directional microphones, reducing the distance to the sound source increases low-frequency response, as the pressure gradient between front and back ports grows.  
+Manufacturers often compensate this by designing a low-frequency roll-off filter.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{proximity_effect.png}
+    \caption{Frequency response for different positions configurations.}
+    \label{fig:placeholder}
+\end{figure}
+
+
+\paragraph{Static Pressure Equalization:}
+The static air pressure around a microphone can vary over time — for example, with weather changes or altitude differences at the measurement site.
+These variations can be very large: a change of just 1 mbar corresponds to 100 Pa, which is about $10^{8}$ to $10^{9}$ times greater than the faintest sound pressures that precision microphones are designed to measure (around $10^{-6}$ Pa).
+To prevent such static pressure changes from affecting the microphone’s performance, the capsule is equipped with a static pressure equalization vent.
+This vent is a narrow air channel that connects the internal cavity of the microphone to the external atmosphere, allowing the internal pressure to slowly follow that of the environment.
+As a result, only dynamic pressure variations caused by sound waves are detected by the diaphragm, while slow static pressure drifts are automatically compensated.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{mic_vent.png}
+    \caption{Schematics of the vent for static pressure equalization.}
+\end{figure}
+The time constant of this vent determines the low-frequency response:
+\[
+f_p = \frac{1}{2\pi \tau}.
+\]
+Typical values \(f_p \approx 1.6~\mathrm{Hz}\) ensure flat response down to 5~Hz while filtering very slow atmospheric pressure variations.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{vent_freq_resp.png}
+    \caption{Low frequency repsonse valid fo situations where the static pressure equalization vent is inside (B) and outside (A) the sound field.}
+    \label{fig:placeholder}
+\end{figure}
+
+\paragraph{Wind Protection.}
+To minimize turbulence and plosive noise, microphones employ external and internal windscreens (foam, mesh, or pop filters).  
+Windscreens attenuate high-frequency content slightly but are essential in outdoor recording or vocal use.
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{wind_noise_measurment.png}
+    \caption{Wind noise measurements}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.45\textwidth}
+\centering
+\includegraphics[width=\textwidth]
+{wind_noise.png}
+    \caption{Wind protection magnitude response with respect to wind's speed.}
+\end{minipage}
+\end{figure}
+
+
+\paragraph{Microphone Noise: }
+Even in silence, the diaphragm experiences random Brownian motion from air molecules, producing a thermal noise voltage.  
+The noise pressure level is:
+\[
+p_{\mathrm{noise}}[\mathrm{Pa_{rms}}] = \frac{V_{\mathrm{noise}}[\mathrm{V_{rms}}]}{S[\mathrm{V/Pa}]}.
+\]
+Typical self-noise values range from 0–40~dB~SPL, depending on diaphragm size and temperature. Thermal noise sets the lower detection limit of any microphone system.
+
+\paragraph{System Noise:}
+When connected to a preamplifier, total noise combines microphone and electronic contributions.  
+For condenser types, the noise power density is given by:
+\[
+\frac{dP^2}{df} = 4 k t \frac{2 \sigma t}{\pi R^4} 
+\]
+where \(R\) is diaphragm radius, \(t\) the thickness, \(\sigma t\) the tension, \(k\) Boltzmann’s constant, and \(T\) absolute temperature.  
+To minimize noise, microphones use large-area, low-tension diaphragms — the same parameters that increase sensitivity.
+The microphone's sensitivity is given by: 
+\[
+S = V_{bias} \frac{R^2}{8 \sigma t s}
+\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{mic_preamp_noise.png}
+    \caption{Third octave noise spectra of a system made of: free-field microphone (1/2" 50 mV/Pa) and a high quality amplifier. Amplifier's noise domainates at low frequencies while Brownian movements of the mic's diaphragm create the most significant noise at high frequencies.}
+    \label{fig:placeholder}
+\end{figure}
+
+\paragraph{Dynamic Range.}
+The \textbf{dynamic range} of a microphone is the range between:
+\begin{itemize}
+  \item The minimum detectable sound pressure (limited by noise),
+  \item The maximum allowable pressure before distortion exceeds a defined threshold.
+\end{itemize}
+
+Measurement microphones can achieve dynamic ranges exceeding 130~dB SPL.  
+In musical applications, this ensures faithful reproduction of both very quiet and very loud passages without compression or saturation.
+
+
+
+
+
+\subsection{Summary}
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Microphone Noise}]
+\begin{itemize}
+    \item Main source: thermal (Brownian) motion of air molecules.
+    \item Noise level in dB SPL relative to \(20\,\mu\text{Pa}\).
+    \item Typical range: \(0\,\text{dB SPL} \text{ to } 40\,\text{dB SPL}\).
+    \item Total noise = microphone noise + preamplifier noise.
+    \item Sensitivity: \( \text{[V/Pa]} = \frac{V_{\text{rms}}}{p_{\text{rms}}} \).
+\end{itemize}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Condenser Microphone Principle}]
+\begin{itemize}
+    \item The condenser microphone operates as a variable capacitor.
+    \item Diaphragm motion changes the capacitance \( C = \varepsilon A / x \).
+    \item For constant charge \( Q_B \), the voltage output varies as:
+    \[
+    v_s \approx -V_B \frac{\Delta C}{C_0}
+    \]
+    \item A decrease in spacing (\( \Delta C < 0 \)) produces a positive voltage variation.
+    \item The vent hole ensures static pressure equalization (0 dB SPL reference).
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Condenser Microphone Sensitivity}]
+\begin{itemize}
+    \item Capacitance variation due to diaphragm motion:
+    \[
+    \Delta C = -C_0 \frac{\Delta d}{d}
+    \]
+    \item Output voltage:
+    \[
+    V_s \approx V_B \frac{\Delta d}{d_0}
+    \]
+    \item Relationship with acoustic pressure:
+    \[
+    V_s = \frac{Q_B}{\varepsilon} \, C_{MS} \, p
+    \]
+    \item Sensitivity:
+    \[
+    S = \frac{Q_B}{\varepsilon} \, C_{MS}
+    \]
+    \item Operating regime: \textbf{stiffness-controlled}.
+\end{itemize}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Condenser Microphone Model}]
+\begin{itemize}
+    \item Sound pressure \( p \) produces a mechanical force \( F = p S_D \).
+    \item The diaphragm displacement is determined by the compliance \( C_{MS} \).
+    \item The electro-mechanical analogy uses a transformer with ratio \( 1/S_D \).
+    \item The resulting signal voltage arises from variations in capacitance due to diaphragm motion.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Electret Microphone Principle}]
+\begin{itemize}
+    \item The backplate is made of a dielectric with a permanent charge (\( Q_B \)).
+    \item No external bias voltage is needed.
+    \item A large resistor \( R \) is used to extract the AC signal and separate it from the DC bias.
+    \item The electrical equivalent circuit resembles that of a condenser microphone, except the charge source is internal.
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Cable Influence}]
+\begin{itemize}
+    \item Cable capacitance creates a voltage divider with the microphone capacitance.
+    \item Typical values:
+    \[
+    C_{IN} \approx 10\,\text{pF}, \quad C_E \approx 10\,\text{pF}, \quad C_{CABLE} \approx 100\,\text{pF/m}.
+    \]
+    \item For a 1-meter cable: \( v_{IN,PREAMP} \approx 0.1\,v_s \).
+    \item \textbf{Conclusion:} The preamplifier must be placed very close to the microphone capsule to prevent capacitive signal loss.
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – High-pass Behavior}]
+\begin{itemize}
+    \item The coupling network \( R \)-\( C_E \) acts as a high-pass filter.
+    \item Cutoff frequency: \( f_L = \frac{1}{2\pi R C_{E0}} \).
+    \item For \( f_L \leq 20\,\text{Hz} \) and \( C_{E0} = 10\,\text{pF} \), we need \( R \geq 800\,\text{M}\Omega \).
+    \item Low-frequency attenuation depends on \( f/f_L \).
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Phantom Power Supply}]
+\begin{itemize}
+    \item Phantom power provides a symmetric \( +48\,\text{V} \) bias through equal resistors to power condenser microphones.
+    \item Audio is transmitted as a differential signal \( \pm v_s/2 \), immune to common-mode noise.
+    \item Transformers and DC-blocking capacitors isolate the bias voltage and preserve signal integrity.
+    \item The design ensures robust operation, high common-mode rejection, and minimal hum or interference.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Pressure Microphones}]
+\begin{itemize}
+    \item Output voltage: \( v_s \propto p \, S_D \).
+    \item The cavity behind the diaphragm is pressure-equalized through a small vent.
+    \item For \( \lambda \gg L \): \( p \) is uniform across the diaphragm and the microphone is \textbf{omnidirectional}.
+    \item Pressure microphones are primarily used for reference measurements and absolute SPL calibration.
+\end{itemize}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Pressure Gradient Microphones}]
+\begin{itemize}
+    \item The microphone output is proportional to the \textbf{pressure difference} between the front and rear of the diaphragm.
+    \item Force on the diaphragm:
+    \[
+    f_D = (p_1 - p_2) S_D
+    \]
+    \item For small separations:
+    \[
+    f_{D,\perp} = \rho_0 \frac{\partial u}{\partial t} \, \Delta l \, S_D \cos(\theta)
+    \]
+    \item The directional response arises from the \( \cos(\theta) \) term — maximum on-axis and zero at \( \theta = 90^\circ \).
+    \item Pressure-gradient microphones are used to achieve \textbf{bidirectional and cardioid} patterns.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Pressure Gradient Microphone (Frequency Domain)}]
+\begin{itemize}
+    \item The diaphragm experiences a differential pressure proportional to the local gradient:
+    \[
+    \tilde{f}_{D\perp} = j \frac{\omega}{c} \tilde{p} \, \Delta l \, S_D \cos \theta
+    \]
+    \item For plane waves: the pattern is bi-directional (\( \propto \cos \theta \)).
+    \item For spherical waves: response includes an additional \( (1 + jkr)/r \) term.
+    \item Typical path differences:
+    \[
+    \Delta l_{\text{rigid}} \approx \frac{a}{2}, \qquad \Delta l_{\text{flexible}} \approx \frac{3a}{4}
+    \]
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Distance and Frequency Dependence}]
+\begin{itemize}
+    \item Force magnitude:
+    \[
+    |\tilde{f}_{D,\text{RMS}}| = |\tilde{p}|_{\text{RMS}} \, \frac{\omega S_D \Delta l \cos(\theta)}{c} \frac{\sqrt{1 + (k r)^2}}{k r}
+    \]
+    \item Frequency-normalized distance factor:
+    \[
+    \gamma = \frac{\sqrt{1 + (f/f_0)^2}}{r}, \quad f_0 = \frac{c}{2\pi r}
+    \]
+    \item For \( f \gg f_0 \): \( |\tilde{f}_{D,\perp}| \propto \frac{1}{r} \)
+    \item For \( f \ll f_0 \): \( |\tilde{f}_{D,\perp}| \propto \frac{1}{r^2} \)
+    \item The proximity effect enhances low frequencies at short distances; compensation is often applied via internal high-pass filters.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Microphone Directionality}]
+\begin{itemize}
+    \item The directivity factor is:
+    \[
+    Q = \frac{\overline{W}_{A,OMN}}{\overline{W}_{A,MUT}}
+    \]
+    \item \( Q = 1 \): omnidirectional; \( Q > 1 \): directional microphone.
+    \item High-\( Q \) microphones focus on specific directions, sacrificing isotropic energy capture.
+    \item Directionality determines the balance between spatial precision and sensitivity to diffuse sound fields.
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Combined Pressure and Gradient Microphones}]
+\begin{itemize}
+    \item The total response combines absolute and differential pressure sensing.  
+    \item \( B = 0 \): omnidirectional, \( B = 1 \): cardioid, \( B \rightarrow \infty \): figure-8.
+    \item The polar response depends on \( \cos\theta \), controlling the directionality.
+    \item The directivity index is:
+    \[
+    D(\theta) = \frac{1 + B\cos\theta}{1 + B}
+    \]
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Mean Acoustic Power and Microphone Directivity}]
+\begin{itemize}
+    \item Mean acoustic power per element:
+    \[
+    d\overline{W}_A = \frac{1}{\rho_0 c} |p_{\text{RMS}}|^2 r^2 \sin(\theta)\, d\theta\, d\phi
+    \]
+    \item Microphone voltage pattern:
+    \[
+    v_M(\theta) = v_{M,0} D(\theta)
+    \]
+    \item Directivity function:
+    \[
+    D(\theta) = \frac{1 + B\cos(\theta)}{1 + B}
+    \]
+    \item Weighted acoustic power:
+    \[
+    d\overline{W}_{A,M} = \frac{1}{\rho_0 c} |D(\theta)|^2 |p_{\text{RMS}}|^2 r^2 \sin(\theta)\, d\theta\, d\phi
+    \]
+    \item The directivity pattern modulates how much power is received from each direction, shaping the microphone’s overall sensitivity field.
+\end{itemize}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Directivity Factor and Solid-Angle Integration}]
+\begin{itemize}
+    \item Mean acoustic power received by a microphone:
+    \[
+    \overline{W}_{A,M} = \frac{2\pi r^2 p_{\text{RMS}}^2}{\rho_0 c} \int_{0}^{\pi} D^2(\theta) \sin(\theta)\, d\theta
+    \]
+    \item Directivity function:
+    \[
+    D(\theta) = \frac{1 + B\cos(\theta)}{1 + B}
+    \]
+    \item Directivity factor:
+    \[
+    Q(B) = \frac{3(1 + B)^2}{3 + B^2}
+    \]
+    \item \( Q_{\text{OMNI}} = 1, \quad Q_{\text{CARDIOID}} = 3, \quad Q_{\text{FIGURE-8}} = 3, \quad Q_{\text{MAX}} = 4 \text{ at } B = 3. \)
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Hypercardioid and Supercardioid Microphones}]
+\begin{itemize}
+    \item General directivity law: \( D(\theta) = \dfrac{1 + B\cos(\theta)}{1 + B} \)
+    \item Front–Rear ratio: \( FR = \dfrac{3 + 3B + B^2}{3 - 3B + B^2} \)
+    \item Directivity factor: \( Q = \dfrac{3(1 + B)^2}{3 + B^2} \)
+    \item Maximum rejection for \( B = \sqrt{3} \Rightarrow \text{Supercardioid} \)
+    \item Typical values:
+    \[
+    Q_{\text{super}} \approx 3.7, \quad Q_{\text{hyper}} = 4
+    \]
+\end{itemize}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=black,title=\textbf{Summary – Combined Pressure + Pressure Gradient Microphones}]
+\begin{itemize}
+    \item Rear cavity introduces \textbf{acoustic compliance} \( C_A \) and \textbf{resistance} \( R_A \), enabling directional tuning.
+    \item Differential pressure on diaphragm:
+    \[
+    \tilde{p}_D = \tilde{p}_1 - \tilde{p}_2 = \tilde{p}_1 \left( 1 - j\dfrac{\omega}{c}\Delta \ell \cos(\theta) \right)
+    \]
+    \item Equivalent parameters:
+    \[
+    A = \frac{Z_{AD} R_A}{Z_{AD} R_A - j\dfrac{R_A + Z_{AD}}{\omega C_A}}, \quad B = \frac{\Delta \ell}{c R_A C_A}
+    \]
+    \item Resulting output voltage:
+    \[
+    v_M = v_S (1 + B\cos(\theta))
+    \]
+    \item The parameter \( B \) determines the polar pattern:
+    \begin{itemize}
+        \item \( B = 0 \): omnidirectional
+        \item \( B = 1 \): cardioid
+        \item \( B \rightarrow \infty \): bidirectional
+    \end{itemize}
+\end{itemize}
+\end{tcolorbox}
